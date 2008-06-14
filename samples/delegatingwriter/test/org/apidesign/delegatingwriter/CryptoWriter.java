@@ -20,7 +20,7 @@ public class CryptoWriter extends AltBufferedWriter {
     }
 /* The above code is here to let us simulate different behaviours of the append
  * method. In reality, the class would just subclass BufferedWriter, as shown bellow:
- BEGIN: writer.CryptoWriter
+BEGIN: writer.CryptoWriter
 public class CryptoWriter extends BufferedWriter {
     public CryptoWriter(Writer out) {
         super(out);
