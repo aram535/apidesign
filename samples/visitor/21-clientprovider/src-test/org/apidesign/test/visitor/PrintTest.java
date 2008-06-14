@@ -39,12 +39,14 @@ public class PrintTest {
         };
     }
 
+    // BEGIN: visitor.clientprovider.print
     public static class PrintVisitor implements Visitor.Version1_0 {
         StringBuffer sb = new StringBuffer();
         
         final Visitor dispatch = Visitor.create(this);
         
         public void visitPlus(Plus s) {
+            // s.getFirst().visit(this); // does not compile, we need:
             s.getFirst().visit(dispatch);
             sb.append(" + ");
             s.getSecond().visit(dispatch);
@@ -59,6 +61,7 @@ public class PrintTest {
             return true;
         }
     }
+    // END: visitor.clientprovider.print
     
     @Test public void printOnePlusOne() {
         Number one = newNumber(1);
