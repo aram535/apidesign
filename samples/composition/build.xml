@@ -16,7 +16,7 @@
         
         <antcall target="-build-one">
             <param name="version" value="test"/>
-            <param name="cp" location="build/api1.0/classes"/>
+            <param name="cp" value="build/api1.0/classes:../libs/dist/junit-4.1.jar"/>
         </antcall>
     </target>
     
@@ -36,9 +36,21 @@
     
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
-        <java classpath="build/${version}/classes:build/impl/classes" classname="impl.Impl"
-            failonerror="true"
-        />
+        <mkdir dir="build/testresults"/>
+        <junit dir="build/test/classes" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
+            <batchtest todir="build/testresults">
+                <fileset dir="build/test/classes">
+                    <filename name="**/*Test.class"/>
+                </fileset>
+            </batchtest>
+            <classpath>
+                <path location="build/${version}/classes"/>
+                <path location="build/test/classes"/>
+                <path location="../libs/dist/junit-4.1.jar"/>
+            </classpath>
+            <formatter type="brief" usefile="false"/>
+            <formatter type="xml"/>
+        </junit>
     </target>
     
     <target name="-build-one">
