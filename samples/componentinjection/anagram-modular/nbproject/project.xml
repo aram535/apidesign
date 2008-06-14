@@ -40,6 +40,12 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-app-register-general</label>
+                    <type>java</type>
+                    <location>src-app-register-general</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>src-app-property</label>
                     <type>java</type>
                     <location>src-app-property</location>
@@ -111,6 +117,10 @@
                         <location>src-app-register</location>
                     </source-folder>
                     <source-folder style="packages">
+                        <label>src-app-register-general</label>
+                        <location>src-app-register-general</location>
+                    </source-folder>
+                    <source-folder style="packages">
                         <label>src-app-property</label>
                         <location>src-app-property</location>
                     </source-folder>
@@ -158,6 +168,12 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-app-register</package-root>
+                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui</classpath>
+                <built-to>build/app-register/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-app-register-general</package-root>
                 <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui</classpath>
                 <built-to>build/app-register/classes</built-to>
                 <source-level>1.5</source-level>
