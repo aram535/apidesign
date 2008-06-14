@@ -23,28 +23,6 @@ public class AServerInfoTest {
 
     @Test
     public void showUseOfCumulativeFactory() throws Exception {
-        class Prov implements AServerInfo.NameProvider, AServerInfo.URLProvider, AServerInfo.ResetHandler {
-            int resets;
-            
-            public String getName() {
-                return "API Design Server";
-            }
-
-            public URL getURL() {
-                try {
-                    return new URL("http://www.apidesign.org");
-                } catch (MalformedURLException ex) {
-                    Exceptions.printStackTrace(ex);
-                    return null;
-                }
-            }
-
-            public void reset() {
-                resets++;
-            }
-            
-        }
-        
         Prov prov = new Prov();
         AServerInfo info;
         
@@ -58,4 +36,47 @@ public class AServerInfoTest {
         assertEquals("Once reset", 1, prov.resets);
         
     }
+    
+    @Test
+    public void showVerboseUseOfCumulativeFactory() throws Exception {
+        Prov prov = new Prov();
+        AServerInfo info;
+        
+        // BEGIN: aserverinfo.cumulative.creation.verbose
+        AServerInfo empty = AServerInfo.empty();
+        AServerInfo name = empty.nameProvider(prov);
+        AServerInfo urlAndName = name.urlProvider(prov);
+        info = urlAndName.reset(prov);
+        // END: aserverinfo.cumulative.creation.verbose
+        
+        assertEquals("API Design Server", info.getName());
+        assertEquals("http://www.apidesign.org", info.getURL().toExternalForm());
+        info.reset();
+        assertEquals("Once reset", 1, prov.resets);
+        
+    }
+    
+    
+    private static class Prov implements AServerInfo.NameProvider, AServerInfo.URLProvider, AServerInfo.ResetHandler {
+        int resets;
+
+        public String getName() {
+            return "API Design Server";
+        }
+
+        public URL getURL() {
+            try {
+                return new URL("http://www.apidesign.org");
+            } catch (MalformedURLException ex) {
+                Exceptions.printStackTrace(ex);
+                return null;
+            }
+        }
+
+        public void reset() {
+            resets++;
+        }
+
+    }
+        
 }
