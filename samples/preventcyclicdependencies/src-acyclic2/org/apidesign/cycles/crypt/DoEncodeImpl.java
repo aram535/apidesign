@@ -1,9 +1,9 @@
 // BEGIN: nocycles.encrypt2
 package org.apidesign.cycles.crypt;
 
-import org.apidesign.cycles.array.MutableArray;
+import org.apidesign.cycles.array.DoEncode;
 
-public class DoEncodeImpl implements MutableArray.DoEncode {
+public class DoEncodeImpl implements DoEncode {
     public void encode(byte[] arr) {
         Encryptor en = new Encryptor();
         en.encode(arr);
