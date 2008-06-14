@@ -15,7 +15,7 @@ public final class Main {
             "org.apidesign.anagram.scramblersimple.SimpleScrambler"
         );
         
-        UI ui = new org.apidesign.anagram.app.register.AnagramsWithProperties();
+        UI ui = new org.apidesign.anagram.app.property.AnagramsWithProperties();
         ui.display();
     }
     

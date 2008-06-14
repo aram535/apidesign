@@ -1,7 +1,5 @@
-package org.apidesign.anagram.app.register;
+package org.apidesign.anagram.app.property;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apidesign.anagram.api.Scrambler;
 import org.apidesign.anagram.api.WordLibrary;
 import org.apidesign.anagram.gui.Anagrams;
