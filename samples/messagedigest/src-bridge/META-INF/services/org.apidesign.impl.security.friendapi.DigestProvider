@@ -1,3 +1,0 @@
-# this shall be in a separate module that provides the "bridge"
-org.apidesign.impl.security.extension.BridgeToOldAlgorithmsProvider
-

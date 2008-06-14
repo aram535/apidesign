@@ -1,2 +1,0 @@
-# this is a provider for the SPI, shall be in the same module as the api & spi
-org.apidesign.impl.security.spi.DigestorProvider
