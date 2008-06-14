@@ -20,6 +20,10 @@ public class AltBufferedWriter extends BufferedWriter {
     private final Writer out;
     private final Behaviour behaviour;
     
+    public AltBufferedWriter(Writer out) {
+        // behave exactly like BufferedWriter in 1.5 behaves
+        this(out, Behaviour.DELEGATE_TO_SUPER);
+    }
     public AltBufferedWriter(Writer out, Behaviour behaviour) {
         super(out);
         this.out = out;
@@ -37,8 +41,10 @@ public class AltBufferedWriter extends BufferedWriter {
         }
     }
     
-    // BEGIN: writer.throw
     public Writer appendThrowException(CharSequence csq) throws IOException {
+        /* in case of real code, this would be part of the regular append method BEGIN: writer.throw
+    public Writer append(CharSequence csq) throws IOException {
+        /* thrown an exception as this method is new and subclasses need to override it */
         throw new UnsupportedOperationException();
     }
     // END: writer.throw
@@ -58,7 +64,7 @@ public class AltBufferedWriter extends BufferedWriter {
     
     public Writer appendDelegateToUnderlaying(CharSequence csq) throws IOException {
         // BEGIN: writer.delegateout
-        // efficient, yet dangerous delegation skipping methods known to 
+        // efficient, yet dangerous delegation skipping methods unknown to 
         // subclasses that used version 1.4
         out.append(csq);
         return this;
