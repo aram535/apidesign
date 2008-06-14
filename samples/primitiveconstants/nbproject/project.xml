@@ -55,7 +55,7 @@
                     </source-folder>
                     <source-folder style="packages">
                         <label>impl</label>
-                        <location>impl</location>
+                        <location>src-impl</location>
                     </source-folder>
                     <source-file>
                         <location>build.xml</location>
