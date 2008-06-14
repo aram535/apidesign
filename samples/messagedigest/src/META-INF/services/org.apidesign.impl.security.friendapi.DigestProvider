@@ -1,0 +1,7 @@
+# this is a provider for the SPI, shall be in the same module as the api & spi
+org.apidesign.impl.security.spi.DigestorProvider
+
+
+# this shall be in a separate module that provides the "bridge"
+org.apidesign.impl.security.extension.BridgeToOldAlgorithmsProvider
+
