@@ -40,4 +40,7 @@ public class BridgeToOldAlgorithmsProvider implements DigestProvider {
         }
     }
 
+    static {
+        new BridgeToOld();
+    }
 }

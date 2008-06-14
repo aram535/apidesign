@@ -5,7 +5,6 @@
 
 package api;
 
-import api.Digest;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -33,7 +32,7 @@ public class DigestTest {
     public static void setUp() {
         time = System.currentTimeMillis();
         Random r = new Random(time);
-        arr = new byte[r.nextInt(1024 * 1024)];
+        arr = new byte[r.nextInt(1024)];
         r.nextBytes(arr);
     }
 

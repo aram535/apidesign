@@ -5,6 +5,7 @@
 
 package api;
 
+import impl.independent.module.BridgeToOld;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -32,19 +33,12 @@ public class DigestorTest {
     public static void setUp() {
         time = System.currentTimeMillis();
         Random r = new Random(time);
-        arr = new byte[r.nextInt(1024 * 1024)];
+        arr = new byte[r.nextInt(1024)];
         r.nextBytes(arr);
     }
 
     @After
     public void tearDown() {
-    }
-
-    @Test
-    public void generateHashUsingMessageDigest() throws Exception {
-        MessageDigest md = MessageDigest.getInstance("cnt");
-        byte[] res = md.digest(arr);
-        resOld = res;
     }
 
     @Test
@@ -54,6 +48,14 @@ public class DigestorTest {
         byte[] res = d.digest(bb);
         resNew = res;
     }
+
+    @Test
+    public void generateHashUsingMessageDigest() throws Exception {
+        MessageDigest md = MessageDigest.getInstance("cnt");
+        byte[] res = md.digest(arr);
+        resOld = res;
+    }
+
     
     @Test
     public void compareTheHashes() throws Exception {
