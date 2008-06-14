@@ -41,7 +41,7 @@
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-lookup"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util.jar"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-serviceloader"/>
