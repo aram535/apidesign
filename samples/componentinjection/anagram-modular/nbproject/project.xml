@@ -58,6 +58,12 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-app-lookup</label>
+                    <type>java</type>
+                    <location>src-app-lookup</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>Anagram Modular</label>
                     <location>.</location>
                     <encoding>UTF-8</encoding>
@@ -128,6 +134,10 @@
                         <label>src-app-spring</label>
                         <location>src-app-spring</location>
                     </source-folder>
+                    <source-folder style="packages">
+                        <label>src-app-lookup</label>
+                        <location>src-app-lookup</location>
+                    </source-folder>
                     <source-file>
                         <location>build.xml</location>
                     </source-file>
@@ -188,6 +198,12 @@
                 <package-root>src-app-spring</package-root>
                 <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/spring-2.5.jar</classpath>
                 <built-to>build/app-spring/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-app-lookup</package-root>
+                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/org-openide-util.jar</classpath>
+                <built-to>build/app-lookup/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>

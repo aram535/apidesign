@@ -35,6 +35,10 @@
             <param name="version" value="app-spring"/>
             <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/spring-2.5.jar"/>
         </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="app-lookup"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
+        </antcall>
         
     </target>
     
@@ -62,6 +66,12 @@
             <param name="version" value="app-register-general"/>
             <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
             <param name="main" value="org.apidesign.anagram.app.registergeneral.Main"/>
+        </antcall>
+        <echo level="info" message="Running lookup version"/>
+        <antcall target="-run-one">
+            <param name="version" value="app-lookup"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util.jar"/>
+            <param name="main" value="org.apidesign.anagram.app.lookup.Main"/>
         </antcall>
     </target>
     
