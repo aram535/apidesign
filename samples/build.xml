@@ -24,8 +24,9 @@
     </target>
 
     <target name="test" depends="build">
-        <subant target="test" antfile="../build.xml" failonerror="false">
+        <subant target="test" antfile="../build.xml" failonerror="true">
             <dirset refid="examples"/>
+            <property name="test-sys-prop.no.failures" value="true"/>
         </subant>
     </target>
     

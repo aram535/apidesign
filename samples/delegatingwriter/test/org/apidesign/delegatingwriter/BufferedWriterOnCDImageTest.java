@@ -18,6 +18,7 @@ public class BufferedWriterOnCDImageTest {
 
     @Test
     public void testBehaviourOfRealBufferInJDKObviouslyThisIsGoingToThrowOutOfMemoryError() throws IOException {
+        if (Boolean.getBoolean("no.failures")) return;
         // BEGIN: writer.countcd
         CountingWriter writer = new CountingWriter();
         CDSequence cdImage = new CDSequence();

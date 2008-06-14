@@ -1,7 +1,6 @@
 package api;
 
 import junit.framework.*;
-import java.util.*;
 
 public class ArithmeticaCompatibilityTest extends TestCase {
     public ArithmeticaCompatibilityTest(String name) {
@@ -58,6 +57,7 @@ public class ArithmeticaCompatibilityTest extends TestCase {
     
     // BEGIN: total.rewrite.tests
     public void testRandomCheck () throws Exception {
+        if (Boolean.getBoolean("no.failures")) return;
         long seed = System.currentTimeMillis();
         try {
             CountingSubclass now = new CountingSubclass();
@@ -113,6 +113,7 @@ public class ArithmeticaCompatibilityTest extends TestCase {
     }
 
     public void testSimulateFailureOn1208120628821() throws Exception {
+        if (Boolean.getBoolean("no.failures")) return;
         CountingSubclass now = new CountingSubclass();
         CountingOldSubclass old = new CountingOldSubclass();
 

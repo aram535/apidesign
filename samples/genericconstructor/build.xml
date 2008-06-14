@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="incompatibilities" default="run" basedir=".">
+<project name="Generic Constructor" default="run" basedir=".">
     <target name="clean">
         <delete dir="build"/>
     </target>
+    <target name="test"/>
     
     <target name="compile" depends="build"/>
     <target name="build" depends="clean">

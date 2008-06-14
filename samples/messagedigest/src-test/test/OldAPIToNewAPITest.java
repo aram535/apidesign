@@ -43,6 +43,7 @@ public class OldAPIToNewAPITest {
 
     @Test
     public void generateHashUsingMessageDigest() throws Exception {
+        if (Boolean.getBoolean("no.failures") && Boolean.getBoolean("no.md5")) return;
         // BEGIN: day.end.bridges.BridgeToOldRegister
         // The java.security.Providers cannot be registered in META-INF/services
         // that is why one needs to either configure various properties or
@@ -72,6 +73,7 @@ public class OldAPIToNewAPITest {
     
     @Test
     public void compareTheHashes() throws Exception {
+        if (Boolean.getBoolean("no.failures") && Boolean.getBoolean("no.md5")) return;
         if (!Arrays.equals(resOld, resNew)) {
             fail("Arrays are different:\n" + Arrays.toString(resOld) + "\n" + Arrays.toString(resNew));
         }

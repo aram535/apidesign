@@ -1,7 +1,6 @@
 package org.apidesign.sidemeanings.test;
 
 
-import org.apidesign.sidemeanings.Mixed;
 import org.apidesign.sidemeanings.MixedClass;
 import org.apidesign.sidemeanings.NonMixed;
 import org.apidesign.sidemeanings.NonMixed.Callback;

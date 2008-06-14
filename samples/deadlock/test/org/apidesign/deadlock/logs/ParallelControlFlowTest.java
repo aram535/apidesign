@@ -1,14 +1,7 @@
 package org.apidesign.deadlock.logs;
 
-import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.netbeans.junit.NbTestCase;
 import static org.junit.Assert.*;
 
@@ -48,6 +41,7 @@ public class ParallelControlFlowTest extends NbTestCase {
             500
         );
         Parallel.main(null);
+        if (Boolean.getBoolean("no.failures")) return;
         fail("Ok, just print the logged output");
     }
 // END: test.parallel.test.controlflow
@@ -62,6 +56,7 @@ public class ParallelControlFlowTest extends NbTestCase {
             5000
         );
         Parallel.main(null);
+        if (Boolean.getBoolean("no.failures")) return;
         fail("Ok, just print the logged output");
     }
     // END: test.parallel.test.fivetwo

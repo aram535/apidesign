@@ -3,6 +3,7 @@
     <target name="clean">
         <delete dir="build"/>
     </target>
+    <target name="test"/>
     
     <!-- BEGIN: theory.binary.differentreturntype.ant -->
     <!-- This is the target that does the whole trick - e,g. it compiles

@@ -31,7 +31,7 @@ public class InstanceProviderTest {
     }
 
     @Test
-    public void verifyBehaviourOnOldInterface() {
+    public void verifyBehaviourOnOldInterface() throws Exception {
         class IP implements InstanceProvider {
             int instanceClass;
             int instanceCreate;
@@ -55,7 +55,7 @@ public class InstanceProviderTest {
     }
     
     @Test
-    public void verifyBehaviourOnNewInterface() {
+    public void verifyBehaviourOnNewInterface() throws Exception {
         class IP implements BetterInstanceProvider {
             int isInstanceOf;
             int instanceClass;
@@ -85,7 +85,7 @@ public class InstanceProviderTest {
         assertEquals("isInstanceOf called", 1, instance.isInstanceOf);
     }
 
-    private static boolean checkIsString(InstanceProvider instance) {
+    private static boolean checkIsString(InstanceProvider instance) throws Exception {
         // BEGIN: instanceof.Use
         if (instance instanceof BetterInstanceProvider) {
             BetterInstanceProvider bip = (BetterInstanceProvider)instance;

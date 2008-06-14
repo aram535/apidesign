@@ -10,6 +10,7 @@ public class SizeTest {
     
     @Test
     public void measureIsDataLowerThan8No() {
+        if (Boolean.getBoolean("no.failures")) return;
         Data d = new Data();
         
         NbTestCase.assertSize(

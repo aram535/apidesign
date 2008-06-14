@@ -5,6 +5,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.lang.ref.WeakReference;
 import javax.swing.JPanel;
+import junit.framework.AssertionFailedError;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,9 +44,9 @@ public class WeakListenersTest {
                 "Of course, this listener cannot disappear, because it is held from long living JavaBean", 
                 ref
             );
-        } catch (Exception ex) {
+        } catch (AssertionFailedError ex) {
             ex.printStackTrace();
-            // of course it cannot
+            // of course it cannot be garbage collected. That is OK.
             return;
         }
         fail("The listener cannot be GCed as it is held from long living JavaBean");

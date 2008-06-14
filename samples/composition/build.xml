@@ -80,6 +80,10 @@
                 <path location="build/test/classes"/>
                 <path location="${junit.jar}"/>
             </classpath>
+            <syspropertyset>
+                <propertyref prefix="test-sys-prop."/>
+                <mapper from="test-sys-prop.*" to="*" type="glob"/>
+            </syspropertyset>
             <formatter type="brief" usefile="false"/>
             <formatter type="xml"/>
         </junit>

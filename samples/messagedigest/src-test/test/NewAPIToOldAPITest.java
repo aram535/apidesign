@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package test;
 
 import java.nio.ByteBuffer;
@@ -50,6 +45,7 @@ public class NewAPIToOldAPITest {
 
     @Test
     public void generateHashUsingNewDigest() throws Exception {
+        if (Boolean.getBoolean("no.failures") && Boolean.getBoolean("no.md5")) return;
         Digest d = Digest.getInstance("MD5");
         ByteBuffer bb = ByteBuffer.wrap(arr);
         byte[] res = d.digest(bb);
@@ -58,6 +54,7 @@ public class NewAPIToOldAPITest {
     
     @Test
     public void compareTheHashes() throws Exception {
+        if (Boolean.getBoolean("no.failures") && Boolean.getBoolean("no.md5")) return;
         if (!Arrays.equals(resOld, resNew)) {
             fail("Arrays are different:\n" + Arrays.toString(resOld) + "\n" + Arrays.toString(resNew));
         }

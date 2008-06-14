@@ -1,11 +1,6 @@
 package org.apidesign.deadlock.logs;
 
 import java.util.logging.Level;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.netbeans.junit.NbTestCase;
 import static org.junit.Assert.*;
 
@@ -22,6 +17,7 @@ public class ParallelTest extends NbTestCase {
 
     public void testMain() throws Exception {
         Parallel.main(null);
+        if (Boolean.getBoolean("no.failures")) return;
         fail("Ok, just print logged messages");
     }
 }

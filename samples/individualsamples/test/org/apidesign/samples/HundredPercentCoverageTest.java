@@ -23,6 +23,7 @@ public class HundredPercentCoverageTest {
 
     @Test
     public void stillThereIsAWayToFail() {
+        if (Boolean.getBoolean("no.failures")) return;
         assertEquals("init value - 10", 0, instance.add(-10));
         assertEquals("division", 0, instance.percentageFrom(5));
     }

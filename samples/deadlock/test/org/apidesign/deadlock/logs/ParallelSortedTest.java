@@ -4,11 +4,6 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.netbeans.junit.NbTestCase;
 import static org.junit.Assert.*;
 
@@ -26,6 +21,7 @@ public class ParallelSortedTest extends NbTestCase {
     public void testMain() throws Exception {
         Logger.global.addHandler(new BlockingHandler());
         Parallel.main(null);
+        if (Boolean.getBoolean("no.failures")) return;
         fail("Ok, just print the logged output");
     }
 

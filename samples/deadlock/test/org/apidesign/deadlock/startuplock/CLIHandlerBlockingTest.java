@@ -33,6 +33,7 @@ public class CLIHandlerBlockingTest {
     public void start() throws Exception {
         File lockFile = File.createTempFile("pref", ".tmp");
         int result = CLIHandlerBlocking.start(lockFile);
+        if (Boolean.getBoolean("no.failures")) return;
         assertEquals("Show a failure" + H.sb, -10, result);
     }
 

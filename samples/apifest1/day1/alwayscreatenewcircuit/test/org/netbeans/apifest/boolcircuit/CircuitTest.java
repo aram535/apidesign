@@ -19,15 +19,7 @@
 
 package org.netbeans.apifest.boolcircuit;
 
-import java.security.CodeSource;
-import java.security.Permission;
-import java.security.PermissionCollection;
-import java.security.Policy;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Enumeration;
 import junit.framework.TestCase;
-import junit.framework.*;
 
 /** The initial quest for this APIFest is to create an API for boolean 
  * circuits. Such API shall be able to compose a boolean circuit from
@@ -65,12 +57,6 @@ public class CircuitTest extends TestCase {
         super(testName);
     }
 
-    protected void setUp() throws Exception {
-    }
-
-    protected void tearDown() throws Exception {
-    }
-    
     // BEGIN: apifest.day1.alwayscreatenewcircuit.CircuitTest
     /** 
      * Create a circuit to evaluate x1 and x2 and then

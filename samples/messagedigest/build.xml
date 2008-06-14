@@ -34,6 +34,7 @@
         <echo level="info" message="Running the tests without bridge module. This should fail."/>
         <antcall target="-run-one">
             <param name="test.cp" value="build/new-api/classes"/>
+            <param name="test-sys-prop.no.md5" value="true"/>
         </antcall>
     </target>
     
@@ -70,6 +71,10 @@
                 <path location="build/test/classes"/>
                 <path location="${junit.jar}"/>
             </classpath>
+            <syspropertyset>
+                <propertyref prefix="test-sys-prop."/>
+                <mapper from="test-sys-prop.*" to="*" type="glob"/>
+            </syspropertyset>
             <formatter type="brief" usefile="false"/>
             <formatter type="xml"/>
             <jvmarg value="${debug1}"/>

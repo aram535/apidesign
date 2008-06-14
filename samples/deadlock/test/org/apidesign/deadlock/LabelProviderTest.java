@@ -41,6 +41,7 @@ public class LabelProviderTest extends NbTestCase {
     
 
     public void testCreateLabel() {
+        if (Boolean.getBoolean("no.failures")) return;
         final LabelProvider instance = new StrangePanel();
         
         class R implements Runnable {

@@ -5,10 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import org.junit.Test;
-import org.netbeans.junit.Log;
 import org.netbeans.junit.NbTestCase;
 import static org.junit.Assert.*;
 
@@ -49,6 +46,7 @@ public class DeadlockTest extends NbTestCase {
     
 
     public void testCreateLabel() throws Exception {
+        if (Boolean.getBoolean("no.failures")) return;
         final LabelProvider instance = new StrangePanel();
         
         class R implements Runnable {

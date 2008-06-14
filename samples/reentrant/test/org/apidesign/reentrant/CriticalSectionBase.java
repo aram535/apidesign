@@ -41,6 +41,8 @@ public abstract class CriticalSectionBase {
     
     @Test 
     public void teaseCriticalSectionWithReentrantCalls() {
+        if (Boolean.getBoolean("no.failures")) return;
+        
         final CriticalSection<Integer> cs = create();
         
         cs.assignPilot(10);

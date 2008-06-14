@@ -54,6 +54,9 @@
                     <target>clean</target>
                     <target>build</target>
                 </action>
+                <action name="test">
+                    <target>test</target>
+                </action>
             </ide-actions>
             <view>
                 <items>
@@ -82,7 +85,7 @@
                     <ide-action name="rebuild"/>
                     <ide-action name="clean"/>
                     <ide-action name="run"/>
-                    <ide-action name="debug"/>
+                    <ide-action name="test"/>
                 </context-menu>
             </view>
             <subprojects/>
