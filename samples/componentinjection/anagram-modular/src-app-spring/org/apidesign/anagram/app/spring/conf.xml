@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- BEGIN: anagram.spring.xml -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
@@ -8,3 +9,5 @@
     <bean id="scrambler" class="org.apidesign.anagram.scramblersimple.SimpleScrambler"/>
     <bean id="ui" class="org.apidesign.anagram.gui.AnagramsWithConstructor" autowire="autodetect"/>
 </beans>
+<!-- END: anagram.spring.xml -->
+
