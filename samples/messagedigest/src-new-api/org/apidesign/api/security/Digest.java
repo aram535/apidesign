@@ -2,28 +2,28 @@
 package org.apidesign.api.security;
 
 import java.nio.ByteBuffer;
+import org.apidesign.impl.security.friendapi.DigestImplementation;
+import org.apidesign.impl.security.friendapi.DigestProvider;
 import java.util.ServiceLoader;
-import org.apidesign.spi.security.Digestor;
 
-/** Simplified version of a Digest class that allows to compute a fingerprint
- * for buffer of data.
+/** MessageDigest extends MessageDigestSpi, that means the javadoc
  *
- * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
+ * @author Jaroslav Tulach
  */
 // BEGIN: day.end.bridges.Digest
 public final class Digest {
-    private final DigestImplementation<?> impl;
+    private final DigestImplementation impl;
     
     /** Factory method is better than constructor */
-    private Digest(DigestImplementation<?> impl) {
+    private Digest(DigestImplementation impl) {
         this.impl = impl;
     }
     
     /** Factory method to create digest for an algorithm.
      */
     public static Digest getInstance(String algorithm) {
-        for (Digestor<?> digestor : ServiceLoader.load(Digestor.class)) {
-            DigestImplementation<?> impl = DigestImplementation.create(digestor, algorithm);
+        for (DigestProvider dp : ServiceLoader.load(DigestProvider.class)) {
+            DigestImplementation impl = dp.create(algorithm);
             if (impl != null) {
                 return new Digest(impl);
             }
@@ -37,7 +37,8 @@ public final class Digest {
     //
     
     public byte[] digest(ByteBuffer bb) {
-        return impl.digest(bb);
+        impl.update(bb);
+        return impl.digest();
     }
 }
 // END: day.end.bridges.Digest
