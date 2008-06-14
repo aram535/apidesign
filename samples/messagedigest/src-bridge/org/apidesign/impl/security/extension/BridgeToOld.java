@@ -20,12 +20,17 @@ import java.util.Map;
  * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
 // BEGIN: day.end.bridges.BridgeToOld
-public class BridgeToOld extends Provider {
-    private ThreadLocal<Boolean> searching = new ThreadLocal<Boolean>();
+public final class BridgeToOld extends Provider {
 
     public BridgeToOld() {
         super("spi.Digestor", 1.0, "");
         Security.addProvider(this);
+    }
+
+    // BEGIN: day.end.bridges.cycle
+    private ThreadLocal<Boolean> searching = new ThreadLocal<Boolean>();
+    final boolean isSearching() {
+        return Boolean.TRUE.equals(searching.get());
     }
     
     @Override
@@ -44,6 +49,7 @@ public class BridgeToOld extends Provider {
             searching.set(prev);
         }
     }
+    // END: day.end.bridges.cycle
 
     private static class ServiceImpl<Data> extends Service {
         Digest dig;
@@ -85,10 +91,6 @@ public class BridgeToOld extends Provider {
         }
         
         
-    }
-
-    boolean isSearching() {
-        return Boolean.TRUE.equals(searching.get());
     }
 
 }

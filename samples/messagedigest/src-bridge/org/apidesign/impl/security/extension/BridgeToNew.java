@@ -23,9 +23,13 @@ public class BridgeToNew extends Digestor<MessageDigest> {
     
     @Override
     protected MessageDigest create(String algorithm) {
+        // BEGIN: day.end.bridges.cyclecheck
         if (oldBridge.isSearching()) {
+            // if the call is initiated from the other bridge, do not do
+            // any delegation
             return null;
         }
+        // END: day.end.bridges.cyclecheck
         
         try {
             return MessageDigest.getInstance(algorithm);
