@@ -3,6 +3,7 @@
     <property name="samples.dir" location="${ant.file.samples}/.."/>
     <dirset id="examples" dir="${samples.dir}">
         <include name="**/nbproject"/>
+        <exclude name="nbproject"/>
         <exclude name="apifest1/day3-intermezzo/**"/>
         <exclude name="apifest1/infrastructure/testing-template/**"/>
     </dirset>
