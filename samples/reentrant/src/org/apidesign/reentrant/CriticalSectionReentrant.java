@@ -11,6 +11,7 @@ public class CriticalSectionReentrant<T extends Comparable<T>> implements Critic
         this.pilot = pilot;
     }
 
+    // BEGIN: reentrant.merge.int
     public int sumBigger(Collection<T> args) {
         T pilotCopy = this.pilot;
         int own = doCriticalSection(args, pilotCopy);
@@ -18,6 +19,7 @@ public class CriticalSectionReentrant<T extends Comparable<T>> implements Critic
         cnt.addAndGet(own);
         return own;
     }
+    // END: reentrant.merge.int
     
     private int doCriticalSection(Collection<T> args, T pilotCopy) {
         int own = 0;
