@@ -1,9 +1,7 @@
 package org.apidesign.template;
 
+
 // BEGIN: generics.constructor.template1
-
-import org.apidesign.template.withgenerics.*;
-
 public final class Template extends Object {
     private final Class type;
 

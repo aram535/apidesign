@@ -8,6 +8,7 @@ public final class Template<T> extends Object {
     public Class<T> getType() { return type; }
 
     @Deprecated
+    @SuppressWarnings("unchecked")
     public Template() { this((Class<T>)Object.class); }
     
     public static Template<Object> create() {

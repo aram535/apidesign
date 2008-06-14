@@ -11,9 +11,14 @@
             <param name="version" value="plain"/>
             <param name="source" value="1.4"/>
         </antcall>
-        <echo level="info" message="Compiles with 1.5"/>
+        <echo level="info" message="Compiles with 1.5, fails as there is now cast"/>
         <antcall target="-build-one">
             <param name="version" value="generics"/>
+            <param name="source" value="1.5"/>
+        </antcall>
+        <echo level="info" message="Compiles with 1.5"/>
+        <antcall target="-build-one">
+            <param name="version" value="factory"/>
             <param name="source" value="1.5"/>
         </antcall>
     </target>
@@ -32,6 +37,8 @@
             source="${source}" target="${source}"
             classpath="${cp}"
             failonerror="false"
-        />
+        >
+            <compilerarg value="-Xlint:unchecked"/>
+        </javac>
     </target>
 </project>
