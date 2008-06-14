@@ -3,6 +3,7 @@
     <dirset id="examples" dir=".">
         <include name="**/nbproject"/>
         <exclude name="apifest1/day3-intermezzo/**"/>
+        <exclude name="apifest1/infrastructure/testing-template/**"/>
     </dirset>
     
     
