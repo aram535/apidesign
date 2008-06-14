@@ -14,13 +14,15 @@ class AnagramsWithServiceLoader extends Anagrams {
 
     @Override
     protected WordLibrary getWordLibrary() {
-        Iterator<WordLibrary> it = ServiceLoader.load(WordLibrary.class).iterator();
+        Iterator<WordLibrary> it;
+        it = ServiceLoader.load(WordLibrary.class).iterator();
         return it.hasNext() ? it.next() : null;
     }
 
     @Override
     protected Scrambler getScrambler() {
-        Iterator<Scrambler> it = ServiceLoader.load(Scrambler.class).iterator();
+        Iterator<Scrambler> it;
+        it = ServiceLoader.load(Scrambler.class).iterator();
         return it.hasNext() ? it.next() : null;
     }
 
