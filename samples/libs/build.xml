@@ -25,6 +25,11 @@
             <param name="library.include" value="**/org-netbeans-insane.jar"/>
             <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/ide9/org-netbeans-insane.nbm"/>
         </antcall>
+        <antcall target="-library-from-zip">
+            <param name="library" value="spring-2.5"/>
+            <param name="library.include" value="**/*spring*.jar"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/java2/org-netbeans-libs-springframework.nbm"/>
+        </antcall>
     </target>
     
     <!-- support methods -->
