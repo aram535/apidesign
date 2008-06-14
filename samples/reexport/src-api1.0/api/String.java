@@ -2,7 +2,7 @@ package api;
 
 // BEGIN: reexport.String10
 public final class String {
-    final char[] chars;
+    private final char[] chars;
     
     public String(char[] chars) {
         this.chars = chars.clone();
