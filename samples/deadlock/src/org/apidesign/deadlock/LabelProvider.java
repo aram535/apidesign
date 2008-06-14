@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class LabelProvider extends JPanel {
     private static Logger LOG = Logger.getLogger(LabelProvider.class.getName());
     
-    // BEGIN: deadlock.provider
+    // BEGIN: deadlock.label.provider
     private HashSet<JLabel> allCreated = new HashSet<JLabel>();
 
     public synchronized JLabel createLabel () {
@@ -21,6 +21,6 @@ public class LabelProvider extends JPanel {
         allCreated.add (l);
         return l;
     }
-    // END: deadlock.provider
+    // END: deadlock.label.provider
 
 }
