@@ -9,28 +9,24 @@
             <param name="version" value="new-api"/>
         </antcall>
         <antcall target="-build-one">
-            <param name="version" value="new-spi"/>
-            <param name="cp" value="build/new-api/classes"/>
-        </antcall>
-        <antcall target="-build-one">
             <param name="version" value="bridge"/>
-            <param name="cp" value="build/new-api/classes:build/new-spi/classes"/>
+            <param name="cp" value="build/new-api/classes"/>
         </antcall>
         
         <antcall target="-build-one">
             <param name="version" value="test"/>
-            <param name="cp" value="build/new-api/classes:build/new-spi/classes:${junit.jar}"/>
+            <param name="cp" value="build/new-api/classes:${junit.jar}"/>
         </antcall>
     </target>
     
     <target name="test" depends="build">
         <echo level="info" message="Running the tests with bridge enabled. This should succeeds."/>
         <antcall target="-run-one">
-            <param name="test.cp" value="build/new-api/classes:build/new-spi/classes:build/bridge/classes"/>
+            <param name="test.cp" value="build/new-api/classes:build/bridge/classes"/>
         </antcall>
         <echo level="info" message="Running the tests without bridge module. This should fail."/>
         <antcall target="-run-one">
-            <param name="test.cp" value="build/new-api/classes:build/new-spi/classes"/>
+            <param name="test.cp" value="build/new-api/classes"/>
         </antcall>
     </target>
     

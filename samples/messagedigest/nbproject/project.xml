@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.ant.freeform</type>
     <configuration>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
-            <name>bridges</name>
+            <name>MessageDigest and Bridges</name>
         </general-data>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
             <!-- Do not use Project Properties customizer when editing this file manually. -->
@@ -17,12 +17,6 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
-                    <label>src-new-spi</label>
-                    <type>java</type>
-                    <location>src-new-spi</location>
-                    <encoding>UTF-8</encoding>
-                </source-folder>
-                <source-folder>
                     <label>src-bridge</label>
                     <type>java</type>
                     <location>src-bridge</location>
@@ -32,6 +26,11 @@
                     <label>test</label>
                     <type>java</type>
                     <location>src-test</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>MessageDigest and Bridges</label>
+                    <location>.</location>
                     <encoding>UTF-8</encoding>
                 </source-folder>
             </folders>
@@ -50,22 +49,33 @@
                     <target>build</target>
                 </action>
             </ide-actions>
+            <export>
+                <type>folder</type>
+                <location>build/bridge/classes</location>
+                <build-target>build</build-target>
+            </export>
+            <export>
+                <type>folder</type>
+                <location>build/new-api/classes</location>
+                <build-target>build</build-target>
+            </export>
+            <export>
+                <type>folder</type>
+                <location>build/test/classes</location>
+                <build-target>build</build-target>
+            </export>
             <view>
                 <items>
                     <source-folder style="packages">
-                        <label>New API for Clients</label>
+                        <label>src-new-api</label>
                         <location>src-new-api</location>
                     </source-folder>
                     <source-folder style="packages">
-                        <label>New API for Providers</label>
-                        <location>src-new-spi</location>
-                    </source-folder>
-                    <source-folder style="packages">
-                        <label>Bridge</label>
+                        <label>src-bridge</label>
                         <location>src-bridge</location>
                     </source-folder>
                     <source-folder style="packages">
-                        <label>Tests</label>
+                        <label>test</label>
                         <location>src-test</location>
                     </source-folder>
                     <source-file>
@@ -79,25 +89,24 @@
                     <ide-action name="test"/>
                 </context-menu>
             </view>
+            <subprojects/>
         </general-data>
         <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
             <compilation-unit>
                 <package-root>src-new-api</package-root>
-                <source-level>1.5</source-level>
-            </compilation-unit>
-            <compilation-unit>
-                <package-root>src-new-spi</package-root>
-                <classpath mode="compile">src-new-api</classpath>
+                <built-to>build/bridge/classes</built-to>
+                <built-to>build/new-api/classes</built-to>
+                <built-to>build/test/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-bridge</package-root>
-                <classpath mode="compile">src-new-api:src-new-spi</classpath>
+                <classpath mode="compile">src-new-api</classpath>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-test</package-root>
-                <classpath mode="compile">src-new-api:src-new-spi:../libs/dist/junit-4.4.jar</classpath>
+                <classpath mode="compile">src-new-api:../libs/dist/junit-4.4.jar</classpath>
                 <source-level>1.5</source-level>
             </compilation-unit>
         </java-data>
