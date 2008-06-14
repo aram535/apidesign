@@ -7,7 +7,9 @@
             <name>Against Stack Based Solution</name>
             <properties>
                 <property name="ant.script">build.xml</property>
+                <property name="apifest">../../../</property>
                 <property-file>project.properties</property-file>
+                <property-file>../../common.properties</property-file>
             </properties>
             <folders>
                 <source-folder>
