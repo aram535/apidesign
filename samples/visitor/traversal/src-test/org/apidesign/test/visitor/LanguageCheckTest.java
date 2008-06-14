@@ -9,7 +9,6 @@ import org.junit.Test;
 
 public class LanguageCheckTest {
 
-    // BEGIN: visitor.language.check.visitunknown
     private static class Valid1_0Language extends Visitor/*version1.0*/ {
         boolean invalid;
 
@@ -31,7 +30,6 @@ public class LanguageCheckTest {
         expression.visit(valid);
         return !valid.invalid;
     }
-    // END: visitor.language.check.visitunknown
     
     @Test public void printOnePlusOne() {
         Number one = new Number(1);
