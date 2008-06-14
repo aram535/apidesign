@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="apidesign.org" default="build" basedir=".">
+    <dirset id="examples" dir=".">
+        <include name="**/nbproject"/>
+        <exclude name="apifest1/day3-intermezzo/**"/>
+    </dirset>
+    
+    
+    <target name="clean">
+        <subant target="clean" antfile="../build.xml">
+            <dirset refid="examples"/>
+        </subant>
+    </target>
+
+    <target name="build">
+        <ant dir="libs"/>
+        <subant target="compile" antfile="../build.xml">
+            <dirset refid="examples"/>
+        </subant>
+    </target>
+    
+</project>
