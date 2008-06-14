@@ -4,6 +4,7 @@
         <delete dir="build"/>
     </target>
     
+    <target name="compile" depends="build"/>
     <target name="build" depends="-libraries">
         <antcall target="-build-one">
             <param name="version" value="api1.0"/>
