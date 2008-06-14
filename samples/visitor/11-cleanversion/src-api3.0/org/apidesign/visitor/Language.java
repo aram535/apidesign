@@ -33,10 +33,10 @@ public final class Language {
 
         @Override
         public void visit(Visitor v) {
-            if (v instanceof Visitor1_0) {
-                ((Visitor1_0) v).visitPlus(this);
-            } else if (v instanceof Visitor3_0) {
-                ((Visitor3_0) v).visitPlus(this);
+            if (v instanceof Visitor10) {
+                ((Visitor10) v).visitPlus(this);
+            } else if (v instanceof Visitor30) {
+                ((Visitor30) v).visitPlus(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -57,11 +57,11 @@ public final class Language {
 
         @Override
         public void visit(Visitor v) {
-            if (v instanceof Visitor1_0) {
-                ((Visitor1_0) v).visitNumber(this);
-            } else if (v instanceof Visitor3_0) {
+            if (v instanceof Visitor10) {
+                ((Visitor10) v).visitNumber(this);
+            } else if (v instanceof Visitor30) {
                 Real wrapper = new Real(getValue());
-                ((Visitor3_0) v).visitReal(wrapper);
+                ((Visitor30) v).visitReal(wrapper);
             } else {
                 v.visitUnknown(this);
             }
@@ -81,10 +81,10 @@ public final class Language {
         public Expression getSecond() { return second; }
         
         public void visit(Visitor v) { 
-            if (v instanceof Visitor2_0) {
-                ((Visitor2_0)v).visitMinus(this);
-            } else if (v instanceof Visitor3_0) {
-                ((Visitor3_0)v).visitMinus(this);
+            if (v instanceof Visitor20) {
+                ((Visitor20)v).visitMinus(this);
+            } else if (v instanceof Visitor30) {
+                ((Visitor30)v).visitMinus(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -104,8 +104,8 @@ public final class Language {
         public void visit(Visitor v)
         // FINISH: visitor.nonmonotonic.real
         {
-            if (v instanceof Visitor3_0) {
-                ((Visitor3_0)v).visitReal(this);
+            if (v instanceof Visitor30) {
+                ((Visitor30)v).visitReal(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -116,17 +116,17 @@ public final class Language {
     public interface Visitor {
         public void visitUnknown(Expression e);
     }
-    public interface Visitor1_0 extends Visitor {
+    public interface Visitor10 extends Visitor {
         public void visitPlus(Plus s);
         public void visitNumber(Number n);
     }
     /** @since 2.0 */
-    public interface Visitor2_0 extends Visitor {
+    public interface Visitor20 extends Visitor {
         public void visitMinus(Minus s);
     }
     // BEGIN: visitor.nonmonotonic.visitor
     /** @since 3.0 */
-    public interface Visitor3_0 extends Visitor {
+    public interface Visitor30 extends Visitor {
         public void visitPlus(Plus s);
         public void visitMinus(Minus s);
         public void visitReal(Real r);

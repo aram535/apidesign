@@ -7,7 +7,7 @@ import org.apidesign.visitor.Language.Minus;
 import org.apidesign.visitor.Language.Number;
 import org.apidesign.visitor.Language.Plus;
 import org.apidesign.visitor.Language.Real;
-import org.apidesign.visitor.Language.Visitor3_0;
+import org.apidesign.visitor.Language.Visitor30;
 import org.junit.Test;
 
 public class PrintOfMinusStructureTest {
@@ -29,9 +29,9 @@ public class PrintOfMinusStructureTest {
         assertEquals("1.0 - 2.0", print.sb.toString());
     }
     
-    @Test public void visitorReadyForVersion3_0() {
+    @Test public void visitorReadyForVersion30() {
         // BEGIN: visitor.nonmonotonic.print3
-        class PrintVisitor3_0 implements Visitor3_0 {
+        class PrintVisitor30 implements Visitor30 {
             StringBuffer sb = new StringBuffer();
 
             public void visitUnknown(Expression exp) {
@@ -62,7 +62,7 @@ public class PrintOfMinusStructureTest {
         Number two = new Number(2);
         Expression plus = new Minus(one, two);
         
-        PrintVisitor3_0 print = new PrintVisitor3_0();
+        PrintVisitor30 print = new PrintVisitor30();
         plus.visit(print);
         
         assertEquals("1.0 - 2.0", print.sb.toString());
@@ -72,7 +72,7 @@ public class PrintOfMinusStructureTest {
         Real three = new Real(3);
         Expression realPlus = new Minus(five, three);
         
-        PrintVisitor3_0 printReal = new PrintVisitor3_0();
+        PrintVisitor30 printReal = new PrintVisitor30();
         realPlus.visit(printReal);
         
         assertEquals("5.0 - 3.0", printReal.sb.toString());

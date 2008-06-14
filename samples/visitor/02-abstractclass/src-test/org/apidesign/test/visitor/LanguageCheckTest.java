@@ -10,7 +10,7 @@ import org.junit.Test;
 public class LanguageCheckTest {
 
     // BEGIN: visitor.language.check.exception
-    private static class Valid1_0Language extends Visitor/*version1.0*/ {
+    private static class Valid10Language extends Visitor/*version1.0*/ {
         public void visitPlus(Plus s) {
             s.getFirst().visit(this);
             s.getSecond().visit(this);
@@ -19,8 +19,8 @@ public class LanguageCheckTest {
         }
     }
 
-    public static boolean isValid1_0Language(Expression expression) {
-        Valid1_0Language valid = new Valid1_0Language();
+    public static boolean isValid10Language(Expression expression) {
+        Valid10Language valid = new Valid10Language();
         try {
             expression.visit(valid);
             return true; // yes, no unknown elements
@@ -34,7 +34,7 @@ public class LanguageCheckTest {
         Number one = new Number(1);
         Expression expression = new Plus(one, one);
 
-        assertTrue("Valid language", isValid1_0Language(expression));
+        assertTrue("Valid language", isValid10Language(expression));
     }
 
     @Test public void printOnePlusTwoPlusThree() {
@@ -43,6 +43,6 @@ public class LanguageCheckTest {
         Number three = new Number(3);
         Expression plus = new Plus(one, new Plus(two, three));
         
-        assertTrue("Valid language", isValid1_0Language(plus));
+        assertTrue("Valid language", isValid10Language(plus));
     }
 }

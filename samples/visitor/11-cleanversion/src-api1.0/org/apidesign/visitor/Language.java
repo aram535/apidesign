@@ -19,8 +19,8 @@ public final class Language {
         public Expression getSecond() { return second; }
         @Override
         public void visit(Visitor v) { 
-            if (v instanceof Visitor1_0) {
-                ((Visitor1_0)v).visitPlus(this);
+            if (v instanceof Visitor10) {
+                ((Visitor10)v).visitPlus(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -32,8 +32,8 @@ public final class Language {
         public int getValue() { return value; }
         @Override
         public void visit(Visitor v) { 
-            if (v instanceof Visitor1_0) {
-                ((Visitor1_0)v).visitNumber(this);
+            if (v instanceof Visitor10) {
+                ((Visitor10)v).visitNumber(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -44,7 +44,7 @@ public final class Language {
         public void visitUnknown(Expression e);
     }
     
-    public interface Visitor1_0 extends Visitor {
+    public interface Visitor10 extends Visitor {
         public void visitPlus(Plus s);
         public void visitNumber(Number n);
     }

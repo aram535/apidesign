@@ -33,8 +33,8 @@ public final class Language {
 
         @Override
         public void visit(Visitor v) {
-            if (v instanceof Visitor1_0) {
-                ((Visitor1_0) v).visitPlus(this);
+            if (v instanceof Visitor10) {
+                ((Visitor10) v).visitPlus(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -55,8 +55,8 @@ public final class Language {
 
         @Override
         public void visit(Visitor v) {
-            if (v instanceof Visitor1_0) {
-                ((Visitor1_0) v).visitNumber(this);
+            if (v instanceof Visitor10) {
+                ((Visitor10) v).visitNumber(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -77,8 +77,8 @@ public final class Language {
         
         // BEGIN: visitor.cleanversion.dispatch2
         public void visit(Visitor v) { 
-            if (v instanceof Visitor2_0) {
-                ((Visitor2_0)v).visitMinus(this);
+            if (v instanceof Visitor20) {
+                ((Visitor20)v).visitMinus(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -90,12 +90,12 @@ public final class Language {
     public interface Visitor {
         public void visitUnknown(Expression e);
     }
-    public interface Visitor1_0 extends Visitor {
+    public interface Visitor10 extends Visitor {
         public void visitPlus(Plus s);
         public void visitNumber(Number n);
     }
     /** @since 2.0 */
-    public interface Visitor2_0 extends Visitor1_0 {
+    public interface Visitor20 extends Visitor10 {
         public void visitMinus(Minus s);
     }
     // END: visitor.cleanversion.v2

@@ -40,7 +40,7 @@ public class PrintTest {
     }
 
     // BEGIN: visitor.clientprovider.self.print
-    public static class PrintVisitor implements Visitor.Version1_0 {
+    public static class PrintVisitor implements Visitor.Version10 {
         StringBuffer sb = new StringBuffer();
         
         public void visitPlus(Plus s, Visitor self) {

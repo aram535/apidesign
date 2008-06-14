@@ -6,7 +6,7 @@ import org.apidesign.visitor.Language.Expression;
 import org.apidesign.visitor.Language.Minus;
 import org.apidesign.visitor.Language.Number;
 import org.apidesign.visitor.Language.Plus;
-import org.apidesign.visitor.Language.Visitor2_0;
+import org.apidesign.visitor.Language.Visitor20;
 import org.junit.Test;
 
 public class PrintOfMinusStructureTest {
@@ -28,9 +28,9 @@ public class PrintOfMinusStructureTest {
         assertEquals("1 - 2", print.sb.toString());
     }
     
-    @Test public void visitorReadyForVersion2_0() {
+    @Test public void visitorReadyForVersion20() {
         // BEGIN: visitor.cleanversion.print2
-        class PrintVisitor2_0 implements Visitor2_0 {
+        class PrintVisitor20 implements Visitor20 {
             StringBuffer sb = new StringBuffer();
 
             public void visitUnknown(Expression exp) {
@@ -57,7 +57,7 @@ public class PrintOfMinusStructureTest {
         Number two = new Number(2);
         Expression plus = new Minus(one, two);
         
-        PrintVisitor2_0 print = new PrintVisitor2_0();
+        PrintVisitor20 print = new PrintVisitor20();
         plus.visit(print);
         
         assertEquals("1 - 2", print.sb.toString());

@@ -26,8 +26,8 @@ public class PrintRealTest {
         assertEquals("1.0 - 2.0", print.sb.toString());
     }
     
-    @Test public void visitorReadyForVersion3_0() {
-        class PrintVisitor3_0 implements Visitor.Version3_0 {
+    @Test public void visitorReadyForVersion30() {
+        class PrintVisitor30 implements Visitor.Version30 {
             StringBuffer sb = new StringBuffer();
 
             public boolean visitUnknown(Expression exp, Visitor self) {
@@ -56,7 +56,7 @@ public class PrintRealTest {
         Number two = PrintTest.newNumber(2);
         Expression plus = PrintOfMinusStructureTest.newMinus(one, two);
         
-        PrintVisitor3_0 print = new PrintVisitor3_0();
+        PrintVisitor30 print = new PrintVisitor30();
         plus.visit(Visitor.create(print));
         
         assertEquals("1.0 - 2.0", print.sb.toString());
@@ -65,7 +65,7 @@ public class PrintRealTest {
         Real three = newReal(3);
         Expression realPlus = PrintOfMinusStructureTest.newMinus(five, three);
         
-        PrintVisitor3_0 printReal = new PrintVisitor3_0();
+        PrintVisitor30 printReal = new PrintVisitor30();
         realPlus.visit(Visitor.create(printReal));
         
         assertEquals("5.0 - 3.0", printReal.sb.toString());

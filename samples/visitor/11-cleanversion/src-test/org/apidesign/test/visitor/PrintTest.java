@@ -4,12 +4,12 @@ import static junit.framework.Assert.*;
 import org.apidesign.visitor.Language.Expression;
 import org.apidesign.visitor.Language.Number;
 import org.apidesign.visitor.Language.Plus;
-import org.apidesign.visitor.Language.Visitor1_0;
+import org.apidesign.visitor.Language.Visitor10;
 import org.junit.Test;
 
 public class PrintTest {
 
-    public static class PrintVisitor implements Visitor1_0 {
+    public static class PrintVisitor implements Visitor10 {
         StringBuffer sb = new StringBuffer();
         
         public void visitUnknown(Expression exp) {

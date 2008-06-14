@@ -39,7 +39,7 @@ public class PrintTest {
     }
 
     // BEGIN: visitor.clientprovider.print
-    public static class PrintVisitor implements Visitor.Version1_0 {
+    public static class PrintVisitor implements Visitor.Version10 {
         StringBuffer sb = new StringBuffer();
         
         final Visitor dispatch = Visitor.create(this);

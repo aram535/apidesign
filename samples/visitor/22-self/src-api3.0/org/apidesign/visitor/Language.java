@@ -28,12 +28,12 @@ public final class Language {
         
         
         /** @since 3.0 */
-        public static Visitor create(Version3_0 v) {
-            return create3_0(v);
+        public static Visitor create(Version30 v) {
+            return create30(v);
         }
 
         /** @since 3.0 */
-        public interface Version3_0 {
+        public interface Version30 {
             public boolean visitUnknown(Expression e, Visitor self);
             public void visitPlus(Plus s, Visitor self);
             public void visitMinus(Minus s, Visitor self);
@@ -44,12 +44,12 @@ public final class Language {
         public abstract void dispatchReal(Real r);
         
         /** @since 2.0 */
-        public static Visitor create(Version2_0 v) {
-            return create2_0(v);
+        public static Visitor create(Version20 v) {
+            return create20(v);
         }
 
         /** @since 2.0 */
-        public interface Version2_0 extends Version1_0 {
+        public interface Version20 extends Version10 {
             public void visitMinus(Minus m, Visitor self);
         }
 
@@ -57,11 +57,11 @@ public final class Language {
         /** @since 2.0 */
         public abstract void dispatchNumber(Number n);
         
-        public static Visitor create(Version1_0 v) {
-            return create1_0(v);
+        public static Visitor create(Version10 v) {
+            return create10(v);
         }
 
-        public interface Version1_0 {
+        public interface Version10 {
             public boolean visitUnknown(Expression e, Visitor self);
             public void visitPlus(Plus s, Visitor self);
             public void visitNumber(Number n, Visitor self);
@@ -71,7 +71,7 @@ public final class Language {
         public abstract void dispatchMinus(Minus m);
     }
     
-    static Visitor create1_0(final Visitor.Version1_0 v) {
+    static Visitor create10(final Visitor.Version10 v) {
         return new Visitor() {
             @Override
             public void dispatchPlus(Plus p) {
@@ -97,7 +97,7 @@ public final class Language {
             }
         };
     }
-    static Visitor create2_0(final Visitor.Version2_0 v) {
+    static Visitor create20(final Visitor.Version20 v) {
         return new Visitor() {
             @Override
             public void dispatchPlus(Plus p) {
@@ -120,7 +120,7 @@ public final class Language {
             }
         };
     }
-    static Visitor create3_0(final Visitor.Version3_0 v) {
+    static Visitor create30(final Visitor.Version30 v) {
         return new Visitor() {
             @Override
             public void dispatchReal(Real r) {

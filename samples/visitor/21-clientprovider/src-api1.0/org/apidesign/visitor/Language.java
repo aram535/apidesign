@@ -18,11 +18,11 @@ public final class Language {
     public static abstract class Visitor {
         Visitor() {}
 
-        public static Visitor create(Version1_0 v) {
-            return create1_0(v);
+        public static Visitor create(Version10 v) {
+            return create10(v);
         }
 
-        public interface Version1_0 {
+        public interface Version10 {
             public boolean visitUnknown(Expression e);
             public void visitPlus(Plus s);
             public void visitNumber(Number n);
@@ -33,7 +33,7 @@ public final class Language {
     }
     // END: visitor.clientprovider.v1
     
-    static Visitor create1_0(final Visitor.Version1_0 v) {
+    static Visitor create10(final Visitor.Version10 v) {
         return new Visitor() {
             @Override
             public void dispatchPlus(Plus p) {

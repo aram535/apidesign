@@ -12,6 +12,6 @@ public class InvalidLanguageCheckTest {
         Number two = new Number(2);
         Expression minus = new Minus(one, two);
         
-        assertFalse("Recognized as invalid 1.0 version of the language", LanguageCheckTest.isValid1_0Language(minus));
+        assertFalse("Recognized as invalid 1.0 version of the language", LanguageCheckTest.isValid10Language(minus));
     }
 }
