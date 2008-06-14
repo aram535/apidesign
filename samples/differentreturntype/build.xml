@@ -4,17 +4,13 @@
         <delete dir="build"/>
     </target>
     
+    <!-- BEGIN: theory.binary.differentreturntype.ant -->
     <!-- This is the target that does the whole trick - e,g. it compiles
         the Java source and then replaces tokens inside of the .class file
      -->
     <target name="-build-and-rename">
         <mkdir dir="build/apimerge/classes"/>
-        <javac 
-            srcdir="src-apimerge" 
-            destdir="build/apimerge/classes" 
-            source="1.4" target="1.4"
-            classpath="${cp}"
-        />
+        <javac srcdir="src-apimerge" destdir="build/apimerge/classes" source="1.4" target="1.4" classpath="${cp}"/>
         
         <!-- this is the replace. As the replace is done textually,
             we need to use some reasonable encoding that treats all byte values
@@ -27,6 +23,7 @@
             <replacevalue>getIcon</replacevalue>
         </replace>
     </target>
+    <!-- END: theory.binary.differentreturntype.ant -->
     
     <target name="build" depends="clean">
         <antcall target="-build-one">
