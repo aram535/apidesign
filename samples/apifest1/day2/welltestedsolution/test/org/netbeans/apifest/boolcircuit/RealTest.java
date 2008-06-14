@@ -55,6 +55,7 @@ import org.netbeans.apifest.custom.Gte;
  * own "element" type. This is all going to be exercise in the tests bellow
  * which you are supposed to implement.
  */
+// BEGIN: apifest.day2.welltestedsolution.RealTest
 public class RealTest extends TestCase {
     static {
         // your code shall run without any permissions
@@ -171,3 +172,5 @@ public class RealTest extends TestCase {
         assertEquals("0 0 0", 0.0, c.evaluateFuzzy(0.0, 0.0, 0.0), 0.0);
     }
 }
+// END: apifest.day2.welltestedsolution.RealTest
+

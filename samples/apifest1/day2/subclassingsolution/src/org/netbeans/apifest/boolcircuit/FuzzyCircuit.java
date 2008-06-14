@@ -9,10 +9,6 @@
 
 package org.netbeans.apifest.boolcircuit;
 
-/**
- *
- * @author phrebejk
- */
 public abstract class FuzzyCircuit extends Circuit {
     
     /** Feel free to implement and don't hesitate to throw IllegalArgumentEception 
