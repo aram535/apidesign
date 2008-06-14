@@ -22,11 +22,13 @@ public class Arithmetica {
     }
     
     public int sumRange(int from, int to) {
+        // BEGIN: design.composition.arith2.0.property.if
         if (Boolean.getBoolean("arithmetica.v2")) {
             return sumRange2(from, to);
         } else {
             return sumRange1(from, to);
         }
+        // END: design.composition.arith2.0.property.if
     }
 
     private int sumRange1(int from, int to) {
