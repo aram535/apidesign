@@ -43,7 +43,8 @@ public class FactorialTest extends TestCase {
      * Arithmetica methods to do multiplication instead of
      * addition.
      */
-    private static class Factorial extends Arithmetica {
+    //BEGIN: design.composition.arith.factorial
+    public static final class Factorial extends Arithmetica {
         public static int factorial(int n) {
             return new Factorial().sumRange(1, n);
         }
@@ -52,6 +53,7 @@ public class FactorialTest extends TestCase {
             return one * second;
         }
     }
+    //END: design.composition.arith.factorial
 
     
 }
