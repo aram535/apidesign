@@ -24,12 +24,13 @@ public class ProjectConfigurationCorrect {
     }
     */
 
-    static { 
-        // BEGIN: misuse.prjconfig.correct.access
+    static 
+    // BEGIN: misuse.prjconfig.correct.access
+    { 
         ProjectConfigurationProvider<?> provider = null; // obtain elsewhere;
         resetToZero(provider);
-        // END: misuse.prjconfig.correct.access
     }
+    // END: misuse.prjconfig.correct.access
 
     // BEGIN: misuse.prjconfig.correct.openmethod
     private static <C extends ProjectConfiguration> void resetToZero(
