@@ -4,7 +4,6 @@
         <delete dir="build"/>
     </target>
     
-    <target name="compile" depends="build"/>
     <target name="build">
         <antcall target="-build-one">
             <param name="version" value="api"/>
@@ -60,7 +59,7 @@
             srcdir="src-${version}" 
             destdir="build/${version}/classes" 
             source="1.5" target="1.5"
-            classpath="${cp}:../libs/dist/org-openide-util.jar"
+            classpath="${cp}"
         />
         <copy todir="build/${version}/classes">
             <fileset dir="src-${version}">
