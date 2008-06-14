@@ -20,7 +20,7 @@ public class PrintOfMinusStructureTest {
         PrintVisitor print = new PrintVisitor();
         plus.visit(print);
         
-        assertEquals("1 - 2", print.sb.toString());
+        assertEquals("1.0 - 2.0", print.sb.toString());
     }
     
     @Test public void visitorReadyForVersion3_0() {
@@ -61,6 +61,15 @@ public class PrintOfMinusStructureTest {
         
         assertEquals("1.0 - 2.0", print.sb.toString());
         // END: visitor.nonmonotonic.print3
+
+        Real five = new Real(5);
+        Real three = new Real(3);
+        Expression realPlus = new Minus(five, three);
+        
+        PrintVisitor3_0 printReal = new PrintVisitor3_0();
+        realPlus.visit(printReal);
+        
+        assertEquals("5.0 - 3.0", printReal.sb.toString());
         
     }
 }

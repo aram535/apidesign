@@ -102,6 +102,11 @@ public final class Language {
         public void visit(Visitor v)
         // FINISH: visitor.nonmonotonic.real
         {
+            if (v instanceof Visitor3_0) {
+                ((Visitor3_0)v).visitReal(this);
+            } else {
+                v.visitUnknown(this);
+            }
         }
     }
 
