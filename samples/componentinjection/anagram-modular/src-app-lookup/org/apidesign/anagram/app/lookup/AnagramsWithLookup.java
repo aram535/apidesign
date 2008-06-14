@@ -5,7 +5,6 @@ import org.apidesign.anagram.api.WordLibrary;
 import org.apidesign.anagram.gui.Anagrams;
 import org.openide.util.Lookup;
 
-// BEGIN: anagram.lookup.Anagrams
 class AnagramsWithLookup extends Anagrams {
 
     public AnagramsWithLookup() {
@@ -22,4 +21,3 @@ class AnagramsWithLookup extends Anagrams {
     }
 
 }
-// END: anagram.lookup.Anagrams

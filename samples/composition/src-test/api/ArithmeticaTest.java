@@ -22,7 +22,7 @@ public class ArithmeticaTest extends TestCase {
         super.tearDown();
     }
 
-    //BEGIN: design.composition.arith.test
+    // BEGIN: design.composition.arith.test
     public void testSumTwo() {
         Arithmetica instance = new Arithmetica();
         assertEquals("+", 5, instance.sumTwo(3, 2));
@@ -40,6 +40,6 @@ public class ArithmeticaTest extends TestCase {
         assertEquals("sum(1,1)=1", 1, instance.sumRange(1, 1));
         assertEquals("sum(10,1)=55", 55, instance.sumRange(10, 1));
     }
-    //END: design.composition.arith.test
+    // END: design.composition.arith.test
 
 }

@@ -14,14 +14,6 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
     public Anagrams() {
         initComponents();        
         getRootPane().setDefaultButton(guessButton);
-        
-        String version = System.getProperty("anagram.version");
-        if (version != null) {
-            if (version.startsWith("app-")) {
-                version = version.substring(4);
-            }
-            setTitle("Anagrams - " + version + " version");
-        }
     }
     
     protected abstract WordLibrary getWordLibrary();

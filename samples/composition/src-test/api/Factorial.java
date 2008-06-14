@@ -4,7 +4,7 @@ package api;
  * Arithmetica methods to do multiplication instead of
  * addition.
  */
-//BEGIN: design.composition.arith.factorial
+// BEGIN: design.composition.arith.factorial
 public final class Factorial extends Arithmetica {
     public static int factorial(int n) {
         return new Factorial().sumRange(1, n);
@@ -14,5 +14,5 @@ public final class Factorial extends Arithmetica {
         return one * second;
     }
 }
-//END: design.composition.arith.factorial
+// END: design.composition.arith.factorial
 

@@ -10,11 +10,6 @@
             <properties/>
             <folders>
                 <source-folder>
-                    <label>Anagram Modular</label>
-                    <location>.</location>
-                    <encoding>UTF-8</encoding>
-                </source-folder>
-                <source-folder>
                     <label>src-api</label>
                     <type>java</type>
                     <location>src-api</location>
@@ -75,15 +70,8 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
-                    <label>src-app-serviceloader</label>
-                    <type>java</type>
-                    <location>src-app-serviceloader</location>
-                    <encoding>UTF-8</encoding>
-                </source-folder>
-                <source-folder>
-                    <label>src-test</label>
-                    <type>java</type>
-                    <location>src-test</location>
+                    <label>Anagram Modular</label>
+                    <location>.</location>
                     <encoding>UTF-8</encoding>
                 </source-folder>
             </folders>
@@ -116,56 +104,6 @@
             <export>
                 <type>folder</type>
                 <location>build/api/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/word-static/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/scrambler-simple/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/gui/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/app-register/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/app-register/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/app-property/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/app-spring/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/app-spring-scan/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/app-lookup/classes</location>
-                <build-target>build</build-target>
-            </export>
-            <export>
-                <type>folder</type>
-                <location>build/app-serviceloader/classes</location>
                 <build-target>build</build-target>
             </export>
             <view>
@@ -209,14 +147,6 @@
                     <source-folder style="packages">
                         <label>src-app-lookup</label>
                         <location>src-app-lookup</location>
-                    </source-folder>
-                    <source-folder style="packages">
-                        <label>src-app-serviceloader</label>
-                        <location>src-app-serviceloader</location>
-                    </source-folder>
-                    <source-folder style="packages">
-                        <label>src-test</label>
-                        <location>src-test</location>
                     </source-folder>
                     <source-file>
                         <location>build.xml</location>
@@ -290,12 +220,6 @@
                 <package-root>src-app-lookup</package-root>
                 <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/org-openide-util.jar</classpath>
                 <built-to>build/app-lookup/classes</built-to>
-                <source-level>1.5</source-level>
-            </compilation-unit>
-            <compilation-unit>
-                <package-root>src-app-serviceloader</package-root>
-                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui</classpath>
-                <built-to>build/app-serviceloader/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
