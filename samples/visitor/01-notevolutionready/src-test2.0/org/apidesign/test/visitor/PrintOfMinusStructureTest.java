@@ -5,12 +5,11 @@ import static junit.framework.Assert.*;
 import org.apidesign.visitor.notevolutionready.Language.Expression;
 import org.apidesign.visitor.notevolutionready.Language.Minus;
 import org.apidesign.visitor.notevolutionready.Language.Number;
-import org.apidesign.visitor.notevolutionready.Language.Plus;
-import org.apidesign.visitor.notevolutionready.Language.Visitor;
 import org.junit.Test;
 
 public class PrintOfMinusStructureTest {
     @Test public void printOneMinusTwo() {
+        if (Boolean.getBoolean("no.failures")) return;
         // BEGIN: visitor.notevolutionready.oldwithnew
         Number one = new Number(1);
         Number two = new Number(2);

@@ -3,7 +3,6 @@
     <target name="clean">
         <delete dir="build"/>
     </target>
-    
     <target name="compile" depends="build"/>
     <target name="build" depends="-libraries">
         <antcall target="-build-one">
@@ -15,12 +14,10 @@
         <antcall target="-build-one">
             <param name="version" value="api3.0"/>
         </antcall>
-        
         <antcall target="-build-one">
             <param name="version" value="test"/>
             <param name="cp" value="build/api1.0/classes:${junit.jar}"/>
         </antcall>
-
         <antcall target="-build-one">
             <param name="version" value="test2.0"/>
             <param name="cp" value="build/api2.0/classes:build/test/classes:${junit.jar}"/>
@@ -30,7 +27,6 @@
             <param name="cp" value="build/api3.0/classes:build/test/classes:build/test2.0/classes:${junit.jar}"/>
         </antcall>
     </target>
-    
     <target name="test" depends="build">
         <echo level="info" message="PrintVisitor on old API. This should succeeds."/>
         <antcall target="-run-one">
@@ -55,13 +51,10 @@
     </target>
     
     <!-- support methods -->
-    
     <target name="-libraries">
         <ant dir="../../libs/"/>
-        
         <property name="junit.jar" location="../../libs/dist/junit-4.4.jar"/>
     </target>
-    
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
         <property name="test" value="test"/>
@@ -78,14 +71,16 @@
                 <path location="${junit.jar}"/>
                 <path path="${extra.cp}"/>
             </classpath>
+            <syspropertyset>
+                <propertyref prefix="test-sys-prop."/>
+                <mapper from="test-sys-prop.*" to="*" type="glob"/>
+            </syspropertyset>
             <formatter type="brief" usefile="false"/>
             <formatter type="xml"/>
         </junit>
     </target>
-    
     <target name="-build-one">
         <fail message="You need to specify version number" unless="version"/>
-        
         <property name="cp" value=""/>
         <property name="out" value="${version}"/>
         <property name="failonerror" value="true"/>
@@ -96,6 +91,7 @@
             source="1.5" target="1.5"
             classpath="${cp}"
             failonerror="${failonerror}"
+            debug="true"
         />
     </target>
 </project>

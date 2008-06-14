@@ -19,6 +19,10 @@ public class PrintRealTest {
         PrintVisitor print = new PrintVisitor();
         plus.visit(print.dispatch);
         
+        if (Boolean.getBoolean("no.failures")) {
+            assertEquals("unknownunknownunknown", print.sb.toString());
+            return;
+        }
         assertEquals("1.0 - 2.0", print.sb.toString());
     }
     

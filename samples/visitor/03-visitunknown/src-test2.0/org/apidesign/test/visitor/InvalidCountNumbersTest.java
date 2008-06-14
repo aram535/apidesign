@@ -15,10 +15,18 @@ public class InvalidCountNumbersTest {
         Number four = new Number(4);
         Expression minus = new Plus(one, new Minus(three, four));
         
+        int cnt = CountNumbersTest.countNumbers(minus);
+        if (Boolean.getBoolean("no.failures")) {
+            // Should have three numbers, but visitor does not
+            // know how to go through minus
+            assertEquals(
+                "Wrong result as there is no traversal through minus", 1, cnt
+            );
+            return;
+        }
         assertEquals(
             "Should have three numbers, but visitor does not " +
-            "know how to go through minus", 
-            3, CountNumbersTest.countNumbers(minus)
+            "know how to go through minus", 3, cnt
         );
         // END: visitor.visitunknown.traversal
     }

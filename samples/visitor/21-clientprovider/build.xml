@@ -78,6 +78,10 @@
                 <path location="${junit.jar}"/>
                 <path path="${extra.cp}"/>
             </classpath>
+            <syspropertyset>
+                <propertyref prefix="test-sys-prop."/>
+                <mapper from="test-sys-prop.*" to="*" type="glob"/>
+            </syspropertyset>
             <formatter type="brief" usefile="false"/>
             <formatter type="xml"/>
         </junit>
@@ -96,6 +100,7 @@
             source="1.5" target="1.5"
             classpath="${cp}"
             failonerror="${failonerror}"
+            debug="true"
         />
     </target>
 </project>

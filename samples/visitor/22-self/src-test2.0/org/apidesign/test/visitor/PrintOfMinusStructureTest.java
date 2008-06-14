@@ -35,7 +35,11 @@ public class PrintOfMinusStructureTest {
         
         PrintVisitor print = new PrintVisitor();
         plus.visit(Visitor.create(print));
-        
+
+        if (Boolean.getBoolean("no.failures")) {
+            assertEquals("unknown12", print.sb.toString());
+            return;
+        }
         assertEquals("1 - 2", print.sb.toString());
     }
 }

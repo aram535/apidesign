@@ -7,7 +7,6 @@ import org.apidesign.visitor.Language.Minus;
 import org.apidesign.visitor.Language.Number;
 import org.apidesign.visitor.Language.Plus;
 import org.apidesign.visitor.Language.Real;
-import org.apidesign.visitor.Language.Visitor2_0;
 import org.apidesign.visitor.Language.Visitor3_0;
 import org.junit.Test;
 
@@ -20,6 +19,13 @@ public class PrintOfMinusStructureTest {
         PrintVisitor print = new PrintVisitor();
         plus.visit(print);
         
+        if (Boolean.getBoolean("no.failures")) {
+            assertEquals(
+                "Not defined how to handle Minus. We'll get wrong result",
+                "unknown", print.sb.toString()
+            );
+            return;
+        }
         assertEquals("1.0 - 2.0", print.sb.toString());
     }
     
