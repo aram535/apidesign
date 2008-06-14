@@ -84,7 +84,7 @@ public final class Language {
     }
     // BEGIN: visitor.nonmonotonic.real
     /** @since 3.0 */
-    public final class Real extends Expression {
+    public static final class Real extends Expression {
         private final double value;
         public Real(double value) {
             this.value = value;
@@ -115,7 +115,7 @@ public final class Language {
     public interface Visitor3_0 extends Visitor {
         public void visitPlus(Plus s);
         public void visitMinus(Minus s);
-        public void visitReal(Number n);
+        public void visitReal(Real r);
     }
     // END: visitor.nonmonotonic.visitor
 }
