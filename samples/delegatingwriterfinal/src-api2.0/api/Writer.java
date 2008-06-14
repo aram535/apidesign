@@ -97,8 +97,8 @@ public final class Writer implements Appendable {
         return new Writer(impl, null);
     }
 
-    public static Writer create(ImplSeq seq) {
-        return new Writer(null, seq);
+    public static Writer create(ImplSeq impl) {
+        return new Writer(null, impl);
     }
     
     public static Writer create(final java.io.Writer w) {

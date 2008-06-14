@@ -4,9 +4,9 @@ public class ProjectConfigurationCorrect {
     // BEGIN: misuse.prjconfig.correct
     interface ProjectConfigurationProvider
         <Configuration extends ProjectConfiguration> {
-        public Configuration[] getConfigurations();
-        public Configuration getActive();
-        public void setActive(Configuration c);
+        Configuration[] getConfigurations();
+        Configuration getActive();
+        void setActive(Configuration c);
     }
     interface ProjectConfiguration {
         public String getDisplayName();
@@ -24,13 +24,12 @@ public class ProjectConfigurationCorrect {
     }
     */
 
-    static 
-    // BEGIN: misuse.prjconfig.correct.access
-    { 
+    static { 
+        // BEGIN: misuse.prjconfig.correct.access
         ProjectConfigurationProvider<?> provider = null; // obtain elsewhere;
         resetToZero(provider);
+        // END: misuse.prjconfig.correct.access
     }
-    // END: misuse.prjconfig.correct.access
 
     // BEGIN: misuse.prjconfig.correct.openmethod
     private static <C extends ProjectConfiguration> void resetToZero(

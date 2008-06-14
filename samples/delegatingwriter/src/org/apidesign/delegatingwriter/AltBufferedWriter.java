@@ -68,7 +68,7 @@ public class AltBufferedWriter extends BufferedWriter {
         // BEGIN: writer.delegateout
         // efficient, yet dangerous delegation skipping methods unknown to 
         // subclasses that used version 1.4
-        if (shouldBufferAsTheSequenceIsNotTooBig(csq)) {
+        if (csq != null && csq.length() < 1024) {
             write(csq.toString());
         } else {
             flush();
@@ -103,7 +103,7 @@ public class AltBufferedWriter extends BufferedWriter {
             throw new IOException(ex);
         }
         
-        if (isOverriden || shouldBufferAsTheSequenceIsNotTooBig(csq)) {
+        if (isOverriden || (csq != null && csq.length() < 1024)) {
             write(csq.toString());
         } else {
             flush();
@@ -111,28 +111,6 @@ public class AltBufferedWriter extends BufferedWriter {
         }
         return this;
         // END: writer.conditionally
-    }
-
-    /** At the end the purpose of BufferedWriter is to buffer writes, this
-     * method is here to decide when it is OK to prefer buffering and when 
-     * it is better to delegate directly into the underlaying stream.
-     * 
-     * @param csq the seqence to evaluate
-     * @return true if buffering from super class should be used
-     */
-    private static boolean shouldBufferAsTheSequenceIsNotTooBig(CharSequence csq) {
-        if (csq == null) {
-            return false;
-        }
-        // as buffers are usually bigger than 1024, it makes sense to 
-        // pay the penalty of converting the sequence to string, but buffering
-        // the write
-        if (csq.length() < 1024) {
-            return true;
-        } else {
-            // otherwise, just directly write down the char sequence
-            return false;
-        }
     }
     
     public enum Behaviour {

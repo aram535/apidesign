@@ -22,7 +22,7 @@ public interface Compute {
         }
         
         public void add(String s) {
-            result.put(s, s);
+            this.result.put(s, s);
         }
         
         public void addAll(List<String> all) {
@@ -33,7 +33,7 @@ public interface Compute {
 
         /** @since 2.0 */
         public void add(String s, String description) {
-            result.put(s, description);
+            this.result.put(s, description);
         }
     }
 }

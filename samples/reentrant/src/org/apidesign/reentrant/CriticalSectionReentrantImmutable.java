@@ -13,10 +13,7 @@ public class CriticalSectionReentrantImmutable<T extends Comparable<T>> implemen
     // BEGIN: reentrant.merge.immutable
     public int sumBigger(Collection<T> args) {
         for (;;) {
-            ImmutableData<T> previous;
-            synchronized (this) {
-                previous = this.data;
-            }
+            ImmutableData<T> previous = this.data;
             int[] ret = { 0 };
             ImmutableData<T> now = doCriticalSection(args, previous, ret);
             

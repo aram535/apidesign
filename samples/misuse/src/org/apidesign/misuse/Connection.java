@@ -2,10 +2,10 @@ package org.apidesign.misuse;
 
 // BEGIN: misuse.Connection
 public interface Connection {
-    public Savepoint setSavepoint();
+    Savepoint setSavepoint();
     
     public interface Savepoint {
-        public void rollback();
+        void rollback();
         // and other useful operations
     }
 }

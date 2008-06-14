@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /** Writer that counts the number of written in characters.
+ *
+ * @author Jaroslav Tulach
  */
 public class CountingWriter implements Writer.ImplSeq {
     private final AtomicInteger counter;

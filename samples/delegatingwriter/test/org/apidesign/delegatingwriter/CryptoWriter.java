@@ -34,26 +34,26 @@ public class CryptoWriter extends BufferedWriter {
     public void write(char[] buf, int off, int len) throws IOException {
         char[] arr = new char[len];
         for (int i = 0; i < len; i++) {
-            arr[i] = encryptChar(buf[off + i]);
+            arr[i] = convertChar(buf[off + i]);
         }
         super.write(arr, 0, len);
     }
 
     @Override
     public void write(int c) throws IOException {
-        super.write(encryptChar(c));
+        super.write(convertChar(c));
     }
 
     @Override
     public void write(String str, int off, int len) throws IOException {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < len; i++) {
-            sb.append(encryptChar(str.charAt(off + i)));
+            sb.append(convertChar(str.charAt(off + i)));
         }
         super.write(sb.toString(), 0, len);
     }
 
-    private char encryptChar(int c) {
+    private char convertChar(int c) {
         if (c == 'Z') {
             return 'A';
         }

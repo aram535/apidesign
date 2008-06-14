@@ -35,10 +35,6 @@ public class Arithmetica {
 
     private int sumRange1(int from, int to) {
         int len = to - from;
-        if (len < 0) {
-            len = -len;
-            from = to;
-        }
         int[] array = new int[len + 1];
         for (int i = 0; i <= len; i++) {
             array[i] = from + i;
@@ -47,7 +43,7 @@ public class Arithmetica {
     }
     
     private int sumRange2(int from, int to) {
-        return (from + to) * (Math.abs(to - from) + 1) / 2;
+        return (from + to) * (to - from + 1) / 2;
     }
 
     private static boolean calledByV2AwareLoader() {
