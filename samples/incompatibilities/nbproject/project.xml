@@ -45,7 +45,7 @@
                         <location>src-io</location>
                     </source-folder>
                     <source-folder style="packages">
-                        <label>Uncompilable Code since JDK 1.2</label>
+                        <label>Uncompilable Code</label>
                         <location>src-wildimport</location>
                     </source-folder>
                 </items>
