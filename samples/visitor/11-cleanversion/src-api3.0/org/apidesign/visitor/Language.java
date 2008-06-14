@@ -67,8 +67,9 @@ public final class Language {
             }
         }
     }
+    // BEGIN: visitor.nonmonotonic.Minus3
     /** @since 2.0 */
-    public static final class Minus extends Expression {
+    public static final class Minus/*3.0*/ extends Expression {
         private final Expression first;
         private final Expression second;
         
@@ -89,6 +90,7 @@ public final class Language {
             }
         }
     }
+    // END: visitor.nonmonotonic.Minus3
     // BEGIN: visitor.nonmonotonic.real
     /** @since 3.0 */
     public static final class Real extends Expression {
