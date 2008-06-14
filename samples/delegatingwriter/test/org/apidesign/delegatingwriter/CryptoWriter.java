@@ -62,7 +62,7 @@ public class CryptoWriter extends BufferedWriter {
         }
         return (char)(c + 1);
     }
-// END: writer.CryptoWriter
+// FINISH: writer.CryptoWriter
 
     /* delegates to write(cbuf, 0, cbuf.length)
     public void write(char[] cbuf) throws IOException {

@@ -43,5 +43,5 @@ public class Arithmetica {
     private int sumRange2(int from, int to) {
         return (from + to) * (to - from + 1) / 2;
     }
-// END: design.composition.arith2.0.property
 }
+// END: design.composition.arith2.0.property

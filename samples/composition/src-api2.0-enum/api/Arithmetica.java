@@ -29,7 +29,7 @@ public class Arithmetica {
                 throw new IllegalStateException();
         }
     }
-// END: design.composition.arith2.0.enum
+// FINISH: design.composition.arith2.0.enum
     
     public int sumTwo(int one, int second) {
         return one + second;

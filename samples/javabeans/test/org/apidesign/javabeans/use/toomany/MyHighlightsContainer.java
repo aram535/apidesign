@@ -25,5 +25,5 @@ final class MyHighlightsContainer implements HighlightsContainer {
     public HighlightsSequence getHighlights(int start, int end) {
         return null; // implement
     }
-// END: javabeans.with.MyHighlightsContainer
 }
+// END: javabeans.with.MyHighlightsContainer
