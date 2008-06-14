@@ -2,7 +2,6 @@ package org.apidesign.aserverinfo;
 
 import java.net.URL;
 import java.util.concurrent.Callable;
-import org.openide.util.Exceptions;
 import org.openide.util.Lookup;
 
 public final class AServerInfo {
@@ -11,12 +10,16 @@ public final class AServerInfo {
     private final Callable<Void> reset;
     private final Callable<Void> shutdown;
 
-    public AServerInfo(Callable<String> name, Callable<URL> url, Callable<Void> reset, Callable<Void> s) {
+    private AServerInfo(Callable<String> name, Callable<URL> url, Callable<Void> reset, Callable<Void> s) {
         this.name = name;
         this.url = url;
         this.reset = reset;
         this.shutdown = s;
     }
+    
+    //
+    // API for clients
+    //
     
     public String getName() {
         return call(name, "noname");
@@ -27,22 +30,20 @@ public final class AServerInfo {
     }
     
     public void reset() throws Exception {
-        reset.call();
+        if (reset != null) {
+            reset.call();
+        }
     }
     
     public void shutdown() throws Exception {
-        shutdown.call();
-    }
-    
-    
-
-    private static <T> T call(Callable<T> name, T defValue) {
-        try {
-            return name.call();
-        } catch (Exception ex) {
-            return defValue;
+        if (shutdown != null) {
+            shutdown.call();
         }
     }
+
+    //
+    // factories
+    //
 
     // BEGIN: aserverinfo.create
     public interface NameProvider {
@@ -134,7 +135,68 @@ public final class AServerInfo {
         
         return new AServerInfo(nameP, urlP, resetP, shutP);
     }
+
+    //
+    // cumulative factory methods
+    //
     
+    // BEGIN: aserverinfo.cumulative.factory
+    public static AServerInfo empty() {
+        return new AServerInfo(null, null, null, null);
+    }
     
+    public final AServerInfo nameProvider(final NameProvider np) {
+        Callable<String> nameP = new Callable<String>() {
+            public String call() throws Exception {
+                return np == null ? "noname" : np.getName();
+            }
+        };
+        return new AServerInfo(nameP, this.url, this.reset, this.shutdown);
+    }
+    // END: aserverinfo.cumulative.empty
+
+    public final AServerInfo urlProvider(final URLProvider up) {
+        Callable<URL> urlP = new Callable<URL>() {
+            public URL call() throws Exception {
+                return up == null ? null : up.getURL();
+            }
+        };
+        return new AServerInfo(this.name, urlP, this.reset, this.shutdown);
+    }
+    public final AServerInfo reset(final ResetHandler h) {
+        Callable<Void> resetP = new Callable<Void>() {
+            public Void call() throws Exception {
+                if (h != null) {
+                    h.reset();
+                }
+                return null;
+            }
+        };
+        return new AServerInfo(this.name, this.url, resetP, this.shutdown);
+    }
+    public final AServerInfo shutdown(final ShutdownHandler s) {
+        Callable<Void> shutP = new Callable<Void>() {
+            public Void call() throws Exception {
+                if (s != null) {
+                    s.shutdown();
+                }
+                return null;
+            }
+        };
+        return new AServerInfo(this.name, this.url, this.reset, shutP);
+    }
+    
+    //
+    // Support implementations
+    //
+    
+    private static <T> T call(Callable<T> name, T defValue) {
+        try {
+            return name.call();
+        } catch (Exception ex) {
+            return defValue;
+        }
+    }
+
     
 }
