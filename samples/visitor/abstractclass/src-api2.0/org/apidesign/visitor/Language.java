@@ -26,7 +26,6 @@ public final class Language {
         @Override
         public void visit(Visitor v) { v.visitNumber(this); }
     }
-    // BEGIN: visitor.abstractclass.v2
     /** @since 2.0 */
     public static final class Minus extends Expression {
         private final Expression first;

@@ -16,7 +16,7 @@ public class InvalidCountNumbersTest {
         Expression minus = new Plus(one, new Minus(three, four));
         
         assertEquals(
-            "Should have two numbers, but visitor does not " +
+            "Should have three numbers, but visitor does not " +
             "know how to go through minus", 
             3, CountNumbersTest.countNumbers(minus)
         );
