@@ -1,8 +1,10 @@
 package api;
 
-/** Class to simplify arithmetical operations.
+/** Class to simplify arithmetical operations, improved version to compute
+ * the sum for ranges.
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
+ * @version 2.0
  */
 public class Arithmetica {
     public int sumTwo(int one, int second) {
@@ -18,6 +20,6 @@ public class Arithmetica {
     }
     
     public int sumRange(int from, int to) {
-        return (from + to) * (from - to + 1) / 2;
+        return (from + to) * (to - from + 1) / 2;
     }
 }

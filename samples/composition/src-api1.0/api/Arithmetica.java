@@ -3,6 +3,7 @@ package api;
 /** Class to simplify arithmetical operations.
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
+ * @version 1.0
  */
 public class Arithmetica {
     public int sumTwo(int one, int second) {

@@ -31,6 +31,10 @@ public class FactorialTest extends TestCase {
         assertEquals(6, Factorial.factorial(3));
     }
     
+    public void testFactorial4() {
+        assertEquals(24, Factorial.factorial(4));
+    }
+    
     public void testFactorial5() {
         assertEquals(120, Factorial.factorial(5));
     }
