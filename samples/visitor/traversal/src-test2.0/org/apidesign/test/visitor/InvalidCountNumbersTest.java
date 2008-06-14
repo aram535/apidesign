@@ -9,7 +9,6 @@ import org.junit.Test;
 
 public class InvalidCountNumbersTest {
     @Test public void printOneMinusTwo() {
-        // BEGIN: visitor.visitunknown.traversal
         Number one = new Number(1);
         Number three = new Number(3);
         Number four = new Number(4);
@@ -20,6 +19,5 @@ public class InvalidCountNumbersTest {
             "know how to go through minus", 
             3, CountNumbersTest.countNumbers(minus)
         );
-        // END: visitor.visitunknown.traversal
     }
 }
