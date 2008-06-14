@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="samples" default="test" basedir=".">
-    <property name="samples.dir" location="${ant.file.samples}/.."/>
-    <dirset id="examples" dir="${samples.dir}">
+<project name="apidesign.org" default="test" basedir=".">
+    <dirset id="examples" dir=".">
         <include name="**/nbproject"/>
         <exclude name="apifest1/day3-intermezzo/**"/>
         <exclude name="apifest1/infrastructure/testing-template/**"/>
@@ -9,15 +8,15 @@
     
     
     <target name="clean">
-        <delete dir="${samples.dir}/build"/>
-        <delete dir="${samples.dir}/libs/dist"/>
+        <delete dir="build"/>
+        <delete dir="libs/dist"/>
         <subant target="clean" antfile="../build.xml">
             <dirset refid="examples"/>
         </subant>
     </target>
 
     <target name="build">
-        <ant dir="${samples.dir}/libs"/>
+        <ant dir="libs"/>
         <subant target="compile" antfile="../build.xml">
             <dirset refid="examples"/>
         </subant>
@@ -30,17 +29,17 @@
     </target>
     
     <target name="-version" unless="version">
-        <exec dir="${samples.dir}" outputproperty="version" executable="/bin/sh">
-            <arg file="${samples.dir}/version.sh"/>
+        <exec dir="${ant.file.apidesign.org}/.." outputproperty="version" executable="/bin/sh">
+            <arg file="version.sh"/>
         </exec>
     </target>
 
     <target name="sources" depends="-version,clean">
         <fail unless="version"/>
         
-        <loadfile srcfile="${samples.dir}/../../.hgignore" property="hgignore"/>
-        <mkdir dir="${samples.dir}/build"/>
-        <zip basedir="${samples.dir}/.." destfile="${samples.dir}/build/apidesign-${version}.zip">
+        <loadfile srcfile="${ant.file.apidesign.org}/../../../.hgignore" property="hgignore"/>
+        <mkdir dir="build"/>
+        <zip basedir="${ant.file.apidesign.org}/.." destfile="build/apidesign-${version}.zip">
             <not>
                 <containsregexp expression="${hgignore}"/>
             </not>
