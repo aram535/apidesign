@@ -34,7 +34,7 @@
         </exec>
     </target>
 
-    <target name="sources" depends="-version,samples.clean">
+    <target name="sources" depends="-version,clean">
         <fail unless="version"/>
         
         <loadfile srcfile="${samples.dir}/../../.hgignore" property="hgignore"/>
