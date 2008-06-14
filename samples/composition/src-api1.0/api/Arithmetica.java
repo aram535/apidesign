@@ -5,6 +5,7 @@ package api;
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  * @version 1.0
  */
+// BEGIN: design.composition.arith1.0
 public class Arithmetica {
     public int sumTwo(int one, int second) {
         return one + second;
@@ -27,3 +28,4 @@ public class Arithmetica {
         return sumAll(array);
     }
 }
+// END: design.composition.arith1.0

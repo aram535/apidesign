@@ -4,9 +4,7 @@
         <delete dir="build"/>
     </target>
     
-    <target name="build">
-        <ant dir="../libs/"/>
-        
+    <target name="build" depends="-libraries">
         <antcall target="-build-one">
             <param name="version" value="api1.0"/>
         </antcall>
@@ -16,7 +14,7 @@
         
         <antcall target="-build-one">
             <param name="version" value="test"/>
-            <param name="cp" value="build/api1.0/classes:../libs/dist/junit-4.1.jar"/>
+            <param name="cp" value="build/api1.0/classes:${junit.jar}"/>
         </antcall>
     </target>
     
@@ -30,9 +28,14 @@
             <param name="version" value="api2.0"/>
         </antcall>
     </target>
-
     
     <!-- support methods -->
+    
+    <target name="-libraries">
+        <ant dir="../libs/"/>
+        
+        <property name="junit.jar" location="../libs/dist/junit-4.4.jar"/>
+    </target>
     
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
@@ -46,7 +49,7 @@
             <classpath>
                 <path location="build/${version}/classes"/>
                 <path location="build/test/classes"/>
-                <path location="../libs/dist/junit-4.1.jar"/>
+                <path location="${junit.jar}"/>
             </classpath>
             <formatter type="brief" usefile="false"/>
             <formatter type="xml"/>

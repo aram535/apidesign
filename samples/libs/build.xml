@@ -6,8 +6,8 @@
     
     <target name="libraries">
         <antcall target="-library">
-            <param name="library" value="junit-4.1"/>
-            <param name="url" value="junit"/>
+            <param name="library" value="junit-4.4"/>
+            <param name="url" value="http://switch.dl.sourceforge.net/sourceforge/junit/junit-4.4.jar"/>
         </antcall>
     </target>
     
@@ -17,16 +17,18 @@
         <fail message="You need to specify library name" unless="library"/>
         <fail message="You need to specify url" unless="url"/>
         
-        <echo message="Checking for dist/${library}.jar"/>
-        <available file="dist/${library}.jar" property="library.available"/>
+        <property name="library.jar" location="dist/${library}.jar"/>
+        
+        <echo message="Checking for ${library.jar}"/>
+        <available file="${library.jar}" property="library.available"/>
     </target>
     <target name="-library" depends="-library-check" unless="library.available">
         <mkdir dir="dist"/>
-        <get dest="dist/${library}" src="${url}"/>
+        <get dest="${library.jar}" src="${url}"/>
         
         <fail message="Now the library ${library} should be downloaded">
             <condition>
-                <available file="dist/${library}.jar"/>
+                <not><available file="${library.jar}"/></not>
             </condition>
         </fail>
     </target>
