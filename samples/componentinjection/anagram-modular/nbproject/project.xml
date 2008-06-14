@@ -18,7 +18,13 @@
                 <source-folder>
                     <label>src-word-static</label>
                     <type>java</type>
-                    <location>src-api</location>
+                    <location>src-word-static</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src-scrambler-simple</label>
+                    <type>java</type>
+                    <location>src-scrambler-simple</location>
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
@@ -68,6 +74,10 @@
                         <label>src-word-static</label>
                         <location>src-word-static</location>
                     </source-folder>
+                    <source-folder style="packages">
+                        <label>src-scrambler-simple</label>
+                        <location>src-scrambler-simple</location>
+                    </source-folder>
                     <source-file>
                         <location>build.xml</location>
                     </source-file>
@@ -92,6 +102,12 @@
                 <package-root>src-word-static</package-root>
                 <classpath mode="compile">src-api</classpath>
                 <built-to>build/word-static/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-scrambler-simple</package-root>
+                <classpath mode="compile">src-api</classpath>
+                <built-to>build/scrambler-simple/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
