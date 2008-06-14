@@ -1,9 +1,7 @@
 package api;
 
-import api.*;
-
 public final class String {
-    private final char[] chars;
+    final char[] chars;
     
     public String(char[] chars) {
         this.chars = chars.clone();
