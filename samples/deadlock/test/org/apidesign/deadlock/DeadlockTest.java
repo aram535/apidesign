@@ -1,6 +1,7 @@
 package org.apidesign.deadlock;
 
 import java.awt.Dimension;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,11 +12,11 @@ import org.netbeans.junit.Log;
 import org.netbeans.junit.NbTestCase;
 import static org.junit.Assert.*;
 
-// BEGIN: deadlock.test.controlflow
-public class LabelProviderTest extends NbTestCase {
-    static final Logger LOG = Logger.getLogger(LabelProviderTest.class.getName());
+// BEGIN: deadlock.test
+public class DeadlockTest extends NbTestCase {
+    static final Logger LOG = Logger.getLogger(DeadlockTest.class.getName());
     
-    public LabelProviderTest(String n) {
+    public DeadlockTest(String n) {
         super(n);
     }
 
@@ -27,23 +28,26 @@ public class LabelProviderTest extends NbTestCase {
     
     public static class StrangePanel extends LabelProvider {
         @Override
-        // BEGIN: deadlock.pref.size
         public Dimension getPreferredSize () {
-            JLabel sampleLabel = createLabel();
-            return sampleLabel.getPreferredSize ();
+            try {
+                Thread.sleep(1000);
+                JLabel sampleLabel = createLabel();
+                return sampleLabel.getPreferredSize();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(DeadlockTest.class.getName()).log(Level.SEVERE, null, ex);
+                return super.getPreferredSize();
+            }
         }
-        // END: deadlock.pref.size
     }
     
     
     
 
-    public void testCreateLabel() {
+    public void testCreateLabel() throws Exception {
         final LabelProvider instance = new StrangePanel();
         
         class R implements Runnable {
             public void run() {
-                LOG.info("In AWT thread");
                 JFrame f = new JFrame();
                 f.add(instance);
                 f.setVisible(true);
@@ -51,24 +55,14 @@ public class LabelProviderTest extends NbTestCase {
             }
         }
 
-        Log.controlFlow(
-            Logger.getLogger("org.apidesign"),
-            Logger.getLogger("global"), 
-            "THREAD: main MSG: Begin" +
-            "THREAD: .*AWT.* MSG: In.*thread" +
-            "THREAD: main MSG: Will create JLabel" +
-            "THREAD: .*AWT.* MSG: Will create JLabel", 
-            300
-        );
-        
         R showFrame = new R();
         SwingUtilities.invokeLater(showFrame);
         
-        LOG.info("Begin");
+        Thread.sleep(500);
         JLabel result = instance.createLabel();
         assertNotNull("Creates the result", result);
     }
 
 }
-// END: deadlock.test.controlflow
+// END: deadlock.test
 
