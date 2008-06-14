@@ -37,7 +37,7 @@
     <target name="sources" depends="-version,clean">
         <fail unless="version"/>
         
-        <loadfile srcfile="${samples.dir}/../../.hgignore" property="hgignore"/>
+        <loadfile srcfile="${samples.dir}/../.hgignore" property="hgignore"/>
         <mkdir dir="${samples.dir}/build"/>
         <zip basedir="${samples.dir}" destfile="${samples.dir}/build/apidesign-${version}.zip">
             <not>
