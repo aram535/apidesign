@@ -94,6 +94,9 @@
                 <action name="clean">
                     <target>clean</target>
                 </action>
+                <action name="run">
+                    <target>run</target>
+                </action>
                 <action name="test">
                     <target>test</target>
                 </action>
@@ -226,6 +229,7 @@
                     <ide-action name="build"/>
                     <ide-action name="rebuild"/>
                     <ide-action name="clean"/>
+                    <ide-action name="run"/>
                     <ide-action name="test"/>
                     <ide-action name="debug"/>
                 </context-menu>
@@ -300,7 +304,7 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-test</package-root>
-                <classpath mode="compile">src-new-api:../libs/dist/junit-4.4.jar</classpath>
+                <classpath mode="compile">src-api:../../libs/dist/junit-4.4.jar::../../libs/dist/org-netbeans-modules-nbjunit.jar:../../libs/dist/org-netbeans-insane.jar:src-gui:../../libs/dist/org-openide-util.jar:src-app-lookup:src-app-serviceloader</classpath>
                 <source-level>1.5</source-level>
             </compilation-unit>
         </java-data>
