@@ -20,6 +20,7 @@ import javax.swing.event.ChangeListener;
  *
  * @author Jaroslav Tulach
  */
+// BEGIN: design.less.friend.Accessor
 public abstract class Accessor {
     public static Accessor DEFAULT;
     static {
@@ -36,3 +37,4 @@ public abstract class Accessor {
     protected abstract Item newItem();
     protected abstract void addChangeListener(Item item, ChangeListener l);
 }
+// END: design.less.friend.Accessor

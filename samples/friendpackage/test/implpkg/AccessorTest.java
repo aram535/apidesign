@@ -39,10 +39,12 @@ implements ChangeListener {
     }
     
     public void testGetTheItemAttachListenerChangeValue() {
+        // BEGIN: design.less.friend.use
         Item item = Accessor.DEFAULT.newItem();
         assertNotNull("Some item is really created", item);
         
         Accessor.DEFAULT.addChangeListener(item, this);
+        // END: design.less.friend.use
         
         item.setValue(10);
         assertEquals("Value is 10", 10, item.getValue());

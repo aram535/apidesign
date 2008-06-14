@@ -21,6 +21,7 @@ import javax.swing.event.ChangeListener;
  *
  * @author Jaroslav Tulach
  */
+// BEGIN: design.less.friend.AccessorImpl
 final class AccessorImpl extends Accessor {
     protected Item newItem() {
         return new Item();
@@ -30,3 +31,4 @@ final class AccessorImpl extends Accessor {
         item.addChangeListener(l);
     }
 }
+// END: design.less.friend.AccessorImpl

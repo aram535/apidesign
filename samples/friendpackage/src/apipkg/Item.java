@@ -21,13 +21,16 @@ import javax.swing.event.ChangeListener;
  *
  * @author Jaroslav Tulach
  */
+// BEGIN: design.less.friend.Item
 public final class Item {
     private int value;
     private ChangeListener listener;
-    
+
+    // BEGIN: design.less.friend.Item.static
     static {
         Accessor.DEFAULT = new AccessorImpl();
     }
+    // END: design.less.friend.Item.static
     
     /** Contructor for friends */
     Item() {
@@ -57,3 +60,4 @@ public final class Item {
     }
     
 }
+// END: design.less.friend.Item
