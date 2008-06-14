@@ -13,23 +13,14 @@ public final class AnagramsWithProperties extends Anagrams {
     public AnagramsWithProperties() {
     }
     
-    private static <T> Class<? extends T> loadImpl(Class<T> clazz) throws ClassNotFoundException {
-        String implName = System.getProperty(clazz.getName());
-        assert implName != null;
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        if (loader == null) {
-            loader = AnagramsWithProperties.class.getClassLoader();
-        }
-        Class<?> impl = Class.forName(implName, false, loader);
-        return impl.asSubclass(clazz);
-    }
-    
-
     @Override
     protected WordLibrary getWordLibrary() {
         try {
             if (wordLibrary == null) {
-                wordLibrary = loadImpl(WordLibrary.class).newInstance();
+                String implName = System.getProperty("org.apidesign.anagram.api.WordLibrary");
+                assert implName != null;
+                Class<?> impl = Class.forName(implName);
+                wordLibrary = (WordLibrary)impl.newInstance();
             }
             return wordLibrary;
         } catch (Exception ex) {
@@ -41,7 +32,10 @@ public final class AnagramsWithProperties extends Anagrams {
     protected Scrambler getScrambler() {
         try {
             if (scrambler == null) {
-                scrambler = loadImpl(Scrambler.class).newInstance();
+                String implName = System.getProperty("org.apidesign.anagram.api.Scrambler");
+                assert implName != null;
+                Class<?> impl = Class.forName(implName);
+                scrambler = (Scrambler)impl.newInstance();
             }
             return scrambler;
         } catch (Exception ex) {
