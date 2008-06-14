@@ -65,15 +65,28 @@ public class ArithmeticaCompatibilityTest extends TestCase {
             
             compare(now, old, seed);
         
-            assertEquals("Verify amount of sumRange is the same", now.countSumRange, old.countSumRange);
-            assertEquals("Verify amount of sumAll is the same", now.countSumAll, old.countSumAll);
-            assertEquals("Verify amount of sumTwo is the same", now.countSumTwo, old.countSumTwo);
+            assertEquals(
+                "Verify amount of sumRange is the same", 
+                now.countSumRange, old.countSumRange
+            );
+            assertEquals(
+                "Verify amount of sumAll is the same", 
+                now.countSumAll, old.countSumAll
+            );
+            assertEquals(
+                "Verify amount of sumTwo is the same", 
+                now.countSumTwo, old.countSumTwo
+            );
         } catch (AssertionFailedError ex) {
-            IllegalStateException n = new IllegalStateException ("Seed: " + seed + "\n" + ex.getMessage ());
+            IllegalStateException n = new IllegalStateException (
+                "Seed: " + seed + "\n" + ex.getMessage ()
+            );
             n.initCause(ex);
             throw n;
         } catch (Exception ex) {
-            IllegalStateException n = new IllegalStateException ("Seed: " + seed + "\n" + ex.getMessage ());
+            IllegalStateException n = new IllegalStateException (
+                "Seed: " + seed + "\n" + ex.getMessage ()
+            );
             n.initCause(ex);
             throw n;
         }
@@ -85,9 +98,18 @@ public class ArithmeticaCompatibilityTest extends TestCase {
 
         compare(now, old, 1208120436947L);
 
-        assertEquals("Verify amount of sumRange is the same", now.countSumRange, old.countSumRange);
-        assertEquals("Verify amount of sumAll is the same", now.countSumAll, old.countSumAll);
-        assertEquals("Verify amount of sumTwo is the same", now.countSumTwo, old.countSumTwo);
+        assertEquals(
+            "Verify amount of sumRange is the same", 
+            now.countSumRange, old.countSumRange
+        );
+        assertEquals(
+            "Verify amount of sumAll is the same", 
+            now.countSumAll, old.countSumAll
+        );
+        assertEquals(
+            "Verify amount of sumTwo is the same", 
+            now.countSumTwo, old.countSumTwo
+        );
     }
 
     public void testSimulateFailureOn1208120628821() throws Exception {
@@ -96,14 +118,24 @@ public class ArithmeticaCompatibilityTest extends TestCase {
 
         compare(now, old, 1208120628821L);
 
-        assertEquals("Verify amount of sumRange is the same", now.countSumRange, old.countSumRange);
-        assertEquals("Verify amount of sumAll is the same", now.countSumAll, old.countSumAll);
-        assertEquals("Verify amount of sumTwo is the same", now.countSumTwo, old.countSumTwo);
+        assertEquals(
+            "Verify amount of sumRange is the same", 
+            now.countSumRange, old.countSumRange
+        );
+        assertEquals(
+            "Verify amount of sumAll is the same", 
+            now.countSumAll, old.countSumAll
+        );
+        assertEquals(
+            "Verify amount of sumTwo is the same", 
+            now.countSumTwo, old.countSumTwo
+        );
     }
     // END: total.rewrite.tests
     
     // BEGIN: total.rewrite.compare
-    private void compare (Arithmetica now, OldArithmetica1 old, long seed) throws Exception {
+    private void compare (Arithmetica now, OldArithmetica1 old, long seed) 
+    throws Exception {
         java.util.Random r = new java.util.Random (seed);
         
         for (int loop = 0; loop < r.nextInt(5); loop++) {
@@ -114,7 +146,7 @@ public class ArithmeticaCompatibilityTest extends TestCase {
                     int a2 = r.nextInt(100);
                     int resNow = now.sumTwo(a1, a2);
                     int resOld = old.sumTwo(a1, a2);
-                    assertEquals("Results of sumTwo are equal", resNow, resOld);
+                    assertEquals("sumTwo results are equal", resNow, resOld);
                     break;
                 }
                 case 1: { // sumArray
@@ -124,7 +156,7 @@ public class ArithmeticaCompatibilityTest extends TestCase {
                     }
                     int resNow = now.sumAll(arr);
                     int resOld = old.sumAll(arr);
-                    assertEquals("Results of sumArray are equal", resNow, resOld);
+                    assertEquals("sumArray results are equal", resNow, resOld);
                     break;
                 }
                 case 2: { // sumRange
@@ -132,7 +164,7 @@ public class ArithmeticaCompatibilityTest extends TestCase {
                     int a2 = r.nextInt(100);
                     int resNow = now.sumRange(a1, a1 + a2);
                     int resOld = old.sumRange(a1, a1 + a2);
-                    assertEquals("Results of sumRange are equal", resNow, resOld);
+                    assertEquals("sumRange results are equal", resNow, resOld);
                     break;
                 }
             }
