@@ -47,7 +47,7 @@ public class ParallelControlFlowTest extends NbTestCase {
             "THREAD: 2nd MSG: cnt: 9",
             500
         );
-        Parael.main(null);
+        Parallel.main(null);
         fail("Ok, just print the logged output");
     }
 // END: test.parallel.test.controlflow
@@ -61,7 +61,7 @@ public class ParallelControlFlowTest extends NbTestCase {
             "THREAD: 1st MSG: cnt: 6",
             5000
         );
-        Parael.main(null);
+        Parallel.main(null);
         fail("Ok, just print the logged output");
     }
     // END: test.parallel.test.fivetwo

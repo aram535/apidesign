@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 // BEGIN: test.parallel
-class Parael implements Runnable {
+class Parallel implements Runnable {
     public void run() {
         Random r = new Random();
         for (int i = 0; i < 10; i++) {
@@ -16,8 +16,8 @@ class Parael implements Runnable {
         }
     }
     public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread(new Parael(), "1st");
-        Thread t2 = new Thread(new Parael(), "2nd");
+        Thread t1 = new Thread(new Parallel(), "1st");
+        Thread t2 = new Thread(new Parallel(), "2nd");
         t1.start(); t2.start();
         t1.join(); t2.join();
     }
