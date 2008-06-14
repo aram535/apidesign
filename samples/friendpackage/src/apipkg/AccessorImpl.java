@@ -7,13 +7,14 @@
  * http://www.sun.com/
  * 
  * The Original Code is NetBeans. The Initial Developer of the Original
- * Code is Jaroslav Tulach. Portions Copyright 2007 Jaroslav Tulach. 
- * All Rights Reserved.
+ * Code is Sun Microsystems, Inc. Portions Copyright 1999-2006 Sun
+ * Microsystems, Inc. All Rights Reserved.
  */
 
 package apipkg;
 
 import implpkg.Accessor;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /** The bridge between api and impl package.
