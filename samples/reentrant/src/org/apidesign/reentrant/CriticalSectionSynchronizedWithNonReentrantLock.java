@@ -7,7 +7,6 @@ import java.util.concurrent.locks.Lock;
 public class CriticalSectionSynchronizedWithNonReentrantLock<T extends Comparable<T>> implements CriticalSection<T> {
     private T pilot;
     private int cnt;
-    private Lock lock = new NonReentrantLock();
     
     public void assignPilot(T pilot) {
         lock.lock();
@@ -18,18 +17,25 @@ public class CriticalSectionSynchronizedWithNonReentrantLock<T extends Comparabl
         }
     }
 
+    // BEGIN: reentrant.nonreentrant.lock
+    private Lock lock = new NonReentrantLock();
     public int sumBigger(Collection<T> args) {
         lock.lock();
         try {
-            for (T cmp : args) {
-                if (pilot.compareTo(cmp) < 0) {
-                    cnt++;
-                }
-            }
-            return cnt;
+            return doCriticalSection(args);
         } finally {
             lock.unlock();
         }
+    }
+    // END: reentrant.nonreentrant.lock
+    
+    private int doCriticalSection(Collection<T> args) {
+        for (T cmp : args) {
+            if (pilot.compareTo(cmp) < 0) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
     
     public int getCount() {

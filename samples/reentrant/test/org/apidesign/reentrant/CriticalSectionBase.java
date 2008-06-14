@@ -8,12 +8,17 @@ import static org.junit.Assert.*;
 
 public abstract class CriticalSectionBase {
     protected abstract CriticalSection<Integer> create();
+    protected boolean reentrantJustOnce() {
+        return false;
+    }
 
+    // BEGIN: reentrant.ok.call
     @Test
     public void testCriticalSectionWith15() {
         final CriticalSection<Integer> cs = create();
         testFor15(cs);
     }
+    // END: reentrant.ok.call
     
     final void testFor15(CriticalSection<Integer> cs) {
         cs.assignPilot(15);
@@ -41,9 +46,13 @@ public abstract class CriticalSectionBase {
         cs.assignPilot(10);
         
         class ChangePilotTo15 implements Runnable {
+            // BEGIN: reentrant.forbidden.call
+            // if this runnable is called from inside the critical section,
+            // and the locks are non-reentrant then it throws an exception
             public void run() {
                 testFor15(cs);
             }
+            // END: reentrant.forbidden.call
         }
         
         List<Integer> ints = new MyCollection(new ChangePilotTo15(), 3);
@@ -64,7 +73,7 @@ public abstract class CriticalSectionBase {
     }
 
     class MyCollection extends ArrayList<Integer> {
-        private final Runnable callback;
+        private Runnable callback;
         private final int callbackBeforeIndex;
 
         public MyCollection(Runnable callback, int callbackAtIndex) {
@@ -84,7 +93,12 @@ public abstract class CriticalSectionBase {
 
                 public Integer next() {
                     if (index++ == callbackBeforeIndex) {
-                        callback.run();
+                        if (callback != null) {
+                            callback.run();
+                        }
+                        if (reentrantJustOnce()) {
+                            callback = null;
+                        }
                     }
                     
                     return delegate.next();
