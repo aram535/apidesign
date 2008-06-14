@@ -26,34 +26,9 @@ public final class Language {
         @Override
         public void visit(Visitor v) { v.visitNumber(this); }
     }
-    // BEGIN: visitor.abstractclass.v2
-    /** @since 2.0 */
-    public static final class Minus extends Expression {
-        private final Expression first;
-        private final Expression second;
-        
-        public Minus(Expression first, Expression second) {
-            this.first = first;
-            this.second = second;
-        }
-        public Expression getFirst() { return first; }
-        public Expression getSecond() { return second; }
-        public void visit(Visitor v) { 
-            v.visitMinus(this);
-        }
-    }
 
-    // BEGIN: visitor.visitunknown.v2
-    public static abstract class Visitor/*2.0*/ {
-        public void visitUnknown(Expression exp) {
-            throw new IllegalStateException("Unknown element faced: " + exp);
-        }
+    public static abstract class Visitor {
         public abstract void visitPlus(Plus s);
         public abstract void visitNumber(Number n);
-        /** @since 2.0 */
-        public void visitMinus(Minus s) {
-            visitUnknown(s);
-        }
     }
-    // END: visitor.visitunknown.v2
 }

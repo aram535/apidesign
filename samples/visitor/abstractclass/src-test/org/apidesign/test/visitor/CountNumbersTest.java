@@ -7,36 +7,37 @@ import org.apidesign.visitor.Language.Plus;
 import org.apidesign.visitor.Language.Visitor;
 import org.junit.Test;
 
-public class LanguageCheckTest {
+public class CountNumbersTest {
 
-    // BEGIN: visitor.language.check.visitunknown
-    private static class Valid1_0Language extends Visitor/*version1.0*/ {
-        boolean invalid;
+    // BEGIN: visitor.count.numbers.visitunknown
+    private static class CountNumbers extends Visitor/*version1.0*/ {
+        int cnt;
 
         @Override
         public void visitUnknown(Expression exp) {
-            invalid = true;
+            // not a number
         }
         public void visitPlus(Plus s) {
             s.getFirst().visit(this);
             s.getSecond().visit(this);
         }
-        public void visitNumber(Number n) { 
+        public void visitNumber(Number n) {
+            cnt++;
         }
     }
 
-    public static boolean isValid1_0Language(Expression expression) {
-        Valid1_0Language valid = new Valid1_0Language();
-        expression.visit(valid);
-        return !valid.invalid;
+    public static int countNumbers(Expression expression) {
+        CountNumbers counter = new CountNumbers();
+        expression.visit(counter);
+        return counter.cnt;
     }
-    // END: visitor.language.check.visitunknown
+    // END: visitor.count.numbers.visitunknown
     
     @Test public void printOnePlusOne() {
         Number one = new Number(1);
         Expression expression = new Plus(one, one);
 
-        assertTrue("Valid language", isValid1_0Language(expression));
+        assertEquals("Two 1's", 2, countNumbers(expression));
     }
 
     @Test public void printOnePlusTwoPlusThree() {
@@ -45,6 +46,6 @@ public class LanguageCheckTest {
         Number three = new Number(3);
         Expression plus = new Plus(one, new Plus(two, three));
         
-        assertTrue("Valid language", isValid1_0Language(plus));
+        assertEquals("Three", 3, countNumbers(plus));
     }
 }

@@ -9,14 +9,8 @@ import org.junit.Test;
 
 public class LanguageCheckTest {
 
-    // BEGIN: visitor.language.check.visitunknown
+    // BEGIN: visitor.language.check.exception
     private static class Valid1_0Language extends Visitor/*version1.0*/ {
-        boolean invalid;
-
-        @Override
-        public void visitUnknown(Expression exp) {
-            invalid = true;
-        }
         public void visitPlus(Plus s) {
             s.getFirst().visit(this);
             s.getSecond().visit(this);
@@ -27,10 +21,14 @@ public class LanguageCheckTest {
 
     public static boolean isValid1_0Language(Expression expression) {
         Valid1_0Language valid = new Valid1_0Language();
-        expression.visit(valid);
-        return !valid.invalid;
+        try {
+            expression.visit(valid);
+            return true; // yes, no unknown elements
+        } catch (IllegalStateException ex) {
+            return false; // no, probably from visitMinus of Visitor/*2.0*/
+        }
     }
-    // END: visitor.language.check.visitunknown
+    // END: visitor.language.check.exception
     
     @Test public void printOnePlusOne() {
         Number one = new Number(1);

@@ -27,8 +27,13 @@ public final class Language {
         public void visit(Visitor v) { v.visitNumber(this); }
     }
 
-    public static abstract class Visitor {
+    // BEGIN: visitor.visitunknown.v1
+    public static abstract class Visitor/*1.0*/ {
+        public void visitUnknown(Expression exp) {
+            throw new IllegalStateException("Unknown element faced: " + exp);
+        }
         public abstract void visitPlus(Plus s);
         public abstract void visitNumber(Number n);
     }
+    // END: visitor.visitunknown.v1
 }

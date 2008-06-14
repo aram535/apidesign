@@ -43,17 +43,14 @@ public final class Language {
         }
     }
 
-    // BEGIN: visitor.visitunknown.v2
-    public static abstract class Visitor/*2.0*/ {
-        public void visitUnknown(Expression exp) {
-            throw new IllegalStateException("Unknown element faced: " + exp);
-        }
+    public static abstract class Visitor {
         public abstract void visitPlus(Plus s);
         public abstract void visitNumber(Number n);
-        /** @since 2.0 */
         public void visitMinus(Minus s) {
-            visitUnknown(s);
+            throw new IllegalStateException(
+                "Old visitor used on new exceptions"
+            );
         }
     }
-    // END: visitor.visitunknown.v2
+    // END: visitor.abstractclass.v2
 }
