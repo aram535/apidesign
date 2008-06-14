@@ -35,8 +35,10 @@ public class ArithmeticaTest extends TestCase {
 
     public void testSumRange() {
         Arithmetica instance = new Arithmetica();
-        assertEquals("+", 6, instance.sumRange(1, 3));
-        assertEquals("10", 55, instance.sumRange(1, 10));
+        assertEquals("1+2+3=6", 6, instance.sumRange(1, 3));
+        assertEquals("sum(1,10)=55", 55, instance.sumRange(1, 10));
+        assertEquals("sum(1,1)=1", 1, instance.sumRange(1, 1));
+        assertEquals("sum(10,1)=55", 55, instance.sumRange(10, 1));
     }
     //END: design.composition.arith.test
 

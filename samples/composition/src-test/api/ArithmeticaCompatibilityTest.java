@@ -66,15 +66,15 @@ public class ArithmeticaCompatibilityTest extends TestCase {
             compare(now, old, seed);
         
             assertEquals(
-                "Verify amount of sumRange is the same", 
+                "Verify amount calls to of sumRange is the same", 
                 now.countSumRange, old.countSumRange
             );
             assertEquals(
-                "Verify amount of sumAll is the same", 
+                "Verify amount calls to of sumAll is the same", 
                 now.countSumAll, old.countSumAll
             );
             assertEquals(
-                "Verify amount of sumTwo is the same", 
+                "Verify amount calls to of sumTwo is the same", 
                 now.countSumTwo, old.countSumTwo
             );
         } catch (AssertionFailedError ex) {
@@ -99,15 +99,15 @@ public class ArithmeticaCompatibilityTest extends TestCase {
         compare(now, old, 1208120436947L);
 
         assertEquals(
-            "Verify amount of sumRange is the same", 
+            "Verify amount of calls to sumRange is the same", 
             now.countSumRange, old.countSumRange
         );
         assertEquals(
-            "Verify amount of sumAll is the same", 
+            "Verify amount of calls to sumAll is the same", 
             now.countSumAll, old.countSumAll
         );
         assertEquals(
-            "Verify amount of sumTwo is the same", 
+            "Verify amount of calls to sumTwo is the same", 
             now.countSumTwo, old.countSumTwo
         );
     }
@@ -119,15 +119,15 @@ public class ArithmeticaCompatibilityTest extends TestCase {
         compare(now, old, 1208120628821L);
 
         assertEquals(
-            "Verify amount of sumRange is the same", 
+            "Verify amount of calls to sumRange is the same", 
             now.countSumRange, old.countSumRange
         );
         assertEquals(
-            "Verify amount of sumAll is the same", 
+            "Verify amount of calls to sumAll is the same", 
             now.countSumAll, old.countSumAll
         );
         assertEquals(
-            "Verify amount of sumTwo is the same", 
+            "Verify amount of calls to sumTwo is the same", 
             now.countSumTwo, old.countSumTwo
         );
     }
