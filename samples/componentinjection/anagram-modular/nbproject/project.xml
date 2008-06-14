@@ -34,6 +34,12 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-app-register</label>
+                    <type>java</type>
+                    <location>src-app-register</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>Anagram Modular</label>
                     <location>.</location>
                     <encoding>UTF-8</encoding>
@@ -88,6 +94,10 @@
                         <label>src-gui</label>
                         <location>src-gui</location>
                     </source-folder>
+                    <source-folder style="packages">
+                        <label>src-app-register</label>
+                        <location>src-app-register</location>
+                    </source-folder>
                     <source-file>
                         <location>build.xml</location>
                     </source-file>
@@ -124,6 +134,12 @@
                 <package-root>src-gui</package-root>
                 <classpath mode="compile">src-api</classpath>
                 <built-to>build/gui/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-app-register</package-root>
+                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui</classpath>
+                <built-to>build/app-register/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>

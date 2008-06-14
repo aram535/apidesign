@@ -18,12 +18,18 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
     /** Creates new form Anagrams */
     public Anagrams() {
         initComponents();        
-        initWord();
         getRootPane().setDefaultButton(guessButton);
     }
     
     protected abstract WordLibrary getWordLibrary();
     protected abstract Scrambler getScrambler();
+    
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        initWord();
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
