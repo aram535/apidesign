@@ -40,6 +40,12 @@
                     <location>src-test</location>
                     <encoding>UTF-8</encoding>
                 </source-folder>
+                <source-folder>
+                    <label>src-api2.0-enum</label>
+                    <type>java</type>
+                    <location>src-api2.0-enum</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
             </folders>
             <ide-actions>
                 <action name="build">
@@ -78,6 +84,10 @@
                         <location>src-api2.0-property</location>
                     </source-folder>
                     <source-folder style="packages">
+                        <label>API Version 2.0, with enum</label>
+                        <location>src-api2.0-enum</location>
+                    </source-folder>
+                    <source-folder style="packages">
                         <label>Usage of the API</label>
                         <location>src-test</location>
                     </source-folder>
@@ -105,6 +115,10 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-api2.0-compat</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-api2.0-enum</package-root>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>

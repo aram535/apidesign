@@ -18,6 +18,9 @@
         <antcall target="-build-one">
             <param name="version" value="api2.0-property"/>
         </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="api2.0-enum"/>
+        </antcall>
         
         <antcall target="-build-one">
             <param name="version" value="test"/>
@@ -38,9 +41,13 @@
         <antcall target="-run-one">
             <param name="version" value="api2.0-compat"/>
         </antcall>
-        <echo level="info" message="Running the Implementation against Version 2.0 with another compatible extension of the API. This should succeed."/>
+        <echo level="info" message="Running the Implementation against Version 2.0 with property guarded extension of the API. This should succeed."/>
         <antcall target="-run-one">
             <param name="version" value="api2.0-property"/>
+        </antcall>
+        <echo level="info" message="Running the Implementation against Version 2.0 with enum guarded extension of the API. This should succeed."/>
+        <antcall target="-run-one">
+            <param name="version" value="api2.0-enum"/>
         </antcall>
     </target>
     
