@@ -1,8 +1,3 @@
-/*
- * Žluťoučký kůň je naše hříbátko.
- * and open the template in the editor.
- */
-
 package api;
 
 import junit.framework.TestCase;
