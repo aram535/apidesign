@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
  * use the annotation directly there.
  */
 
-
+// BEGIN: anagram.spring.autowire.Scrambler
 @Service
 public class SimpleScramblerAnnotated extends SimpleScrambler {
+    public SimpleScramblerAnnotated() {
+    }
 }
+// END: anagram.spring.autowire.Scrambler

@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
  */
 
 
+// BEGIN: anagram.spring.autowire.WordLibrary
 @Service
 public class StaticWordLibraryAnnotated extends StaticWordLibrary {
+    public StaticWordLibraryAnnotated() {
+    }
 }
+// END: anagram.spring.autowire.WordLibrary

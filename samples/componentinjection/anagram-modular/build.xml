@@ -43,6 +43,10 @@
             <param name="version" value="app-lookup"/>
             <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
         </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="app-serviceloader"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
+        </antcall>
         
     </target>
     
@@ -83,6 +87,11 @@
             <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util.jar"/>
             <param name="main" value="org.apidesign.anagram.app.lookup.Main"/>
         </antcall>
+        <antcall target="-run-one">
+            <param name="version" value="app-serviceloader"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
+            <param name="main" value="org.apidesign.anagram.app.serviceloader.Main"/>
+        </antcall>
     </target>
     
     <!-- support methods -->
@@ -90,11 +99,13 @@
     <target name="-libraries">
         <ant dir="../../libs/"/>
         
-        <property name="junit.jar" location="../libs/dist/junit-4.4.jar"/>
+        <property name="junit.jar" location="../../libs/dist/junit-4.4.jar"/>
     </target>
 
     <target name="-run-one">
-        <java classpath="${cp}:build/${version}/classes" classname="${main}"/>
+        <java classpath="${cp}:build/${version}/classes" classname="${main}">
+            <jvmarg value="-Danagram.version=${version}"/>
+        </java>
     </target>
     
     <target name="-build-one">
