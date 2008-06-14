@@ -1,6 +1,5 @@
 package api;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 /** Fixing the problem caused by mixing subclassing and delegation in 
@@ -8,6 +7,7 @@ import java.io.IOException;
  *
  * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
+// BEGIN: writer.final.2.0
 public final class Writer implements Appendable {
     private final Impl impl;
     private final ImplSeq seq;
@@ -130,7 +130,5 @@ public final class Writer implements Appendable {
         public void flush() throws IOException;
         public void write(CharSequence seq) throws IOException;
     }
-    
-    
-    
 }
+// END: writer.final.2.0

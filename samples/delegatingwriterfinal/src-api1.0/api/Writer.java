@@ -7,6 +7,7 @@ import java.io.IOException;
  *
  * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
+// BEGIN: writer.final.1.0
 public final class Writer {
     private final Impl impl;
     
@@ -72,7 +73,5 @@ public final class Writer {
         public void write(String str, int off, int len) throws IOException;
         public void write(char[] arr, int off, int len) throws IOException;
     }
-    
-    
-    
 }
+// END: writer.final.1.0
