@@ -51,7 +51,8 @@ public abstract class Lookup {
         if (!it.hasNext()) {
             return Collections.emptySet();
         } else {
-            Set<Class<? extends T>> result = new HashSet<Class<? extends T>>();
+            Set<Class<? extends T>> result = 
+                new HashSet<Class<? extends T>>();
             while (it.hasNext()) {
                 result.add(it.next().getClass().asSubclass(clazz));
             }
