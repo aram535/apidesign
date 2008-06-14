@@ -1,2 +1,7 @@
+# this is a provider for the SPI, shall be in the same module as the api & spi
+impl.spi.DigestorProvider
+
+
 # this shall be in a separate module that provides the "bridge"
 impl.independent.module.BridgeToOldAlgorithmsProvider
+
