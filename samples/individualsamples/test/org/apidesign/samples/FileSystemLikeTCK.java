@@ -43,7 +43,9 @@ public class FileSystemLikeTCK {
         protected void destroyFileSystem(String testName) throws IOException {
         }
 
-        protected FileSystem createFileSystem(String testName, String[] resources) throws Exception {
+        protected FileSystem createFileSystem(
+            String testName, String[] resources
+        ) throws Exception {
             JarFileSystem fs = new JarFileSystem();
             fs.setJarFile(createJarFile(testName, resources));
             return fs;
