@@ -18,8 +18,15 @@ import org.apidesign.spi.security.Digestor;
  */
 // BEGIN: day.end.bridges.BridgeToNew
 public class BridgeToNew extends Digestor<MessageDigest> {
+    /** initializes the other bridge, and allow us to eliminate stack overflow */
+    private static final BridgeToOld oldBridge = new BridgeToOld();
+    
     @Override
     protected MessageDigest create(String algorithm) {
+        if (oldBridge.isSearching()) {
+            return null;
+        }
+        
         try {
             return MessageDigest.getInstance(algorithm);
         } catch (NoSuchAlgorithmException ex) {
@@ -36,6 +43,10 @@ public class BridgeToNew extends Digestor<MessageDigest> {
     @Override
     protected void update(MessageDigest data, ByteBuffer input) {
         data.update(input);
+    }
+    
+    static {
+        new BridgeToOld();
     }
 }
 // END: day.end.bridges.BridgeToNew

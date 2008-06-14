@@ -48,6 +48,17 @@
                     <target>clean</target>
                     <target>build</target>
                 </action>
+                <action name="debug.single">
+                    <target>-do-test</target>
+                    <context>
+                        <property>include</property>
+                        <folder>src-test</folder>
+                        <format>relative-path-noext</format>
+                        <arity>
+                            <one-file-only/>
+                        </arity>
+                    </context>
+                </action>
             </ide-actions>
             <export>
                 <type>folder</type>
@@ -87,6 +98,7 @@
                     <ide-action name="rebuild"/>
                     <ide-action name="clean"/>
                     <ide-action name="test"/>
+                    <ide-action name="debug"/>
                 </context-menu>
             </view>
             <subprojects/>

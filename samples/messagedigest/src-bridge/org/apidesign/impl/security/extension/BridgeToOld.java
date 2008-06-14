@@ -21,6 +21,7 @@ import java.util.Map;
  */
 // BEGIN: day.end.bridges.BridgeToOld
 public class BridgeToOld extends Provider {
+    private ThreadLocal<Boolean> searching = new ThreadLocal<Boolean>();
 
     public BridgeToOld() {
         super("spi.Digestor", 1.0, "");
@@ -29,13 +30,19 @@ public class BridgeToOld extends Provider {
     
     @Override
     public synchronized Service getService(String type, String algorithm) {
-        if ("MessageDigest".equals(type)) {
-            Digest dig = Digest.getInstance(algorithm);
-            if (dig != null) {
-                return new ServiceImpl(dig, this, type, algorithm, "", Collections.<String>emptyList(), Collections.<String,String>emptyMap());
+        Boolean prev = searching.get();
+        try {
+            searching.set(Boolean.TRUE);
+            if ("MessageDigest".equals(type)) {
+                Digest dig = Digest.getInstance(algorithm);
+                if (dig != null) {
+                    return new ServiceImpl(dig, this, type, algorithm, "", Collections.<String>emptyList(), Collections.<String,String>emptyMap());
+                }
             }
+            return null;
+        } finally {
+            searching.set(prev);
         }
-        return null;
     }
 
     private static class ServiceImpl<Data> extends Service {
@@ -78,6 +85,10 @@ public class BridgeToOld extends Provider {
         }
         
         
+    }
+
+    boolean isSearching() {
+        return Boolean.TRUE.equals(searching.get());
     }
 
 }
