@@ -16,6 +16,12 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-word-static</label>
+                    <type>java</type>
+                    <location>src-api</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>Anagram Modular</label>
                     <location>.</location>
                     <encoding>UTF-8</encoding>
@@ -58,6 +64,10 @@
                         <label>src-api</label>
                         <location>src-api</location>
                     </source-folder>
+                    <source-folder style="packages">
+                        <label>src-word-static</label>
+                        <location>src-word-static</location>
+                    </source-folder>
                     <source-file>
                         <location>build.xml</location>
                     </source-file>
@@ -76,6 +86,12 @@
             <compilation-unit>
                 <package-root>src-api</package-root>
                 <built-to>build/api/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-word-static</package-root>
+                <classpath mode="compile">src-api</classpath>
+                <built-to>build/word-static/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
