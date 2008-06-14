@@ -51,7 +51,8 @@ public class RealTest extends TestCase {
      *
      * Feed this circuit with x1=true, x2=false, assert result is false
      *
-     * Feed the same circuit with x1=false, x2=true, assert result is true
+     * Feed the same circuit with x1=false, x2=true, assert result is 
+     * true
      *
      * Feed the same circuit with x1=0.0, x2=1.0, assert result is 1.0
      *
@@ -71,12 +72,12 @@ public class RealTest extends TestCase {
         assertEquals("0.0, 1.0", 1.0, c.evaluateFuzzy(0.0, 1.0), 0.0);
     }
     
-    /** Ensure that one variable cannot be filled with two different values.
-     * Create a circuit for x1 and x1. Make sure that for any usage of your
-     * API that would not lead to x1 * x1 result, an exception is thrown.
-     * For example if there was a way to feed the circuit with two different 
-     * values 0.3 and 0.5 an exception is thrown indicating that this is 
-     * improper use of the circuit.
+    /** Ensure that one variable cannot be filled with two different 
+     * values. Create a circuit for x1 and x1. Make sure that for any 
+     * usage of your API that would not lead to x1 * x1 result, an 
+     * exception is thrown. For example if there was a way to feed the 
+     * circuit with two different values 0.3 and 0.5 an exception is 
+     * thrown indicating that this is improper use of the circuit.
      */
     public void testImproperUseOfTheCircuit() {
         // does not apply

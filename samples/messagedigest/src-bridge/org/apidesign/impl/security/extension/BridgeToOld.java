@@ -56,7 +56,9 @@ public final class BridgeToOld extends Provider {
             String type, String algorithm, String className, 
             List<String> aliases, Map<String, String> attributes
         ) {
-            super(provider, type, algorithm, className, aliases, attributes);
+            super(
+                provider, type, algorithm, className, aliases, attributes
+            );
             this.dig = dig;
         }
 

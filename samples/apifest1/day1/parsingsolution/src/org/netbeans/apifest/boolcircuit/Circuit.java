@@ -22,10 +22,11 @@ package org.netbeans.apifest.boolcircuit;
 // BEGIN: apifest.day1.parsingsolution.Circuit
 /**
  * Usage:
- * First method parse must be called with valid logical expression on input.
- * If it returns zero then it is possible to call method evaluate with array
- * of input values as parameter. Method evaluate can be invoked many time with
- * different input values.
+ * First method parse must be called with valid logical expression on 
+ * input.
+ * If it returns zero then it is possible to call method evaluate with 
+ * array of input values as parameter. Method evaluate can be invoked 
+ * many time with different input values.
  * Method parse can be called anytime to change logical expression.
  */
 public class Circuit {

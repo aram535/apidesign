@@ -36,9 +36,10 @@ public class DeadlockTest extends NbTestCase {
                 JLabel sampleLabel = createLabel();
                 return sampleLabel.getPreferredSize();
             } catch (InterruptedException ex) {
-                Logger.getLogger(
-                    DeadlockTest.class.getName()).log(Level.SEVERE, null, ex
+                Logger l = Logger.getLogger(
+                    DeadlockTest.class.getName()
                 );
+                l.log(Level.SEVERE, null, ex);
                 return super.getPreferredSize();
             }
         }

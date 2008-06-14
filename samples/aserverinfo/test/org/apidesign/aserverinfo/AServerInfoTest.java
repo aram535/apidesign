@@ -23,17 +23,17 @@ public class AServerInfoTest {
 
     @Test
     public void showUseOfCumulativeFactory() throws Exception {
-        Prov prov = new Prov();
-        AServerInfo info;
+        Prov p = new Prov();
+        AServerInfo inf;
         
         // BEGIN: aserverinfo.cumulative.creation
-        info = AServerInfo.empty().nameProvider(prov).urlProvider(prov).reset(prov);
+        inf = AServerInfo.empty().nameProvider(p).urlProvider(p).reset(p);
         // END: aserverinfo.cumulative.creation
         
-        assertEquals("API Design Server", info.getName());
-        assertEquals("http://www.apidesign.org", info.getURL().toExternalForm());
-        info.reset();
-        assertEquals("Once reset", 1, prov.resets);
+        assertEquals("API Design Server", inf.getName());
+        assertEquals("http://www.apidesign.org", inf.getURL().toExternalForm());
+        inf.reset();
+        assertEquals("Once reset", 1, p.resets);
         
     }
     

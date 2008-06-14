@@ -22,7 +22,7 @@ final class MyHighlightsContainer implements HighlightsContainer {
     ) {
         if (listener == l) listener = null;
     }
-    public HighlightsSequence getHighlights(int startOffset, int endOffset) {
+    public HighlightsSequence getHighlights(int start, int end) {
         return null; // implement
     }
 // END: javabeans.with.MyHighlightsContainer

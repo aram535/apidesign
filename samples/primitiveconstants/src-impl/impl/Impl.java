@@ -5,7 +5,7 @@ import api.API;
 public class Impl extends API {
     protected void init(int version) throws IllegalStateException {
         if (version != API.VERSION) {
-          throw new IllegalStateException("Not the right API version error!");
+          throw new IllegalStateException("Wrong API version error!");
         }
     }
 // END: theory.binary.constants.impl

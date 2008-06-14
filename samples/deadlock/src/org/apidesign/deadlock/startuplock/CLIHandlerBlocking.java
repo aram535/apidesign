@@ -24,7 +24,9 @@ public final class CLIHandlerBlocking {
         // otherwise try to create the file yourself
         enterState(20);
         lockFile.createNewFile();
-        DataOutputStream os = new DataOutputStream(new FileOutputStream(lockFile));
+        DataOutputStream os = new DataOutputStream(
+            new FileOutputStream(lockFile)
+        );
         ServerSocket server = new ServerSocket();
         enterState(21);
         int p = server.getLocalPort();

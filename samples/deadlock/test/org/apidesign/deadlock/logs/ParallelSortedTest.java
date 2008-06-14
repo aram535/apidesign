@@ -37,7 +37,8 @@ public class ParallelSortedTest extends NbTestCase {
             if (!record.getMessage().startsWith("cnt")) {
                 return;
             }
-            if (runSecond == Thread.currentThread().getName().equals("2nd")) {
+            boolean snd = Thread.currentThread().getName().equals("2nd");
+            if (runSecond == snd) {
                 notify();
                 runSecond = !runSecond;
             }

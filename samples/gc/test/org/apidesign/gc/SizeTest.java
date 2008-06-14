@@ -12,14 +12,18 @@ public class SizeTest {
     public void measureIsDataLowerThan8No() {
         Data d = new Data();
         
-        NbTestCase.assertSize("The size of the data instance is higher than 8, fail", 8, d);
+        NbTestCase.assertSize(
+            "The size of the data instance is higher than 8, fail", 8, d
+        );
     }
 
     @Test
     public void measureIsDataLowerThan16Yes() {
         // BEGIN: size.measure
         Data d = new Data();
-        NbTestCase.assertSize("The size of the data instance is higher than 16", 16, d);
+        NbTestCase.assertSize(
+            "The size of the data instance is higher than 16", 16, d
+        );
         // END: size.measure
     }
     
