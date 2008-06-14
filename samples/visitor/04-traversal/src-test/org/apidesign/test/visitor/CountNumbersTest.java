@@ -17,10 +17,7 @@ public class CountNumbersTest {
         public boolean visitUnknown(Expression exp) {
             return true;
         }
-        public void visitPlus(Plus s) {
-            s.getFirst().visit(this);
-            s.getSecond().visit(this);
-        }
+        @Override
         public void visitNumber(Number n) {
             cnt++;
         }
