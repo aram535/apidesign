@@ -1,30 +1,66 @@
 package org.apidesign.visitor;
 
 public final class Language {
-    private Language() { }
-    
+
+    private Language() {
+    }
+
     public static abstract class Expression {
+
+        Expression() {
+        }
+
         public abstract void visit(Visitor v);
     }
+
     public static final class Plus extends Expression {
+
         private final Expression first;
         private final Expression second;
-        
+
         public Plus(Expression first, Expression second) {
             this.first = first;
             this.second = second;
         }
-        public Expression getFirst() { return first; }
-        public Expression getSecond() { return second; }
+
+        public Expression getFirst() {
+            return first;
+        }
+
+        public Expression getSecond() {
+            return second;
+        }
+
         @Override
-        public void visit(Visitor v) { v.visitPlus(this); }
+        public void visit(Visitor v) {
+            if (v instanceof Visitor1_0) {
+                ((Visitor1_0) v).visitPlus(this);
+            } else {
+                v.visitUnknown(this);
+            }
+        }
     }
+
     public static final class Number extends Expression {
+
         private final int value;
-        public Number(int value) { this.value = value; }
-        public int getValue() { return value; }
+
+        public Number(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
         @Override
-        public void visit(Visitor v) { v.visitNumber(this); }
+        public void visit(Visitor v) {
+            if (v instanceof Visitor1_0) {
+                ((Visitor1_0) v).visitNumber(this);
+            } else {
+                v.visitUnknown(this);
+            }
+        }
     }
     /** @since 2.0 */
     public static final class Minus extends Expression {
