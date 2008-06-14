@@ -1,9 +1,6 @@
 package org.apidesign.samples;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -27,6 +24,6 @@ public class HundredPercentCoverageTest {
     @Test
     public void stillThereIsAWayToFail() {
         assertEquals("init value - 10", 0, instance.add(-10));
-        assertEquals("division", 0, instance.percentageFrom(30));
+        assertEquals("division", 0, instance.percentageFrom(5));
     }
 }
