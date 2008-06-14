@@ -28,7 +28,7 @@ public final class CountingDigestor extends Digestor<int[]> {
 
     @Override
     protected int[] create(String algorithm) {
-        return "cnt".equals(algorithm) ? new int[1] : null; // NOI18N
+        return "cnt".equals(algorithm) ? new int[1] : null;
     }
 
     @Override
