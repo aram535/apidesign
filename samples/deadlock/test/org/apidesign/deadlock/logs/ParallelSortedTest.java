@@ -25,7 +25,7 @@ public class ParallelSortedTest extends NbTestCase {
 
     public void testMain() throws Exception {
         Logger.global.addHandler(new BlockingHandler());
-        Parael.main(null);
+        Parallel.main(null);
         fail("Ok, just print the logged output");
     }
 

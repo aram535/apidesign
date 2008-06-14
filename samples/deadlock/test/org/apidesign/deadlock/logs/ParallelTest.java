@@ -21,7 +21,7 @@ public class ParallelTest extends NbTestCase {
     }
 
     public void testMain() throws Exception {
-        Parael.main(null);
+        Parallel.main(null);
         fail("Ok, just print logged messages");
     }
 }

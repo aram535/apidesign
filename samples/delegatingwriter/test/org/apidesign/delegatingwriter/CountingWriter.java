@@ -6,8 +6,6 @@ import java.io.Writer;
 
 // BEGIN: writer.CountingWriter
 /** Writer that counts the number of written in characters.
- *
- * @author Jaroslav Tulach
  */
 public class CountingWriter extends Writer {
     private int counter;

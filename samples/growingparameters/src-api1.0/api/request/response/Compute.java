@@ -21,11 +21,11 @@ public interface Compute {
         }
         
         public void add(String s) {
-            this.result.add(s);
+            result.add(s);
         }
         
         public void addAll(List<String> all) {
-            this.result.addAll(all);
+            result.addAll(all);
         }
     }
 }

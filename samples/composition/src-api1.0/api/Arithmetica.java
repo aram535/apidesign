@@ -24,6 +24,10 @@ public class Arithmetica {
     
     public int sumRange(int from, int to) {
         int len = to - from;
+        if (len < 0) {
+            len = -len;
+            from = to;
+        }
         int[] array = new int[len + 1];
         for (int i = 0; i <= len; i++) {
             array[i] = from + i;
