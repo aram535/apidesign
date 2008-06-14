@@ -1,6 +1,5 @@
 package org.apidesign.anagram.app.serviceloader;
 
-import java.util.Iterator;
 import org.apidesign.anagram.api.Scrambler;
 import org.apidesign.anagram.api.WordLibrary;
 import org.apidesign.anagram.gui.Anagrams;
@@ -14,14 +13,12 @@ class AnagramsWithServiceLoader extends Anagrams {
 
     @Override
     protected WordLibrary getWordLibrary() {
-        Iterator<WordLibrary> it = ServiceLoader.load(WordLibrary.class).iterator();
-        return it.hasNext() ? it.next() : null;
+        return ServiceLoader.load(WordLibrary.class).iterator().next();
     }
 
     @Override
     protected Scrambler getScrambler() {
-        Iterator<Scrambler> it = ServiceLoader.load(Scrambler.class).iterator();
-        return it.hasNext() ? it.next() : null;
+        return ServiceLoader.load(Scrambler.class).iterator().next();
     }
 
 }

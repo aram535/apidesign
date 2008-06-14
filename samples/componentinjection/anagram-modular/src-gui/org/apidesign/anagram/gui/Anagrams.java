@@ -28,7 +28,6 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
     protected abstract Scrambler getScrambler();
     
     public void display() {
-        initWord();
         setVisible(true);
     }
 // FINISH: anagram.ui.Anagrams
@@ -36,12 +35,10 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
     String original;
     String scrambled;
     
-    public final String getOriginalWord() {
-        return original;
-    }
-    
-    public final String getScrambledWord() {
-        return scrambled;
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        initWord();
     }
     
     /** This method is called from within the constructor to
@@ -193,14 +190,13 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
         guessedWord.requestFocus();
     }//GEN-LAST:event_nextTrialActionPerformed
 
-    protected final void initWord() {
+    private void initWord() {
         
         String[] words = getWordLibrary().getWords();
         int index = wordIdx % words.length;
         
         original = words[index];
-        Scrambler scrambler = getScrambler();
-        scrambled = scrambler != null ? scrambler.scramble(original) : original;
+        scrambled = getScrambler().scramble(original);
         
         scrambledWord.setText(scrambled);
     }

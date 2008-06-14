@@ -47,14 +47,10 @@
             <param name="version" value="app-serviceloader"/>
             <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
         </antcall>
-        <antcall target="-build-one">
-            <param name="version" value="test"/>
-            <param name="cp" value="build/api/classes:build/gui/classes:build/app-serviceloader/classes:build/app-lookup/classes:${junit.jar}:${nbjunit.jar}:${insane.jar}"/>
-        </antcall>
         
     </target>
     
-    <target name="run" depends="build">
+    <target name="test" depends="build">
         <echo level="info" message="Running registerXYZ version"/>
         <antcall target="-run-one">
             <param name="version" value="app-register"/>
@@ -93,27 +89,17 @@
         </antcall>
         <antcall target="-run-one">
             <param name="version" value="app-serviceloader"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:${junit.jar}:${nbjunit.jar}:${insane.jar}"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes"/>
             <param name="main" value="org.apidesign.anagram.app.serviceloader.Main"/>
         </antcall>
     </target>
-
-    <target name="test" depends="build">
-        <echo level="info" message="Testing using MockServices"/>
-        <antcall target="-test-one">
-            <param name="version" value="app-test"/>
-            <param name="cp" value="build/api/classes:build/gui/classes:build/app-serviceloader/classes:build/app-lookup/classes:${junit.jar}:${nbjunit.jar}:${insane.jar}:../../libs/dist/org-openide-util.jar"/>
-        </antcall>
-    </target>
-        
+    
     <!-- support methods -->
     
     <target name="-libraries">
         <ant dir="../../libs/"/>
         
         <property name="junit.jar" location="../../libs/dist/junit-4.4.jar"/>
-        <property name="nbjunit.jar" location="../../libs/dist/org-netbeans-modules-nbjunit.jar"/>
-        <property name="insane.jar" location="../../libs/dist/org-netbeans-insane.jar"/>
     </target>
 
     <target name="-run-one">
@@ -139,23 +125,5 @@
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
-    </target>
-    <target name="-test-one">
-        <fail message="You need to specify API version number" unless="version"/>
-        <mkdir dir="build/testresults"/>
-        <junit dir="build/test/classes" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
-            <batchtest todir="build/testresults">
-                <fileset dir="build/test/classes">
-                    <filename name="**/*Test.class"/>
-                </fileset>
-            </batchtest>
-            <classpath>
-                <path path="${cp}"/>
-                <path location="build/test/classes"/>
-                <path location="${junit.jar}"/>
-            </classpath>
-            <formatter type="brief" usefile="false"/>
-            <formatter type="xml"/>
-        </junit>
     </target>
 </project>
