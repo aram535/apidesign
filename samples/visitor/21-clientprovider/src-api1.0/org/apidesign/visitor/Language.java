@@ -18,7 +18,7 @@ public final class Language {
     public static abstract class Visitor {
         Visitor() {}
 
-        public Visitor create(Version1_0 v) {
+        public static Visitor create(Version1_0 v) {
             return create1_0(v);
         }
 

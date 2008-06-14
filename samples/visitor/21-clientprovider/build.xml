@@ -12,6 +12,9 @@
         <antcall target="-build-one">
             <param name="version" value="api2.0"/>
         </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="api3.0"/>
+        </antcall>
         
         <antcall target="-build-one">
             <param name="version" value="test"/>
