@@ -14,8 +14,12 @@ public class CircuitTest extends TestCase {
     
     public void testClass() throws Exception {
         // OK, this is not fair as well.
-        assertEquals("Created AND circuit", "AndCircuit", getName(Circuit.createAndCircuit(null, null)));
-        assertEquals("Created OR circuit", "OrCircuit", getName(Circuit.createOrCircuit(null, null)));
+        assertEquals("Created AND circuit", "AndCircuit", 
+            getName(Circuit.createAndCircuit(null, null))
+        );
+        assertEquals("Created OR circuit", "OrCircuit", 
+            getName(Circuit.createOrCircuit(null, null))
+        );
     }
     
     private String getName(Object obj) {

@@ -22,10 +22,11 @@ package org.netbeans.apifest.boolcircuit;
 // BEGIN: apifest.day1.parsingsolution.Circuit
 /**
  * Usage:
- * First method parse must be called with valid logical expression on input.
- * If it returns zero then it is possible to call method evaluate with array
- * of input values as parameter. Method evaluate can be invoked many time with
- * different input values.
+ * First method parse must be called with valid logical expression on 
+ * input.
+ * If it returns zero then it is possible to call method evaluate with 
+ * array of input values as parameter. Method evaluate can be invoked 
+ * many time with different input values.
  * Method parse can be called anytime to change logical expression.
  */
 public class Circuit {
@@ -36,19 +37,21 @@ public class Circuit {
      * Input values are represented by x and number starting from 1 eg.: x1
      * AND, NOT, OR and brackets '(',')' can be used.
      * Example of valid expression: x1 AND x2
-     * @return 0 when input expression is validated and parsed. Return nonzero value otherwise.
+     * @return 0 when input expression is validated and parsed. 
+     * Return nonzero value otherwise.
      */
     public int parse(String expression) {
         return 0;
     }
     
     /** Evaluate logical expression
-     * @param array of boolean input values. Size of array must correspond to number
-     * of variables used in expression
-     * If size of array is bigger then only first N values are used to evaluate expression.
-     * Remaining values are ignored.
+     * @param array of boolean input values. Size of array must
+     * correspond to number of variables used in expression
+     * If size of array is bigger then only first N values are used 
+     * to evaluate expression. Remaining values are ignored.
      * If size of array is smaller then IllegalArgumentException is thrown.
-     * If no expression is set by method parse then IllegalStateException is thrown.
+     * If no expression is set by method parse then 
+     * IllegalStateException is thrown.
      */
     public boolean evaluate(boolean [] x) {
         return true;

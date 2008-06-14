@@ -85,7 +85,10 @@ public class ToolkitFactory {
                 Class c = Class.forName (classname);
                 t = (java.awt.Toolkit)c.newInstance ();
             } catch (Exception ex) {
-                LOG.log(Level.WARNING, "Cannot initialize toolkit: " + classname, ex);
+                LOG.log(
+                    Level.WARNING, 
+                    "Cannot initialize toolkit: " + classname, ex
+                );
             }
         }
         // fallback 

@@ -11,7 +11,9 @@ public abstract class OverrideMePlease {
     }
     // BEGIN: logs.override
     protected boolean overideMePlease() {
-        Logger.getLogger(OverrideMePlease.class.getName()).warning("subclasses are supposed to override overideMePlease() method!");
+        Logger.getLogger(OverrideMePlease.class.getName()).warning(
+            "subclasses are supposed to override overideMePlease() method!"
+        );
         // some default
         return true;
     }

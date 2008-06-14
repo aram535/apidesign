@@ -13,7 +13,9 @@ import static org.junit.Assert.*;
 
 // BEGIN: deadlock.test.controlflow
 public class LabelProviderTest extends NbTestCase {
-    static final Logger LOG = Logger.getLogger(LabelProviderTest.class.getName());
+    static final Logger LOG = Logger.getLogger(
+        LabelProviderTest.class.getName()
+    );
     
     public LabelProviderTest(String n) {
         super(n);

@@ -74,9 +74,11 @@ public class CircuitTest extends TestCase {
     public void testX1andX2() {
         Stack<Character> s = new Stack<Character> ();
         s.addAll(Arrays.asList('1', '1'));
-        assertEquals("'1' for '11' input.", '1', CircuitFactory.getBasicCircuit(Operation.AND).evaluate(s));
+        assertEquals("'1' for '11' input.", '1', 
+            CircuitFactory.getBasicCircuit(Operation.AND).evaluate(s));
         s.addAll(Arrays.asList('1', '0'));
-        assertEquals("'0' for '10' input.", '0', CircuitFactory.getBasicCircuit(Operation.AND).evaluate(s));
+        assertEquals("'0' for '10' input.", '0', 
+            CircuitFactory.getBasicCircuit(Operation.AND).evaluate(s));
     }
     
     /** 
@@ -87,16 +89,28 @@ public class CircuitTest extends TestCase {
     public void testX1andX2orX3() {
         Stack<Character> s = new Stack<Character> ();
         s.addAll(Arrays.asList('0', '1', '0'));
-        assertEquals("'0' for '010' input.", '0', CircuitFactory.join(CircuitFactory.getTrivialCircuit(), CircuitFactory.getBasicCircuit(Operation.OR), Operation.AND).evaluate(s));
+        assertEquals("'0' for '010' input.", '0', 
+            CircuitFactory.join(CircuitFactory.getTrivialCircuit(), 
+            CircuitFactory.getBasicCircuit(Operation.OR), 
+            Operation.AND).evaluate(s)
+        );
         s.addAll(Arrays.asList('0', '0', '1'));
-        assertEquals("'1' for '001' input.", '1', CircuitFactory.join(CircuitFactory.getTrivialCircuit(), CircuitFactory.getBasicCircuit(Operation.OR), Operation.AND).evaluate(s));
+        assertEquals("'1' for '001' input.", '1', 
+            CircuitFactory.join(CircuitFactory.getTrivialCircuit(), 
+            CircuitFactory.getBasicCircuit(Operation.OR), 
+            Operation.AND).evaluate(s)
+        );
     }
     /** 
      * Create a circuit to evaluate (x1 or not(x1)) and then
      * verify that its result is true for all values of x1.
      */
     public void testAlwaysTrue() {
-        Circuit alwaysTrue = CircuitFactory.join(CircuitFactory.getTrivialCircuit(), CircuitFactory.getBasicCircuit(Operation.NEG), Operation.OR);
+        Circuit alwaysTrue = CircuitFactory.join(
+            CircuitFactory.getTrivialCircuit(), 
+            CircuitFactory.getBasicCircuit(Operation.NEG), 
+            Operation.OR
+        );
         Stack<Character> s = new Stack<Character> ();
         s.addAll(Arrays.asList('0', '0'));
         assertEquals ("'1' for '00'", '1', alwaysTrue.evaluate(s));

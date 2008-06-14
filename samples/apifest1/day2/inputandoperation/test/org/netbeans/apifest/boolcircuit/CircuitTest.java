@@ -19,13 +19,6 @@
 
 package org.netbeans.apifest.boolcircuit;
 
-import java.security.CodeSource;
-import java.security.Permission;
-import java.security.PermissionCollection;
-import java.security.Policy;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Enumeration;
 import junit.framework.TestCase;
 import junit.framework.*;
 
@@ -91,11 +84,15 @@ public class CircuitTest extends TestCase {
         inTrue = Factory.createSimpleBooleanInput(true);
         inFalse = Factory.createSimpleBooleanInput(false);
         Operation op1 = Factory.createAndOperation(inFalse, inTrue);
-        Operation op2 = Factory.createOrOperation(Factory.createOperationBasedBooleanInput(op1), inFalse);
+        Operation op2 = Factory.createOrOperation(
+            Factory.createOperationBasedBooleanInput(op1), inFalse
+        );
         assertFalse(Circuit.evaluateBooleanOperation(op2));
         
         op1 = Factory.createAndOperation(inFalse, inFalse);
-        op2 = Factory.createOrOperation(Factory.createOperationBasedBooleanInput(op1), inTrue);
+        op2 = Factory.createOrOperation(
+            Factory.createOperationBasedBooleanInput(op1), inTrue
+        );
         assertTrue(Circuit.evaluateBooleanOperation(op2));
     }
     /** 
@@ -106,10 +103,14 @@ public class CircuitTest extends TestCase {
         inTrue = Factory.createSimpleBooleanInput(true);
         inFalse = Factory.createSimpleBooleanInput(false);
         Operation not = Factory.createNotOperation(inTrue);
-        Operation or = Factory.createOrOperation(Factory.createOperationBasedBooleanInput(not), inTrue);
+        Operation or = Factory.createOrOperation(
+            Factory.createOperationBasedBooleanInput(not), inTrue
+        );
         assertTrue(Circuit.evaluateBooleanOperation(or));
         not = Factory.createNotOperation(inFalse);
-        or = Factory.createOrOperation(Factory.createOperationBasedBooleanInput(not), inFalse);
+        or = Factory.createOrOperation(
+            Factory.createOperationBasedBooleanInput(not), inFalse
+        );
         assertTrue(Circuit.evaluateBooleanOperation(or));
     }
     

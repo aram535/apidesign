@@ -10,7 +10,6 @@
     
     <target name="clean">
         <delete dir="${samples.dir}/build"/>
-        <delete dir="${samples.dir}/libs/dist"/>
         <subant target="clean" antfile="../build.xml">
             <dirset refid="examples"/>
         </subant>

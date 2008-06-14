@@ -19,7 +19,9 @@ public final class CLIHandler {
         }
         // otherwise try to create the file yourself
         lockFile.createNewFile();
-        DataOutputStream os = new DataOutputStream(new FileOutputStream(lockFile));
+        DataOutputStream os = new DataOutputStream(
+            new FileOutputStream(lockFile)
+        );
         ServerSocket server = new ServerSocket();
         int p = server.getLocalPort();
         os.writeInt(p);

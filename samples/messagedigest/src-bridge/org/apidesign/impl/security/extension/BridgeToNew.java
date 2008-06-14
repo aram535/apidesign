@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.apidesign.impl.security.extension;
 
 import java.nio.ByteBuffer;
@@ -18,7 +13,8 @@ import org.apidesign.spi.security.Digestor;
  */
 // BEGIN: day.end.bridges.BridgeToNew
 public class BridgeToNew extends Digestor<MessageDigest> {
-    /** initializes the other bridge, and allow us to eliminate stack overflow */
+    /** initializes the other bridge, and allow us to eliminate stack 
+     * overflow */
     private static final BridgeToOld oldBridge = new BridgeToOld();
     
     @Override
@@ -34,7 +30,9 @@ public class BridgeToNew extends Digestor<MessageDigest> {
         try {
             return MessageDigest.getInstance(algorithm);
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(BridgeToNew.class.getName()).log(Level.FINE, "Cannot find " + algorithm, ex);
+            Logger.getLogger(BridgeToNew.class.getName()).log(
+                Level.FINE, "Cannot find " + algorithm, ex
+            );
             return null;
         }
     }

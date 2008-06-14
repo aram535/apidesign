@@ -17,7 +17,7 @@ public class MutableArray {
 
     public void encrypt(OutputStream os) throws IOException {
         DoEncode en = Lookup.getDefault().lookup(DoEncode.class);
-        assert en != null : "We need org.netbeans.example.crypt to be enabled!";
+        assert en != null : "org.netbeans.example.crypt missing!";
         byte[] clone = (byte[]) arr.clone();
         en.encode(clone);
         os.write(clone);

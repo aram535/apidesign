@@ -32,7 +32,9 @@ public abstract class Circuit extends Object {
         @Override
         public boolean evaluate(boolean[] in) {
             if ( in.length != 2) {
-                throw new IllegalArgumentException( "Should have two parameters");
+                throw new IllegalArgumentException(
+                    "Should have two parameters"
+                );
             }
             return in[0] && in[1];
         }
@@ -44,7 +46,9 @@ public abstract class Circuit extends Object {
         @Override
         public boolean evaluate(boolean[] in) {
             if ( in.length != 2) {
-                throw new IllegalArgumentException( "Should have two parameters");
+                throw new IllegalArgumentException(
+                    "Should have two parameters"
+                );
             }
             return in[0] || in[1];
         }
@@ -56,7 +60,9 @@ public abstract class Circuit extends Object {
         @Override
         public boolean evaluate(boolean[] in) {
             if ( in.length != 1) {
-                throw new IllegalArgumentException( "Should have one parameter");
+                throw new IllegalArgumentException(
+                    "Should have one parameter"
+                );
             }
             return !in[0];
         }
@@ -64,7 +70,8 @@ public abstract class Circuit extends Object {
     };
     
         
-    /** Feel free to implement and don't hesitate to throw IllegalArgumentEception 
+    /** Feel free to implement and don't hesitate to throw 
+     * IllegalArgumentEception 
      */
     public abstract boolean evaluate(boolean... in);
                
