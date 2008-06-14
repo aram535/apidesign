@@ -1,17 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package api.classes;
 
 import java.util.Iterator;
 import java.util.List;
 
-/**
- *
- * @author Jaroslav Tulach <jaroslav.tulach@netbeans.org>
- */
 public class Support {
     private Support() {
     }

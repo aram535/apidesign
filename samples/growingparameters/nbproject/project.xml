@@ -60,8 +60,12 @@
                         <location>src-api1.0</location>
                     </source-folder>
                     <source-folder style="packages">
+                        <label>src-api2.0</label>
+                        <location>src-api2.0</location>
+                    </source-folder>
+                    <source-folder style="packages">
                         <label>impl</label>
-                        <location>impl</location>
+                        <location>src-impl</location>
                     </source-folder>
                     <source-file>
                         <location>build.xml</location>
