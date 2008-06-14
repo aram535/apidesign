@@ -11,18 +11,6 @@ import org.apidesign.anagram.api.WordLibrary;
  */
 // BEGIN: anagram.ui.Anagrams
 public abstract class Anagrams extends javax.swing.JFrame implements UI {
-    public Anagrams() {
-        initComponents();        
-        getRootPane().setDefaultButton(guessButton);
-        
-        String version = System.getProperty("anagram.version");
-        if (version != null) {
-            if (version.startsWith("app-")) {
-                version = version.substring(4);
-            }
-            setTitle("Anagrams - " + version + " version");
-        }
-    }
     
     protected abstract WordLibrary getWordLibrary();
     protected abstract Scrambler getScrambler();
@@ -35,6 +23,19 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
     int wordIdx = 0;
     String original;
     String scrambled;
+    
+    public Anagrams() {
+        initComponents();        
+        getRootPane().setDefaultButton(guessButton);
+        
+        String version = System.getProperty("anagram.version");
+        if (version != null) {
+            if (version.startsWith("app-")) {
+                version = version.substring(4);
+            }
+            setTitle("Anagrams - " + version + " version");
+        }
+    }
     
     public final String getOriginalWord() {
         return original;
