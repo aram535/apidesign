@@ -12,11 +12,12 @@ import org.springframework.stereotype.Service;
  * use the annotation directly there.
  */
 
+// BEGIN: anagram.spring.autowire.Anagrams
 @Service("ui")
 public class AnagramsAnnotated extends AnagramsWithConstructor {
     @Autowired
     public AnagramsAnnotated(WordLibrary library, Scrambler scrambler) {
         super(library, scrambler);
     }
-
 }
+// END: anagram.spring.autowire.Anagrams
