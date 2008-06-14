@@ -4,11 +4,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class Registry {
-    private static Map<Class<?>,Object[]> instances = new LinkedHashMap<Class<?>,Object[]>();
     
     private Registry() {
     }
-    
+
+    // BEGIN: anagram.registry
+    private static Map<Class<?>,Object[]> instances = 
+        new LinkedHashMap<Class<?>,Object[]>();
     public static void registerClass(Class<?> impl) {
         instances.put(impl, new Object[1]);
     }
@@ -28,5 +30,6 @@ public final class Registry {
         }
         return null;
     }
+    // END: anagram.registry
 }
 

@@ -10,7 +10,8 @@ public final class AnagramsWithProperties extends Anagrams {
     
     public AnagramsWithProperties() {
     }
-    
+
+    // BEGIN: anagram.property
     @Override
     protected WordLibrary getWordLibrary() {
         try {
@@ -44,4 +45,5 @@ public final class AnagramsWithProperties extends Anagrams {
             throw new IllegalStateException(ex);
         }
     }
+    // END: anagram.property
 }

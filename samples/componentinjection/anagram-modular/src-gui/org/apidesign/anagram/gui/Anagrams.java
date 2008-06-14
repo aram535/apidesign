@@ -9,13 +9,8 @@ import org.apidesign.anagram.api.WordLibrary;
  *
  * @author  Dirk Ruiz, Jaroslav Tulach
  */
+// BEGIN: anagram.ui.Anagrams
 public abstract class Anagrams extends javax.swing.JFrame implements UI {
-    int wordIdx = 0;
-    String original;
-    String scrambled;
-    
-    
-    /** Creates new form Anagrams */
     public Anagrams() {
         initComponents();        
         getRootPane().setDefaultButton(guessButton);
@@ -24,10 +19,13 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
     protected abstract WordLibrary getWordLibrary();
     protected abstract Scrambler getScrambler();
     
-    
     public void display() {
         setVisible(true);
     }
+// FINISH: anagram.ui.Anagrams
+    int wordIdx = 0;
+    String original;
+    String scrambled;
     
     @Override
     public void addNotify() {
