@@ -18,11 +18,11 @@
     </target>
     
     <target name="run" depends="build">
-        <echo message="Running the Implementation against Version 1.0 of the API. This should succeeds."/>
+        <echo level="info" message="Running the Implementation against Version 1.0 of the API. This should succeeds."/>
         <antcall target="-run-one">
             <param name="version" value="api1.0"/>
         </antcall>
-        <echo message="Running the Implementation against Version 2.0 of the API. This should fail."/>
+        <echo level="info" message="Running the Implementation against Version 2.0 of the API. This should fail."/>
         <antcall target="-run-one">
             <param name="version" value="api2.0"/>
         </antcall>
