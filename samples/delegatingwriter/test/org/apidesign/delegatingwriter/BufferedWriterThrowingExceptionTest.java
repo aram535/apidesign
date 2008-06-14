@@ -43,6 +43,14 @@ public class BufferedWriterThrowingExceptionTest {
         assertEquals("Hello!", writer.toString());
     }
 
+    @Test
+    public void testBehaviourWhenDelegatingConditionallyIsOK() throws IOException {
+        BufferedWriter bufferedWriter = new AltBufferedWriter(writer, AltBufferedWriter.Behaviour.DELEGATE_CONDITIONALLY);
+        doAppendHello(bufferedWriter, "Hello!");
+        bufferedWriter.flush();
+        
+        assertEquals("Hello!", writer.toString());
+    }
 
     private void doAppendHello(BufferedWriter bufferedWriter, CharSequence what) throws IOException {
         // BEGIN: writer.throw.client

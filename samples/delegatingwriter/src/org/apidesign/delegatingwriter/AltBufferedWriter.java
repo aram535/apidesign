@@ -71,8 +71,29 @@ public class AltBufferedWriter extends BufferedWriter {
         // END: writer.delegateout
     }
 
-    private Writer appendDelegateConditionally(CharSequence csq) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    private Writer appendDelegateConditionally(CharSequence csq) throws IOException {
+        // BEGIN: writer.conditionally
+        boolean isOverriden = false;
+        try {
+            isOverriden = 
+                (getClass().getMethod("write", String.class).getDeclaringClass() != Writer.class) ||
+                (getClass().getMethod("write", Integer.TYPE).getDeclaringClass() != BufferedWriter.class) ||
+                (getClass().getMethod("write", String.class, Integer.TYPE, Integer.TYPE).getDeclaringClass() != BufferedWriter.class);
+        } catch (Exception ex) {
+            throw new IOException(ex);
+        }
+        
+        if (isOverriden) {
+            if (csq == null) {
+                write("null");
+            } else {
+                write(csq.toString());
+            }
+        } else {
+            out.append(csq);
+        }
+        return this;
+        // END: writer.conditionally
     }
     
     public enum Behaviour {

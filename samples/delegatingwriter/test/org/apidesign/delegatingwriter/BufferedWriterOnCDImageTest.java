@@ -35,6 +35,16 @@ public class BufferedWriterOnCDImageTest {
         bufferedWriter.append(cdImage);
         assertEquals("Correct number of writes delegated", cdImage.length(), writer.getCharacterCount());
     }
+    
+    @Test
+    public void testBehaviourWhenDelegatingConditionallyIsOK() throws IOException {
+        CountingWriter writer = new CountingWriter();
+        CDSequence cdImage = new CDSequence();
+        BufferedWriter bufferedWriter = new AltBufferedWriter(writer, AltBufferedWriter.Behaviour.DELEGATE_CONDITIONALLY);
+        bufferedWriter.append(cdImage);
+        assertEquals("Correct number of writes delegated", cdImage.length(), writer.getCharacterCount());
+    }
+    
 
 // BEGIN: writer.bigseq
     /** A "lazy" sequence of characters, for example one that can represent

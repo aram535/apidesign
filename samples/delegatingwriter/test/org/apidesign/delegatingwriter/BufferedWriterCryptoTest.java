@@ -45,4 +45,12 @@ public class BufferedWriterCryptoTest {
         );
     }
 
+    @Test
+    public void testBehaviourWhenDelegatingConditionallyIsOK() throws IOException {
+        CryptoWriter bufferedWriter = new CryptoWriter(writer, AltBufferedWriter.Behaviour.DELEGATE_CONDITIONALLY);
+        bufferedWriter.append("VMS");
+        bufferedWriter.flush();
+        assertEquals("Converted", "WNT", writer.toString());
+    }
+    
 }
