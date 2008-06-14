@@ -103,7 +103,9 @@
     </target>
 
     <target name="-run-one">
-        <java classpath="${cp}:build/${version}/classes" classname="${main}"/>
+        <java classpath="${cp}:build/${version}/classes" classname="${main}">
+            <jvmarg value="-Danagram.version=${version}"/>
+        </java>
     </target>
     
     <target name="-build-one">
