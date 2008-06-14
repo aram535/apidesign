@@ -2,7 +2,9 @@
 package api;
 
 import java.nio.ByteBuffer;
-import spi.DigestImplementation;
+import impl.friendapi.DigestImplementation;
+import impl.friendapi.DigestProvider;
+import java.util.ServiceLoader;
 
 /** MessageDigest extends MessageDigestSpi, that means the javadoc
  *
@@ -19,7 +21,13 @@ public final class Digest {
     /** Factory method to create digest for an algorithm.
      */
     public static Digest getInstance(String algorithm) {
-        return null;
+        for (DigestProvider dp : ServiceLoader.load(DigestProvider.class)) {
+            DigestImplementation impl = dp.create(algorithm);
+            if (impl != null) {
+                return new Digest(impl);
+            }
+        }
+        throw new IllegalArgumentException(algorithm);
     }
       
     //
@@ -28,7 +36,7 @@ public final class Digest {
     //
     
     public byte[] digest(ByteBuffer bb) {
-        return null;
+        impl.update(bb);
+        return impl.digest();
     }
-            
 }
