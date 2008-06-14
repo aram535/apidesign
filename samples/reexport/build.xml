@@ -15,10 +15,22 @@
             <param name="version" value="query"/>
             <param name="cp" value="build/api1.0/classes"/>
         </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="wrap1.0"/>
+            <param name="cp" value="build/api1.0/classes"/>
+        </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="wrap2.0"/>
+            <param name="cp" value="build/api2.0/classes"/>
+        </antcall>
         
         <antcall target="-build-one">
             <param name="version" value="test"/>
             <param name="cp" value="build/api1.0/classes:build/query/classes:${junit.jar}"/>
+        </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="testwrap"/>
+            <param name="cp" value="build/wrap1.0/classes:${junit.jar}"/>
         </antcall>
     </target>
     
@@ -26,10 +38,26 @@
         <echo level="info" message="Running the Test against Query and Version 1.0 of String. This should succeeds."/>
         <antcall target="-run-one">
             <param name="version" value="api1.0"/>
+            <param name="queryversion" value="query"/>
+            <param name="test" value="test"/>
         </antcall>
         <echo level="info" message="Running the Test against Query and Version 2.0 of String. This should fail."/>
         <antcall target="-run-one">
             <param name="version" value="api2.0"/>
+            <param name="queryversion" value="query"/>
+            <param name="test" value="test"/>
+        </antcall>
+        <echo level="info" message="Running the Test against Wrapping Query 1.0. This should succeeds."/>
+        <antcall target="-run-one">
+            <param name="version" value="api1.0"/>
+            <param name="queryversion" value="wrap1.0"/>
+            <param name="test" value="testwrap"/>
+        </antcall>
+        <echo level="info" message="Running the Test against Wrapping Query 2.0. This should succeeds."/>
+        <antcall target="-run-one">
+            <param name="version" value="api2.0"/>
+            <param name="queryversion" value="wrap2.0"/>
+            <param name="test" value="testwrap"/>
         </antcall>
     </target>
     
@@ -43,17 +71,17 @@
     
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
-        <mkdir dir="build/testresults"/>
-        <junit dir="build/test/classes" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
+        <mkdir dir="build/${test}results"/>
+        <junit dir="build/${test}/classes" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
             <batchtest todir="build/testresults">
-                <fileset dir="build/test/classes">
+                <fileset dir="build/${test}/classes">
                     <filename name="**/*Test.class"/>
                 </fileset>
             </batchtest>
             <classpath>
                 <path location="build/${version}/classes"/>
-                <path location="build/query/classes"/>
-                <path location="build/test/classes"/>
+                <path location="build/${queryversion}/classes"/>
+                <path location="build/${test}/classes"/>
                 <path location="${junit.jar}"/>
             </classpath>
             <formatter type="brief" usefile="false"/>

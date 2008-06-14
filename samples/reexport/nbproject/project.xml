@@ -29,9 +29,27 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-wrap1.0</label>
+                    <type>java</type>
+                    <location>src-wrap1.0</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src-wrap2.0</label>
+                    <type>java</type>
+                    <location>src-wrap2.0</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>test</label>
                     <type>java</type>
                     <location>src-test</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>test</label>
+                    <type>java</type>
+                    <location>src-testwrap</location>
                     <encoding>UTF-8</encoding>
                 </source-folder>
             </folders>
@@ -64,12 +82,24 @@
                         <location>src-api2.0</location>
                     </source-folder>
                     <source-folder style="packages">
-                        <label>Query using api.String</label>
+                        <label>Query reexporting api.String</label>
                         <location>src-query</location>
                     </source-folder>
                     <source-folder style="packages">
-                        <label>Usage of the API</label>
+                        <label>Query wrapping api.String 1.0</label>
+                        <location>src-wrap1.0</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>Query wrapping api.String 2.0</label>
+                        <location>src-wrap2.0</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>Usage of the reexporting Query</label>
                         <location>src-test</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>Usage of the wrapping Query</label>
+                        <location>src-testwrap</location>
                     </source-folder>
                     <source-file>
                         <location>build.xml</location>
@@ -98,8 +128,23 @@
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
+                <package-root>src-wrap1.0</package-root>
+                <classpath mode="compile">src-api1.0</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-wrap2.0</package-root>
+                <classpath mode="compile">src-api2.0</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
                 <package-root>src-test</package-root>
                 <classpath mode="compile">src-api1.0:src-query:../libs/dist/junit-4.4.jar</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-testwrap</package-root>
+                <classpath mode="compile">src-wrap1.0:../libs/dist/junit-4.4.jar</classpath>
                 <source-level>1.5</source-level>
             </compilation-unit>
         </java-data>
