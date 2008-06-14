@@ -1,3 +1,8 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package org.apidesign.delegatingwriter;
 
 import java.io.BufferedWriter;
@@ -28,25 +33,18 @@ public class AltBufferedWriter extends BufferedWriter {
     @Override
     public Writer append(CharSequence csq) throws IOException {
         switch (behaviour) {
-            case THROW_EXCEPTION: 
-                return appendThrowException(csq); 
-            case DELEGATE_TO_SUPER: 
-                return appendDelegateToSuper(csq);
-            case DELEGATE_TO_OUT: 
-                return appendDelegateToUnderlaying(csq);
-            case DELEGATE_CONDITIONALLY: 
-                return appendDelegateConditionally(csq);
-            default: 
-                throw new IllegalStateException("Unknown" + behaviour);
+            case THROW_EXCEPTION: return appendThrowException(csq); 
+            case DELEGATE_TO_SUPER: return appendDelegateToSuper(csq);
+            case DELEGATE_TO_OUT: return appendDelegateToUnderlaying(csq);
+            case DELEGATE_CONDITIONALLY: return appendDelegateConditionally(csq);
+            default: throw new IllegalStateException("Unknown" + behaviour);
         }
     }
     
     public Writer appendThrowException(CharSequence csq) throws IOException {
-        /* in case of real code, this would be part of 
-         the regular append method. BEGIN: writer.throw
+        /* in case of real code, this would be part of the regular append method BEGIN: writer.throw
     public Writer append(CharSequence csq) throws IOException {
-        /* thrown an exception as this method is new and 
-         subclasses need to override it */
+        /* thrown an exception as this method is new and subclasses need to override it */
         throw new UnsupportedOperationException();
     }
     // END: writer.throw
@@ -78,27 +76,14 @@ public class AltBufferedWriter extends BufferedWriter {
         // END: writer.delegateout
     }
 
-    private Writer appendDelegateConditionally(CharSequence csq) 
-    throws IOException {
+    private Writer appendDelegateConditionally(CharSequence csq) throws IOException {
         // BEGIN: writer.conditionally
         boolean isOverriden = false;
         try {
             isOverriden = 
-                (
-                    getClass().getMethod(
-                        "write", String.class
-                    ).getDeclaringClass() != Writer.class
-                ) ||
-                (
-                    getClass().getMethod(
-                        "write", Integer.TYPE
-                    ).getDeclaringClass() != BufferedWriter.class
-                ) ||
-                (
-                    getClass().getMethod(
-                        "write", String.class, Integer.TYPE, Integer.TYPE
-                    ).getDeclaringClass() != BufferedWriter.class
-                );
+                (getClass().getMethod("write", String.class).getDeclaringClass() != Writer.class) ||
+                (getClass().getMethod("write", Integer.TYPE).getDeclaringClass() != BufferedWriter.class) ||
+                (getClass().getMethod("write", String.class, Integer.TYPE, Integer.TYPE).getDeclaringClass() != BufferedWriter.class);
         } catch (Exception ex) {
             throw new IOException(ex);
         }
@@ -114,9 +99,6 @@ public class AltBufferedWriter extends BufferedWriter {
     }
     
     public enum Behaviour {
-        THROW_EXCEPTION, 
-        DELEGATE_TO_SUPER, 
-        DELEGATE_TO_OUT, 
-        DELEGATE_CONDITIONALLY
+        THROW_EXCEPTION, DELEGATE_TO_SUPER, DELEGATE_TO_OUT, DELEGATE_CONDITIONALLY
     }
 }

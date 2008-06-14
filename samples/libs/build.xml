@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Downloads necessary libraries" default="libraries" basedir=".">
-       <target name="libraries">
+    <target name="clean">
+        <delete dir="dist"/>
+    </target>
+    
+    <target name="libraries">
         <antcall target="-library">
             <param name="library" value="junit-4.4"/>
             <param name="url" value="http://switch.dl.sourceforge.net/sourceforge/junit/junit-4.4.jar"/>
@@ -9,11 +13,6 @@
             <param name="library" value="org-openide-util"/>
             <param name="library.include" value="**/org-openide-util.jar"/>
             <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/platform8/org-openide-util.nbm"/>
-        </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="org-openide-filesystems"/>
-            <param name="library.include" value="**/org-openide-filesystems.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/platform8/org-openide-filesystems.nbm"/>
         </antcall>
         <antcall target="-library-from-zip">
             <param name="library" value="org-netbeans-modules-nbjunit"/>

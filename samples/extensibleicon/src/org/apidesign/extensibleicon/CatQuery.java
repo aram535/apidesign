@@ -7,18 +7,14 @@ public class CatQuery {
     private CatQuery() { }
     
     public static boolean isCat(ExtIcon icon) {
-        for (CatQueryImplementation impl : 
-            Lookup.getDefault().lookupAll(CatQueryImplementation.class)
-        ) {
+        for (CatQueryImplementation impl : Lookup.getDefault().lookupAll(CatQueryImplementation.class)) {
             Boolean res = impl.isCat(icon);
             if (res != null) {
                 return res;
             }
         }
 
-        for (CatQueryImplementation impl : 
-            icon.getLookup().lookupAll(CatQueryImplementation.class)
-        ) {
+        for (CatQueryImplementation impl : icon.getLookup().lookupAll(CatQueryImplementation.class)) {
             Boolean res = impl.isCat(icon);
             if (res != null) {
                 return res;

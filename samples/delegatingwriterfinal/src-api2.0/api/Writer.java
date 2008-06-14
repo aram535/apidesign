@@ -32,8 +32,7 @@ public final class Writer implements Appendable {
             seq.write(new CharSeq(cbuf, 0, cbuf.length));
         }
     }
-    public final void write(char cbuf[], int off, int len) 
-    throws IOException {
+    public final void write(char cbuf[], int off, int len) throws IOException {
         if (impl != null) {
             impl.write(cbuf, off, len);
         } else {
@@ -47,8 +46,7 @@ public final class Writer implements Appendable {
             seq.write(str);
         }
     }
-    public final void write(String str, int off, int len) 
-    throws IOException {
+    public final void write(String str, int off, int len) throws IOException {
         if (impl != null) {
             impl.write(str, off, len);
         } else {
@@ -83,8 +81,7 @@ public final class Writer implements Appendable {
         return this;
     }
 
-    public final Writer append(CharSequence csq, int start, int end) 
-    throws IOException {
+    public final Writer append(CharSequence csq, int start, int end) throws IOException {
         return append(csq.subSequence(start, end));
     }
 

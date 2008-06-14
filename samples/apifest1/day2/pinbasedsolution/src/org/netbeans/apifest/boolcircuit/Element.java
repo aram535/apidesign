@@ -1,14 +1,22 @@
+/*
+ * Element.java
+ *
+ * Created on 12. červenec 2006, 14:14
+ *
+ * To change this template, choose Tools | Template Manager
+ * and open the template in the editor.
+ */
+
 package org.netbeans.apifest.boolcircuit;
 
 /**
  * Representation of an element in the circuit.
- * The internal behaviour of the element is opaque to the API user, 
- * it can only be used as a building block for logical equations, 
- * using primitive operation factories and a factory for input 
- * pin representation.
- * Elements are chained to create the logical net. 
- * The inputs to the net are represented by the elements created 
- * by {@link #createInput(boolean[])} factory method.
+ * The internal behaviour of the element is opaque to the API user, it can only
+ * be used as a building block for logical equations, using primitive operation
+ * factories and a factory for input pin representation.
+ * Elements are chained to create the logical net. The inputs to the net are
+ * represented by the elements created by {@link #createInput(boolean[])}
+ * factory method.
  */
 public abstract class Element {
         
@@ -26,9 +34,7 @@ public abstract class Element {
      * Creates an Element representing 2-input AND function.
      *
      */
-    public static Element createAnd(
-        final Element source1, final Element source2
-    ) {
+    public static Element createAnd(final Element source1, final Element source2) {
         return new Element() {
             double evaluate(double[] inputs) {
                 return source1.evaluate(inputs) * source2.evaluate(inputs);
@@ -44,9 +50,7 @@ public abstract class Element {
      * Creates an Element representing 2-input OR function.
      *
      */
-    public static Element createOr(
-        final Element source1, final Element source2
-    ) {
+    public static Element createOr(final Element source1, final Element source2) {
         return new Element() {
             double evaluate(double[] inputs) {
                 double x = source1.evaluate(inputs);
@@ -96,17 +100,13 @@ public abstract class Element {
     /**
      * Creates an Element with user-defined transfer function.
      */
-    public static Element createGate(
-        final Element source1, final Element source2, final Function function
-    ) {
+    public static Element createGate(final Element source1, final Element source2, final Function function) {
         return new Element() {
             double evaluate(double[] inputs) {
                 double x = source1.evaluate(inputs);
                 double y = source2.evaluate(inputs);
                 double result = function.evaluate(x, y);
-                if (result < 0.0 || result > 1.0) {
-                    throw new InternalError("Illegal gate function");
-                }
+                if (result < 0.0 || result > 1.0) throw new InternalError("Illegal gate function");
                 return result;
             }
             

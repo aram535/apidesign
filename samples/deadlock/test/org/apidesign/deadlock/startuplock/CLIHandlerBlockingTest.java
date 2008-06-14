@@ -52,5 +52,5 @@ public class CLIHandlerBlockingTest {
         public void close() throws SecurityException {
         }
     } // end of H
-}
 // END: test.capture.logs
+}

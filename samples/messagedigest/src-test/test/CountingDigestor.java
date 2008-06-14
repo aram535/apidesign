@@ -17,12 +17,7 @@ public final class CountingDigestor extends Digestor<int[]> {
     @Override
     protected byte[] digest(int[] data) {
         int i = data[0];
-        byte[] arr = { 
-            (byte) (i & 255), 
-            (byte) ((i >> 8) & 255), 
-            (byte) ((i >> 16) & 255), 
-            (byte) ((i >> 24) & 255) 
-        };
+        byte[] arr = { (byte) (i & 255), (byte) ((i >> 8) & 255), (byte) ((i >> 16) & 255), (byte) ((i >> 24) & 255) };
         return arr;
     }
 

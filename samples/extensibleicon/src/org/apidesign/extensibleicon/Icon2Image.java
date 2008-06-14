@@ -12,11 +12,7 @@ public class Icon2Image {
         if (img != null) {
             return img;
         }
-        BufferedImage buf = new BufferedImage(
-            icon.getIconWidth(), 
-            icon.getIconHeight(), 
-            BufferedImage.TYPE_INT_RGB
-        );
+        BufferedImage buf = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_RGB);
         icon.paintIcon(null, buf.getGraphics(), 0, 0);
         return buf;
     }

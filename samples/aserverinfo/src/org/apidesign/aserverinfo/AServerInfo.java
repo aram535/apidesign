@@ -9,10 +9,7 @@ public final class AServerInfo {
     private final ResetHandler reset;
     private final ShutdownHandler shutdown;
 
-    private AServerInfo(
-        NameProvider name, URLProvider url, 
-        ResetHandler reset, ShutdownHandler shutdown
-    ) {
+    private AServerInfo(NameProvider name, URLProvider url, ResetHandler reset, ShutdownHandler shutdown) {
         this.name = name;
         this.url = url;
         this.reset = reset;
@@ -87,11 +84,7 @@ public final class AServerInfo {
     }
     
     // BEGIN: aserverinfo.regularcreate
-    public static AServerInfo create(
-        NameProvider nameProvider, 
-        URLProvider urlProvider, 
-        ResetHandler reset
-    )
+    public static AServerInfo create(NameProvider nameProvider, URLProvider urlProvider, ResetHandler reset)
     // END: aserverinfo.regularcreate
     {
         return new AServerInfo(nameProvider, urlProvider, reset, null);
@@ -104,12 +97,7 @@ public final class AServerInfo {
     }
     
     /** @since 2.0 */
-    public static AServerInfo create(
-        NameProvider nameProvider, 
-        URLProvider urlProvider, 
-        ResetHandler reset, 
-        ShutdownHandler shutdown
-    )
+    public static AServerInfo create(NameProvider nameProvider, URLProvider urlProvider, ResetHandler reset, ShutdownHandler shutdown)
     // END: aserverinfo.regularcreate.withshutdown
     {
         return new AServerInfo(nameProvider, urlProvider, reset, shutdown);

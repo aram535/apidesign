@@ -19,10 +19,7 @@ public class ThreeWaysToUseHello {
     // BEGIN: hello.supercall
     private static class SuperHello extends Hello {
         @Override
-        public void hello() { 
-            super.hello(); 
-            System.out.println("Hello once again"); 
-        }
+        public void hello() { super.hello(); System.out.println("Hello once again"); }
     }
     // END: hello.supercall
     

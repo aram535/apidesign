@@ -23,10 +23,7 @@ public class BufferedWriterOnCDImageTest {
         CDSequence cdImage = new CDSequence();
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         bufferedWriter.append(cdImage);
-        assertEquals(
-            "Correct number of writes delegated", 
-            cdImage.length(), writer.getCharacterCount()
-        );
+        assertEquals("Correct number of writes delegated", cdImage.length(), writer.getCharacterCount());
         // END: writer.countcd
     }
 
@@ -34,30 +31,18 @@ public class BufferedWriterOnCDImageTest {
     public void testBehaviourOfBufferThatDelegatesToAppend() throws IOException {
         CountingWriter writer = new CountingWriter();
         CDSequence cdImage = new CDSequence();
-        BufferedWriter bufferedWriter = new AltBufferedWriter(
-            writer, AltBufferedWriter.Behaviour.DELEGATE_TO_OUT
-        );
+        BufferedWriter bufferedWriter = new AltBufferedWriter(writer, AltBufferedWriter.Behaviour.DELEGATE_TO_OUT);
         bufferedWriter.append(cdImage);
-        assertEquals(
-            "Correct number of writes delegated", 
-            cdImage.length(), 
-            writer.getCharacterCount()
-        );
+        assertEquals("Correct number of writes delegated", cdImage.length(), writer.getCharacterCount());
     }
     
     @Test
     public void testBehaviourWhenDelegatingConditionallyIsOK() throws IOException {
         CountingWriter writer = new CountingWriter();
         CDSequence cdImage = new CDSequence();
-        BufferedWriter bufferedWriter = new AltBufferedWriter(
-            writer, AltBufferedWriter.Behaviour.DELEGATE_CONDITIONALLY
-        );
+        BufferedWriter bufferedWriter = new AltBufferedWriter(writer, AltBufferedWriter.Behaviour.DELEGATE_CONDITIONALLY);
         bufferedWriter.append(cdImage);
-        assertEquals(
-            "Correct number of writes delegated", 
-            cdImage.length(), 
-            writer.getCharacterCount()
-        );
+        assertEquals("Correct number of writes delegated", cdImage.length(), writer.getCharacterCount());
     }
     
 
@@ -82,7 +67,7 @@ public class BufferedWriterOnCDImageTest {
         public int length() {
             return end - start;
         }
-// FINISH: writer.bigseq
+// END: writer.bigseq
 
         public char charAt(int index) {
             int ch = index % ('Z' - 'A' + 1);

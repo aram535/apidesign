@@ -20,9 +20,7 @@ public abstract class Lookup {
     // END: design.consistency.lookupAll.1.0
 
     // BEGIN: design.consistency.lookupAllClasses.1.0
-    public abstract <T> Set<Class<? extends T>> lookupAllClasses(
-        Class<T> clazz
-    );
+    public abstract <T> Set<Class<? extends T>> lookupAllClasses(Class<T> clazz);
     // END: design.consistency.lookupAllClasses.1.0
 }
 // END: design.consistency.1.0

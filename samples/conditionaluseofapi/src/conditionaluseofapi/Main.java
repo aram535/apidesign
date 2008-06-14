@@ -24,10 +24,7 @@ public class Main {
 
         try {
             Class onlyOn15 = Class.forName("java.lang.StringBuilder");
-            Class codeOn15 = Class.forName(
-                "conditionaluseofapi.StringBuilderAdd15"
-            );
-            add = (AddString)codeOn15.newInstance();
+            add = (AddString)Class.forName("conditionaluseofapi.StringBuilderAdd15").newInstance();
         } catch (ClassNotFoundException ex) {
             add = new StringBufferAdd();
         }

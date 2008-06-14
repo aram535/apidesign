@@ -11,7 +11,7 @@ public class MyDocument  extends AbstractDocument {
     final void writeLockAccess() {
         writeLock();
     }
-// FINISH: public.accessor
+// END: public.accessor
 
     @Override
     public Element getDefaultRootElement() {

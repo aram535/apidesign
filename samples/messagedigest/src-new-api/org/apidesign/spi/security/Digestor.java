@@ -17,7 +17,7 @@ public abstract class Digestor<Data> {
    protected abstract Data create(String algorithm); 
    protected abstract void update(Data data, ByteBuffer input);
    
-// FINISH: day.end.bridges.Digestor   
+// END: day.end.bridges.Digestor   
    
    
    static {

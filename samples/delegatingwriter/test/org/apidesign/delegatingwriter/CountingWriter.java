@@ -27,7 +27,7 @@ public class CountingWriter extends Writer {
         counter += csq.length();
         return this;
     }
-// FINISH: writer.CountingWriter
+// END: writer.CountingWriter
 
     @Override
     public Writer append(CharSequence csq, int start, int end) throws IOException {

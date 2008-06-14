@@ -23,9 +23,7 @@ public final class Digest {
      */
     public static Digest getInstance(String algorithm) {
         for (Digestor<?> digestor : ServiceLoader.load(Digestor.class)) {
-            DigestImplementation<?> impl = DigestImplementation.create(
-                digestor, algorithm
-            );
+            DigestImplementation<?> impl = DigestImplementation.create(digestor, algorithm);
             if (impl != null) {
                 return new Digest(impl);
             }

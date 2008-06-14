@@ -13,9 +13,7 @@ public class CryptoWriter extends AltBufferedWriter {
     public CryptoWriter(Writer out) {
         super(out);
     }
-    public CryptoWriter(
-        Writer out, AltBufferedWriter.Behaviour behaviour
-    ) {
+    public CryptoWriter(Writer out, AltBufferedWriter.Behaviour behaviour) {
         super(out, behaviour);
     }
 /* The above code is here to let us simulate different behaviours of the append
@@ -26,15 +24,15 @@ public class CryptoWriter extends BufferedWriter {
         super(out);
     }
     
-    /* We need to override all known methods of BufferedWriter 
-    * and do conversion of the argument char, string or char array.
+    /* We need to override all known methods of BufferedWriter and do conversion
+    * of the argument char, string or char array.
     */
     
     @Override
-    public void write(char[] buf, int off, int len) throws IOException {
+    public void write(char[] cbuf, int off, int len) throws IOException {
         char[] arr = new char[len];
         for (int i = 0; i < len; i++) {
-            arr[i] = convertChar(buf[off + i]);
+            arr[i] = convertChar(cbuf[off + i]);
         }
         super.write(arr, 0, len);
     }
@@ -62,7 +60,7 @@ public class CryptoWriter extends BufferedWriter {
         }
         return (char)(c + 1);
     }
-// FINISH: writer.CryptoWriter
+// END: writer.CryptoWriter
 
     /* delegates to write(cbuf, 0, cbuf.length)
     public void write(char[] cbuf) throws IOException {

@@ -19,6 +19,13 @@
 
 package org.netbeans.apifest.boolcircuit;
 
+import java.security.CodeSource;
+import java.security.Permission;
+import java.security.PermissionCollection;
+import java.security.Policy;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Enumeration;
 import junit.framework.TestCase;
 import junit.framework.*;
 
@@ -58,6 +65,13 @@ public class CircuitTest extends TestCase {
         super(testName);
     }
 
+    protected void setUp() throws Exception {
+    }
+
+    protected void tearDown() throws Exception {
+    }
+    
+
     // BEGIN: apifest.day1.pinbasedsolution.CircuitTest
     /** 
      * Create a circuit to evaluate x1 and x2 and then
@@ -92,14 +106,8 @@ public class CircuitTest extends TestCase {
             )
         );
         
-        assertFalse (
-            "(false AND true) OR false is false", 
-            c.evaluate(false, true, false)
-        );
-        assertTrue (
-            "(false AND false) OR true is true", 
-            c.evaluate(false, false, true)
-        );
+        assertFalse ("(false AND true) OR false is false", c.evaluate(false, true, false));
+        assertTrue ("(false AND false) OR true is true", c.evaluate(false, false, true));
     }
     
     /** 

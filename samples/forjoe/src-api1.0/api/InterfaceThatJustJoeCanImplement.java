@@ -4,9 +4,7 @@ package api;
 public abstract class InterfaceThatJustJoeCanImplement {
     protected InterfaceThatJustJoeCanImplement() {
         if (!"impl.joe.JoesImpl".equals(getClass().getName())) {
-            throw new IllegalStateException(
-                "Sorry, you are not allowed to implement this class"
-            );
+            throw new IllegalStateException("Sorry, you are not allowed to implement this class");
         }
     }
     
