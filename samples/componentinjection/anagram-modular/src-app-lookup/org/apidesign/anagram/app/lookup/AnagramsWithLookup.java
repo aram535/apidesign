@@ -25,7 +25,7 @@ class AnagramsWithLookup extends Anagrams {
 // FINISH: anagram.lookup.Anagrams
     
     private Lookup.Result<Scrambler> scramblers = Lookup.getDefault().lookupResult(Scrambler.class);
-// BEGIN: anagram.lookup.Listeners      
+// BEGIN: anagram.lookup.Listeners
     private Lookup.Result<WordLibrary> libraries 
         = Lookup.getDefault().lookupResult(WordLibrary.class);
     private LookupListener listener = new LookupListener() {
@@ -35,7 +35,7 @@ class AnagramsWithLookup extends Anagrams {
     };
     {
         libraries.addLookupListener(listener);
-// FINISH: anagram.lookup.Listeners      
+// FINISH: anagram.lookup.Listeners
         
         scramblers.addLookupListener(listener);
         // initialize the results for listening

@@ -15,7 +15,8 @@ public abstract class AnagramsTestBase {
     public void cleanUpServices() {
         MockServices.setServices();
     }
-    
+
+    // BEGIN: anagram.lookup.mockservices
     @Test public void testInjectionOfServices() throws Exception {
         Anagrams ui = create();
         
@@ -59,6 +60,6 @@ public abstract class AnagramsTestBase {
         public String[] getWords() {
             return new String[] { "Hello World!" };
         }
-        
     }
+    // END: anagram.lookup.mockservices
 }
