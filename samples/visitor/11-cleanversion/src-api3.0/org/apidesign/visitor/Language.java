@@ -35,6 +35,8 @@ public final class Language {
         public void visit(Visitor v) {
             if (v instanceof Visitor1_0) {
                 ((Visitor1_0) v).visitPlus(this);
+            } else if (v instanceof Visitor3_0) {
+                ((Visitor3_0) v).visitPlus(this);
             } else {
                 v.visitUnknown(this);
             }
@@ -57,6 +59,9 @@ public final class Language {
         public void visit(Visitor v) {
             if (v instanceof Visitor1_0) {
                 ((Visitor1_0) v).visitNumber(this);
+            } else if (v instanceof Visitor3_0) {
+                Real wrapper = new Real(getValue());
+                ((Visitor3_0) v).visitReal(wrapper);
             } else {
                 v.visitUnknown(this);
             }
@@ -77,6 +82,8 @@ public final class Language {
         public void visit(Visitor v) { 
             if (v instanceof Visitor2_0) {
                 ((Visitor2_0)v).visitMinus(this);
+            } else if (v instanceof Visitor3_0) {
+                ((Visitor3_0)v).visitMinus(this);
             } else {
                 v.visitUnknown(this);
             }
