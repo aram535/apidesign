@@ -21,17 +21,13 @@
             <param name="cp" value="build/api1.0/classes:${junit.jar}"/>
         </antcall>
 
-        <echo level="info" message="Next compilation will fails, as adding methods into interface is not binary compatible"/>
-        <antcall target="-build-one">
-            <param name="version" value="test"/>
-            <param name="out" value="will-not-compile"/>
-            <param name="cp" value="build/api2.0/classes:${junit.jar}"/>
-            <param name="failonerror" value="false"/>
-        </antcall>
-
         <antcall target="-build-one">
             <param name="version" value="test2.0"/>
             <param name="cp" value="build/api2.0/classes:build/test/classes:${junit.jar}"/>
+        </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="test3.0"/>
+            <param name="cp" value="build/api3.0/classes:build/test/classes:build/test2.0/classes:${junit.jar}"/>
         </antcall>
     </target>
     
@@ -49,6 +45,12 @@
             <param name="test" value="test2.0"/>
             <param name="extra.cp" value="build/test/classes"/>
             <param name="version" value="api2.0"/>
+        </antcall>
+        <echo level="info" message="Using old Number with new visitors"/>
+        <antcall target="-run-one">
+            <param name="test" value="test3.0"/>
+            <param name="extra.cp" value="build/test/classes:build/test2.0/classes:"/>
+            <param name="version" value="api3.0"/>
         </antcall>
     </target>
     
