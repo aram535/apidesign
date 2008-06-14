@@ -14,6 +14,16 @@
             <param name="library.include" value="**/org-openide-util.jar"/>
             <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/platform8/org-openide-util.nbm"/>
         </antcall>
+        <antcall target="-library-from-zip">
+            <param name="library" value="org-netbeans-modules-nbjunit"/>
+            <param name="library.include" value="**/org-netbeans-modules-nbjunit.jar"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/testtools/org-netbeans-modules-nbjunit.nbm"/>
+        </antcall>
+        <antcall target="-library-from-zip">
+            <param name="library" value="org-netbeans-insane"/>
+            <param name="library.include" value="**/org-netbeans-insane.jar"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/ide9/org-netbeans-insane.nbm"/>
+        </antcall>
     </target>
     
     <!-- support methods -->
