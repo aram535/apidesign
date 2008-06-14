@@ -28,7 +28,7 @@ public final class Item {
 
     // BEGIN: design.less.friend.Item.static
     static {
-        Accessor.setDefault(new AccessorImpl());
+        Accessor.DEFAULT = new AccessorImpl();
     }
     // END: design.less.friend.Item.static
     

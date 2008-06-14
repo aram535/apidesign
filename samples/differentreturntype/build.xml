@@ -25,7 +25,6 @@
     </target>
     <!-- END: theory.binary.differentreturntype.ant -->
     
-    <target name="compile" depends="build"/>
     <target name="build" depends="clean">
         <antcall target="-build-one">
             <param name="version" value="api1.0"/>

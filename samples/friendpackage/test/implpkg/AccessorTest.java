@@ -32,12 +32,18 @@ implements ChangeListener {
         super(testName);
     }
 
+    protected void setUp() throws Exception {
+    }
+
+    protected void tearDown() throws Exception {
+    }
+    
     public void testGetTheItemAttachListenerChangeValue() {
         // BEGIN: design.less.friend.use
-        Item item = Accessor.getDefault().newItem();
+        Item item = Accessor.DEFAULT.newItem();
         assertNotNull("Some item is really created", item);
         
-        Accessor.getDefault().addChangeListener(item, this);
+        Accessor.DEFAULT.addChangeListener(item, this);
         // END: design.less.friend.use
         
         item.setValue(10);
