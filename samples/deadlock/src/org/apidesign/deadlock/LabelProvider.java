@@ -13,9 +13,11 @@ public class LabelProvider extends JPanel {
     private HashSet<JLabel> allCreated = new HashSet<JLabel>();
 
     public synchronized JLabel createLabel () {
+        // BEGIN: deadlock.logs
         LOG.log(Level.INFO, "Will create JLabel");
         JLabel l = new JLabel ();
         LOG.log(Level.INFO, "Label created {0}", l);
+        // END: deadlock.logs
         allCreated.add (l);
         return l;
     }
