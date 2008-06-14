@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Downloads necessary libraries" default="libraries" basedir=".">
+    <target name="clean">
+        <delete dir="dist"/>
+    </target>
+    
+    <target name="libraries">
+        <antcall target="-library">
+            <param name="library" value="junit-4.1"/>
+            <param name="url" value="junit"/>
+        </antcall>
+    </target>
+    
+    <!-- support methods -->
+    
+    <target name="-library-check">
+        <fail message="You need to specify library name" unless="library"/>
+        <fail message="You need to specify url" unless="url"/>
+        
+        <echo message="Checking for dist/${library}.jar"/>
+        <available file="dist/${library}.jar" property="library.available"/>
+    </target>
+    <target name="-library" depends="-library-check" unless="library.available">
+        <mkdir dir="dist"/>
+        <get dest="dist/${library}" src="${url}"/>
+        
+        <fail message="Now the library ${library} should be downloaded">
+            <condition>
+                <available file="dist/${library}.jar"/>
+            </condition>
+        </fail>
+    </target>
+</project>
