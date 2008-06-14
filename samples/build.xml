@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="apidesign.org" default="build" basedir=".">
+<project name="apidesign.org" default="test" basedir=".">
     <dirset id="examples" dir=".">
         <include name="**/nbproject"/>
         <exclude name="apifest1/day3-intermezzo/**"/>
@@ -8,6 +8,8 @@
     
     
     <target name="clean">
+        <delete dir="build"/>
+        <delete dir="libs/dist"/>
         <subant target="clean" antfile="../build.xml">
             <dirset refid="examples"/>
         </subant>
@@ -19,5 +21,31 @@
             <dirset refid="examples"/>
         </subant>
     </target>
+
+    <target name="test" depends="build">
+        <subant target="test" antfile="../build.xml" failonerror="false">
+            <dirset refid="examples"/>
+        </subant>
+    </target>
     
+    <target name="-version" unless="version">
+        <exec dir="${ant.file.apidesign.org}/.." outputproperty="version" executable="/bin/sh">
+            <arg file="version.sh"/>
+        </exec>
+    </target>
+
+    <target name="sources" depends="-version,clean">
+        <fail unless="version"/>
+        
+        <loadfile srcfile="${ant.file.apidesign.org}/../../../.hgignore" property="hgignore"/>
+        <mkdir dir="build"/>
+        <zip basedir="${ant.file.apidesign.org}/.." destfile="build/apidesign-${version}.zip">
+            <not>
+                <containsregexp expression="${hgignore}"/>
+            </not>
+            <not>
+                <filename name="version.sh"/>
+            </not>
+        </zip>
+    </target>
 </project>
