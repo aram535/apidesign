@@ -13,18 +13,27 @@
         </antcall>
         
         <antcall target="-build-one">
-            <param name="version" value="test"/>
+            <param name="version" value="test1.0"/>
             <param name="cp" value="build/api1.0/classes:${junit.jar}"/>
+        </antcall>
+
+        <antcall target="-build-one">
+            <param name="version" value="test2.0"/>
+            <param name="cp" value="build/api2.0/classes:${junit.jar}"/>
         </antcall>
     </target>
     
     <target name="test" depends="build">
-        <echo level="info" message="Running the Implementation against Version 1.0 of the API. This should succeeds."/>
+        <echo level="info" message="Running the Old Implementation against Version 1.0 of the API. This should succeed."/>
         <antcall target="-run-one">
             <param name="version" value="api1.0"/>
         </antcall>
-        <echo level="info" message="Running the Implementation against Version 2.0 of the API. This should fail."/>
+        <echo level="info" message="Running the Old Implementation against Version 2.0 of the API. This should succeed."/>
         <antcall target="-run-one">
+            <param name="version" value="api2.0"/>
+        </antcall>
+        <echo level="info" message="Running the New Implementation against Version 2.0 of the API. This should succeed."/>
+        <antcall target="-run-two">
             <param name="version" value="api2.0"/>
         </antcall>
     </target>
@@ -40,15 +49,34 @@
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
         <mkdir dir="build/testresults"/>
-        <junit dir="build/test/classes" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
+        <junit dir="build/test1.0/classes" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
             <batchtest todir="build/testresults">
-                <fileset dir="build/test/classes">
+                <fileset dir="build/test1.0/classes">
                     <filename name="**/*Test.class"/>
                 </fileset>
             </batchtest>
             <classpath>
                 <path location="build/${version}/classes"/>
-                <path location="build/test/classes"/>
+                <path location="build/test1.0/classes"/>
+                <path location="${junit.jar}"/>
+            </classpath>
+            <formatter type="brief" usefile="false"/>
+            <formatter type="xml"/>
+        </junit>
+    </target>
+
+    <target name="-run-two">
+        <fail message="You need to specify API version number" unless="version"/>
+        <mkdir dir="build/testresults"/>
+        <junit dir="build/test2.0/classes" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
+            <batchtest todir="build/testresults">
+                <fileset dir="build/test2.0/classes">
+                    <filename name="**/*Test.class"/>
+                </fileset>
+            </batchtest>
+            <classpath>
+                <path location="build/${version}/classes"/>
+                <path location="build/test2.0/classes"/>
                 <path location="${junit.jar}"/>
             </classpath>
             <formatter type="brief" usefile="false"/>

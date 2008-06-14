@@ -25,7 +25,13 @@
                 <source-folder>
                     <label>test</label>
                     <type>java</type>
-                    <location>src-test</location>
+                    <location>src-test1.0</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>test</label>
+                    <type>java</type>
+                    <location>src-test2.0</location>
                     <encoding>UTF-8</encoding>
                 </source-folder>
             </folders>
@@ -55,8 +61,12 @@
                         <location>src-api2.0</location>
                     </source-folder>
                     <source-folder style="packages">
-                        <label>Usage of the API</label>
-                        <location>src-test</location>
+                        <label>Usage of the API 1.0</label>
+                        <location>src-test1.0</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>Usage of the API 2.0</label>
+                        <location>src-test2.0</location>
                     </source-folder>
                     <source-file>
                         <location>build.xml</location>
@@ -80,8 +90,13 @@
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
-                <package-root>src-test</package-root>
+                <package-root>src-test1.0</package-root>
                 <classpath mode="compile">src-api1.0:../libs/dist/junit-4.4.jar</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-test2.0</package-root>
+                <classpath mode="compile">src-api2.0:../libs/dist/junit-4.4.jar</classpath>
                 <source-level>1.5</source-level>
             </compilation-unit>
         </java-data>
