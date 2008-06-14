@@ -6,6 +6,7 @@ import org.netbeans.apifest.boolcircuit.Circuit;
 
 /** Write a test that works with version from day A and fails with version B.
  */
+// BEGIN: apifest.day3.against-alwayscreatenewcircuit
 public class CircuitTest extends TestCase {
     public CircuitTest(String n) {
         super(n);
@@ -16,3 +17,4 @@ public class CircuitTest extends TestCase {
         assertEquals(null, Circuit.or(false, false).getClass().getSuperclass().getSuperclass().getSuperclass());
     }
 }
+// END: apifest.day3.against-alwayscreatenewcircuit

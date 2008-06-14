@@ -19,8 +19,7 @@
 
 package org.netbeans.apifest.boolcircuit;
 
-/**
- */
+// BEGIN: apifest.day2.elementbasedsolution.Circuit
 public final class Circuit {
     private Circuit() {
     }
@@ -113,3 +112,4 @@ public final class Circuit {
         public double computeResult(double... values);
     }
 }
+// END: apifest.day2.elementbasedsolution.Circuit

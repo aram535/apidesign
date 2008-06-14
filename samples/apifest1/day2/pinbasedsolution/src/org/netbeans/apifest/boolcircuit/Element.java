@@ -96,9 +96,9 @@ public abstract class Element {
         };
     }
 
+    // BEGIN: apifest.day2.pinbasedsolution.FunctionFactory
     /**
      * Creates an Element with user-defined transfer function.
-     *
      */
     public static Element createGate(final Element source1, final Element source2, final Function function) {
         return new Element() {
@@ -115,5 +115,5 @@ public abstract class Element {
             }
         };
     }
-
+    // END: apifest.day2.pinbasedsolution.FunctionFactory
 }
