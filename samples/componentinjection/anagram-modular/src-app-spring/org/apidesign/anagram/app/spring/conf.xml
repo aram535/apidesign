@@ -6,9 +6,5 @@
 
     <bean id="wordLibrary" class="org.apidesign.anagram.wordstatic.StaticWordLibrary"/>
     <bean id="scrambler" class="org.apidesign.anagram.scramblersimple.SimpleScrambler"/>
-           
-    <bean id="ui" class="org.apidesign.anagram.gui.AnagramsWithConstructor">
-        <constructor-arg ref="wordLibrary"/>
-        <constructor-arg ref="scrambler"/>
-    </bean>
+    <bean id="ui" class="org.apidesign.anagram.gui.AnagramsWithConstructor" autowire="autodetect"/>
 </beans>
