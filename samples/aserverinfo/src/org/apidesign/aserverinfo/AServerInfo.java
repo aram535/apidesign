@@ -115,7 +115,7 @@ public final class AServerInfo {
     public final AServerInfo nameProvider(final NameProvider np) {
         return new AServerInfo(np, this.url, this.reset, this.shutdown);
     }
-    // END: aserverinfo.cumulative.empty
+    // END: aserverinfo.cumulative.factory
 
     public final AServerInfo urlProvider(final URLProvider up) {
         return new AServerInfo(this.name, up, this.reset, this.shutdown);
