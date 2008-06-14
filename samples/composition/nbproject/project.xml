@@ -23,9 +23,33 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-api2.0-compat</label>
+                    <type>java</type>
+                    <location>src-api2.0-compat</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src-api2.0-property</label>
+                    <type>java</type>
+                    <location>src-api2.0-property</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>test</label>
                     <type>java</type>
                     <location>src-test</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src-api2.0-enum</label>
+                    <type>java</type>
+                    <location>src-api2.0-enum</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src-api2.0-runtime</label>
+                    <type>java</type>
+                    <location>src-api2.0-runtime</location>
                     <encoding>UTF-8</encoding>
                 </source-folder>
             </folders>
@@ -37,6 +61,9 @@
                     <target>clean</target>
                 </action>
                 <action name="test">
+                    <target>test</target>
+                </action>
+                <action name="run">
                     <target>test</target>
                 </action>
                 <action name="rebuild">
@@ -55,6 +82,22 @@
                         <location>src-api2.0</location>
                     </source-folder>
                     <source-folder style="packages">
+                        <label>API Version 2.0, in compatible style</label>
+                        <location>src-api2.0-compat</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>API Version 2.0, with property</label>
+                        <location>src-api2.0-property</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>API Version 2.0, with enum</label>
+                        <location>src-api2.0-enum</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>API Version 2.0, with runtime inspection</label>
+                        <location>src-api2.0-runtime</location>
+                    </source-folder>
+                    <source-folder style="packages">
                         <label>Usage of the API</label>
                         <location>src-test</location>
                     </source-folder>
@@ -65,6 +108,7 @@
                 <context-menu>
                     <ide-action name="build"/>
                     <ide-action name="rebuild"/>
+                    <ide-action name="run"/>
                     <ide-action name="clean"/>
                     <ide-action name="test"/>
                 </context-menu>
@@ -77,6 +121,22 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-api2.0</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-api2.0-compat</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-api2.0-enum</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-api2.0-property</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-api2.0-runtime</package-root>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>

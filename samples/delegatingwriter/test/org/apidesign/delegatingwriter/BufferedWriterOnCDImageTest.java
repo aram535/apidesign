@@ -82,7 +82,7 @@ public class BufferedWriterOnCDImageTest {
         public int length() {
             return end - start;
         }
-// END: writer.bigseq
+// FINISH: writer.bigseq
 
         public char charAt(int index) {
             int ch = index % ('Z' - 'A' + 1);
