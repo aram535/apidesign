@@ -43,6 +43,7 @@ public class OldAPIToNewAPITest {
 
     @Test
     public void generateHashUsingMessageDigest() throws Exception {
+        // BEGIN: day.end.bridges.BridgeToOldRegister
         // The java.security.Providers cannot be registered in META-INF/services
         // that is why one needs to either configure various properties or
         // make some dummy call that will initialize our bridge class.
@@ -51,6 +52,7 @@ public class OldAPIToNewAPITest {
         //
         // This is the call:
         Digest initialize = Digest.getInstance("MD5");
+        // END: day.end.bridges.BridgeToOldRegister
         
         MessageDigest md = MessageDigest.getInstance("cnt");
         byte[] res = md.digest(arr);

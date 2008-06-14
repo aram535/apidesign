@@ -19,6 +19,7 @@ import java.util.Map;
  *
  * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
+// BEGIN: day.end.bridges.BridgeToOld
 public class BridgeToOld extends Provider {
 
     public BridgeToOld() {
@@ -80,3 +81,4 @@ public class BridgeToOld extends Provider {
     }
 
 }
+// END: day.end.bridges.BridgeToOld

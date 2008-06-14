@@ -1,3 +1,4 @@
-# this shall be in a separate module that provides the "bridge"
-org.apidesign.impl.security.extension.BridgeToOldAlgorithmsProvider
-
+# BEGIN: day.end.bridges.FriendMetaInf
+# registration in bridge's META-INF/services/friendapi.DigestProvider
+org.apidesign.impl.security.extension.BridgeToNew
+# END: day.end.bridges.FriendMetaInf
