@@ -4,7 +4,7 @@
     <configuration>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
             <!-- Do not use Project Properties customizer when editing this file manually. -->
-            <name>testing-template</name>
+            <name>testing template</name>
             <properties>
                 <property name="ant.script">build.xml</property>
                 <property-file>project.properties</property-file>
@@ -54,6 +54,9 @@
                     <source-file>
                         <location>${ant.script}</location>
                     </source-file>
+                    <source-file>
+                        <location>project.properties</location>
+                    </source-file>
                 </items>
                 <context-menu>
                     <ide-action name="build"/>
@@ -68,7 +71,7 @@
         <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
             <compilation-unit>
                 <package-root>test</package-root>
-                <classpath mode="compile">${apiA}:${apifest}/lib/junit-3.8.2.jar</classpath>
+                <classpath mode="compile">${apiA}:${junit.jar}</classpath>
                 <built-to>build/tests</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>

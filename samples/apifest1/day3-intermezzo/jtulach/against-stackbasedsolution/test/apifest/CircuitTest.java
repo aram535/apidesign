@@ -47,6 +47,7 @@ import org.netbeans.apifest.boolcircuit.CircuitFactory;
 
 /** Write a test that works with version from day A and fails with version B.
  */
+// BEGIN: apifest.day3.against-stackbasedsolution.CircuitTest
 public class CircuitTest extends TestCase {
     public CircuitTest(String n) {
         super(n);
@@ -56,3 +57,4 @@ public class CircuitTest extends TestCase {
         Circuit c = CircuitFactory.getBasicCircuit(null);
     }
 }
+// END: apifest.day3.against-stackbasedsolution.CircuitTest

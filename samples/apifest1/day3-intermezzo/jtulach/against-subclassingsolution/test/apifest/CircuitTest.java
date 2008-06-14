@@ -46,6 +46,7 @@ import org.netbeans.apifest.boolcircuit.Circuit;
 
 /** Write a test that works with version from day A and fails with version B.
  */
+// BEGIN: apifest.day3.against-subclassingsolution.CircuitTest
 public class CircuitTest extends TestCase {
     public CircuitTest(String n) {
         super(n);
@@ -55,3 +56,4 @@ public class CircuitTest extends TestCase {
         Circuit c = Circuit.AND;
     }
 }
+// END: apifest.day3.against-subclassingsolution.CircuitTest

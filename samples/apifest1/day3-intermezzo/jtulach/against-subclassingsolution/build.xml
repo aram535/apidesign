@@ -12,10 +12,11 @@
     
     <target name="compile" depends="make-sure-projects-are-compiled">
         <mkdir dir="build/tests"/>
+        <echo level="info" message="Compiling the tests against old version of the API"/>
         <javac destdir="build/tests" srcdir="test">
             <classpath>
                 <pathelement location="${apiA}"/>
-                <pathelement location="${apifest}/lib/junit-3.8.2.jar"/>
+                <pathelement location="${junit.jar}"/>
             </classpath>
         </javac>
     </target>
@@ -33,7 +34,9 @@
         
     <target name="-run-binary-check" depends="compile">
         <mkdir dir="build/testresultA"/>
-        <junit dir="build/tests" failureproperty="run.on.A.shall.succeed">
+
+        <echo level="info" message="Running the tests against old version of the API"/>
+        <junit dir="build/tests" failureproperty="run.on.A.shall.succeed" fork="true">
             <batchtest todir="build/testresultA">
                 <fileset dir="test" includes="**/*.java"/>
             </batchtest>
@@ -41,13 +44,14 @@
             <formatter type="xml"/>
             <classpath>
                 <pathelement location="${apiA}"/>
-                <pathelement location="${apifest}/lib/junit-3.8.2.jar"/>
+                <pathelement location="${junit.jar}"/>
                 <pathelement location="build/tests"/>
             </classpath>
         </junit>
         
         <mkdir dir="build/testresultB"/>
-        <junit dir="build/tests" failureproperty="run.on.B.shall.fail">
+        <echo level="info" message="Running the same tests against new version of the API, this should fail, if there is binary or functional incompatibility"/>
+        <junit dir="build/tests" failureproperty="run.on.B.shall.fail" fork="true">
             <batchtest todir="build/testresultB">
                 <fileset dir="test" includes="**/*.java"/>
             </batchtest>
@@ -55,7 +59,7 @@
             <formatter type="xml"/>
             <classpath>
                 <pathelement location="${apiB}"/>
-                <pathelement location="${apifest}/lib/junit-3.8.2.jar"/>
+                <pathelement location="${junit.jar}"/>
                 <pathelement location="build/tests"/>
             </classpath>
         </junit>
@@ -73,10 +77,13 @@
         <property name="build.b" location="build/verifyitbuildsagainstB"/>
         <delete dir="${build.b}"/>
         <mkdir dir="${build.b}"/>
-        <javac destdir="${build.b}" srcdir="test" failonerror="false">
+
+        
+        <echo level="info" message="Verifying source compatibility: Compiling the tests against new version of the API"/>
+        <javac destdir="${build.b}" srcdir="test" failonerror="false" fork="true">
             <classpath>
                 <pathelement location="${apiB}"/>
-                <pathelement location="${apifest}/lib/junit-3.8.2.jar"/>
+                <pathelement location="${junit.jar}"/>
             </classpath>
         </javac>
 

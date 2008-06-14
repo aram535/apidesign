@@ -46,6 +46,7 @@ import org.netbeans.apifest.boolcircuit.Operation;
 
 /** Write a test that works with version from day A and fails with version B.
  */
+// BEGIN: apifest.day3.against-inputandoperation.CircuitTest
 public class CircuitTest extends TestCase {
     public CircuitTest(String n) {
         super(n);
@@ -55,10 +56,10 @@ public class CircuitTest extends TestCase {
     }
     
     // One forgotten final and the dissaster is here.
-    // Of course Circuit has to be public, but it has to be anyway to be usable
     class MyCircuit extends Circuit {
         public double evaluateRealOperation(Operation op) {
             return 0;
         }
     }
 }
+// END: apifest.day3.against-inputandoperation.CircuitTest

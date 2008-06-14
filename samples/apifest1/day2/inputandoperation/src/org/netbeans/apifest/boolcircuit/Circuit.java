@@ -26,8 +26,10 @@ class Circuit {
     public static boolean evaluateBooleanOperation(Operation op) {
         return op.performBooleanOperation();
     }
-    
+
+    // BEGIN: apifest.day2.inputandoperation.addedmethod
     public static double evaluateRealOperation(Operation op) {
         return op.performRealOperation();
     }
+    // END: apifest.day2.inputandoperation.addedmethod
 }
