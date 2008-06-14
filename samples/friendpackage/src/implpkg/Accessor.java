@@ -30,7 +30,9 @@ public abstract class Accessor {
         }
         
         try {
-            Class.forName(Item.class.getName(), true, Item.class.getClassLoader());
+            Class.forName(
+                Item.class.getName(), true, Item.class.getClassLoader()
+            );
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -12,7 +12,8 @@ public class Main {
     public static void main(String[] args) {
         for (;;) {
             // BEGIN: extension.point.Query
-            Collection<? extends TipOfTheDay> all = Lookup.getDefault().lookupAll(TipOfTheDay.class);
+            Collection<? extends TipOfTheDay> all = 
+                Lookup.getDefault().lookupAll(TipOfTheDay.class);
             List<TipOfTheDay> arr = new ArrayList<TipOfTheDay>(all);
             Collections.shuffle(arr);
 
@@ -33,7 +34,9 @@ public class Main {
             String again = "Once Again";
             String exit = "Exit";
             String[] options = new String[] { again, exit };
-            int ret = JOptionPane.showOptionDialog(null, msg, title, 0, type, null, options, exit);
+            int ret = JOptionPane.showOptionDialog(
+                null, msg, title, 0, type, null, options, exit
+            );
 
             if (ret != 0) {
                 break;

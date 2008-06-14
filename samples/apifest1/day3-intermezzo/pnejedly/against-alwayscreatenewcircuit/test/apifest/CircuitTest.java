@@ -14,7 +14,8 @@ public class CircuitTest extends TestCase {
     
     public void testReallyUnrealistic() throws Exception {
         // OK, this is not fair, right?
-        assertEquals(null, Circuit.or(false, false).getClass().getSuperclass().getSuperclass().getSuperclass());
+        assertEquals(null, Circuit.or(false, false).getClass().
+                getSuperclass().getSuperclass().getSuperclass());
     }
 }
 // END: apifest.day3.against-alwayscreatenewcircuit

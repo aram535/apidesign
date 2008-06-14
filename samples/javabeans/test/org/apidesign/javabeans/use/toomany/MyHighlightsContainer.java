@@ -11,11 +11,15 @@ import static org.junit.Assert.*;
 final class MyHighlightsContainer implements HighlightsContainer {
     private HighlightsChangeListener listener;
 
-    public synchronized void addHighlightsChangeListener(HighlightsChangeListener l) throws TooManyListenersException {
+    public synchronized void addHighlightsChangeListener(
+        HighlightsChangeListener l
+    ) throws TooManyListenersException {
         if (listener != null) throw new TooManyListenersException();
         listener = l;
     }
-    public synchronized void removeHighlightsChangeListener(HighlightsChangeListener l) {
+    public synchronized void removeHighlightsChangeListener(
+        HighlightsChangeListener l
+    ) {
         if (listener == l) listener = null;
     }
     public HighlightsSequence getHighlights(int startOffset, int endOffset) {

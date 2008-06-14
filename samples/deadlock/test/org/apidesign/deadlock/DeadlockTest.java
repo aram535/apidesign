@@ -14,7 +14,9 @@ import static org.junit.Assert.*;
 
 // BEGIN: deadlock.test
 public class DeadlockTest extends NbTestCase {
-    static final Logger LOG = Logger.getLogger(DeadlockTest.class.getName());
+    static final Logger LOG = Logger.getLogger(
+        DeadlockTest.class.getName()
+    );
     
     public DeadlockTest(String n) {
         super(n);
@@ -34,7 +36,9 @@ public class DeadlockTest extends NbTestCase {
                 JLabel sampleLabel = createLabel();
                 return sampleLabel.getPreferredSize();
             } catch (InterruptedException ex) {
-                Logger.getLogger(DeadlockTest.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(
+                    DeadlockTest.class.getName()).log(Level.SEVERE, null, ex
+                );
                 return super.getPreferredSize();
             }
         }

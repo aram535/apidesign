@@ -41,7 +41,8 @@ public class InjectionSlotChangesTest {
             }
         }
         Listener listener = new Listener();
-        Lookup.Result<InjectionSlot> res = Lookup.getDefault().lookupResult(InjectionSlot.class);
+        Lookup.Result<InjectionSlot> res = 
+            Lookup.getDefault().lookupResult(InjectionSlot.class);
         res.addLookupListener(listener);
         assertEquals("Two services now", 2, res.allInstances().size());
         
@@ -49,7 +50,11 @@ public class InjectionSlotChangesTest {
         
         assertEquals("One service only", 1, res.allInstances().size());
         assertEquals("One change in listener", 1, listener.cnt);
-        assertEquals("The second is ImplTwo", ImplTwo.class, res.allInstances().iterator().next().getClass());
+        assertEquals(
+            "The second is ImplTwo", 
+            ImplTwo.class, 
+            res.allInstances().iterator().next().getClass()
+        );
         // END: lookup.listener
     }
 

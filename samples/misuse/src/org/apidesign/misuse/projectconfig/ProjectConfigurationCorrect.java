@@ -2,7 +2,8 @@ package org.apidesign.misuse.projectconfig;
 
 public class ProjectConfigurationCorrect {
     // BEGIN: misuse.prjconfig.correct
-    interface ProjectConfigurationProvider<Configuration extends ProjectConfiguration> {
+    interface ProjectConfigurationProvider
+        <Configuration extends ProjectConfiguration> {
         Configuration[] getConfigurations();
         Configuration getActive();
         void setActive(Configuration c);
@@ -17,7 +18,7 @@ public class ProjectConfigurationCorrect {
     /* Following does not work:
     static {
         // BEGIN: misuse.prjconfig.correct.trivial.access
-        ProjectConfigurationProvider<?> provider = null; // obtain from somewhere;
+        ProjectConfigurationProvider<?> provider = null; // obtain elsewhere;
         provider.setActive(provider.getConfigurations()[0]);
         // END: misuse.prjconfig.correct.trivial.access
     }
@@ -25,7 +26,7 @@ public class ProjectConfigurationCorrect {
 
     static { 
         // BEGIN: misuse.prjconfig.correct.access
-        ProjectConfigurationProvider<?> provider = null; // obtain from somewhere;
+        ProjectConfigurationProvider<?> provider = null; // obtain elsewhere;
         resetToZero(provider);
         // END: misuse.prjconfig.correct.access
     }
@@ -39,7 +40,9 @@ public class ProjectConfigurationCorrect {
     // END: misuse.prjconfig.correct.openmethod
 
     // BEGIN: misuse.prjconfig.correct.openclass
-    static void workWithProjectConfigurationProvider(ProjectConfigurationProvider<?> p) {
+    static void workWithProjectConfigurationProvider(
+        ProjectConfigurationProvider<?> p
+    ) {
         ResetToZero<?> rtz = ResetToZero.create(p);
         rtz.obtainFirst();
         // after a while
@@ -54,7 +57,9 @@ public class ProjectConfigurationCorrect {
             this.provider = provider;
         }
 
-        static <C extends ProjectConfiguration> ResetToZero<C> create(ProjectConfigurationProvider<C> p) {
+        static <C extends ProjectConfiguration> ResetToZero<C> create(
+            ProjectConfigurationProvider<C> p
+        ) {
             return new ResetToZero<C>(p);
         }
 
