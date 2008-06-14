@@ -19,23 +19,37 @@ import java.util.Map;
  *
  * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
-public class BridgeToOld extends Provider {
+// BEGIN: day.end.bridges.BridgeToOld
+public final class BridgeToOld extends Provider {
 
     public BridgeToOld() {
         super("spi.Digestor", 1.0, "");
         Security.addProvider(this);
     }
+
+    // BEGIN: day.end.bridges.cycle
+    private ThreadLocal<Boolean> searching = new ThreadLocal<Boolean>();
+    final boolean isSearching() {
+        return Boolean.TRUE.equals(searching.get());
+    }
     
     @Override
     public synchronized Service getService(String type, String algorithm) {
-        if ("MessageDigest".equals(type)) {
-            Digest dig = Digest.getInstance(algorithm);
-            if (dig != null) {
-                return new ServiceImpl(dig, this, type, algorithm, "", Collections.<String>emptyList(), Collections.<String,String>emptyMap());
+        Boolean prev = searching.get();
+        try {
+            searching.set(Boolean.TRUE);
+            if ("MessageDigest".equals(type)) {
+                Digest dig = Digest.getInstance(algorithm);
+                if (dig != null) {
+                    return new ServiceImpl(dig, this, type, algorithm, "", Collections.<String>emptyList(), Collections.<String,String>emptyMap());
+                }
             }
+            return null;
+        } finally {
+            searching.set(prev);
         }
-        return null;
     }
+    // END: day.end.bridges.cycle
 
     private static class ServiceImpl<Data> extends Service {
         Digest dig;
@@ -80,3 +94,4 @@ public class BridgeToOld extends Provider {
     }
 
 }
+// END: day.end.bridges.BridgeToOld

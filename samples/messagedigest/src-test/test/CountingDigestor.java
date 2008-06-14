@@ -10,10 +10,10 @@ import org.apidesign.spi.security.Digestor;
 
 /**
  *
- * @author jarda
+ * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
+// BEGIN: day.end.bridges.CountingDigestor
 public final class CountingDigestor extends Digestor<int[]> {
-
     @Override
     protected byte[] digest(int[] data) {
         int i = data[0];
@@ -31,5 +31,5 @@ public final class CountingDigestor extends Digestor<int[]> {
         data[0] += input.remaining();
         input.position(input.position() + input.remaining());
     }
-
 }
+// END: day.end.bridges.CountingDigestor
