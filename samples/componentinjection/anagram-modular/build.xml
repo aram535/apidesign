@@ -90,7 +90,7 @@
     <target name="-libraries">
         <ant dir="../../libs/"/>
         
-        <property name="junit.jar" location="../libs/dist/junit-4.4.jar"/>
+        <property name="junit.jar" location="../../libs/dist/junit-4.4.jar"/>
     </target>
 
     <target name="-run-one">
