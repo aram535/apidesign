@@ -15,7 +15,9 @@ public final class AnagramsWithProperties extends Anagrams {
     protected WordLibrary getWordLibrary() {
         try {
             if (wordLibrary == null) {
-                String implName = System.getProperty("org.apidesign.anagram.api.WordLibrary");
+                String implName = System.getProperty(
+                    "org.apidesign.anagram.api.WordLibrary"
+                );
                 assert implName != null;
                 Class<?> impl = Class.forName(implName);
                 wordLibrary = (WordLibrary)impl.newInstance();
@@ -30,7 +32,9 @@ public final class AnagramsWithProperties extends Anagrams {
     protected Scrambler getScrambler() {
         try {
             if (scrambler == null) {
-                String implName = System.getProperty("org.apidesign.anagram.api.Scrambler");
+                String implName = System.getProperty(
+                    "org.apidesign.anagram.api.Scrambler"
+                );
                 assert implName != null;
                 Class<?> impl = Class.forName(implName);
                 scrambler = (Scrambler)impl.newInstance();
