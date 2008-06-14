@@ -21,7 +21,7 @@ package org.netbeans.apifest.boolcircuit;
 
 /**
  */
-class Circuit {
+public class Circuit {
     
     public static boolean evaluateBooleanOperation(Operation op) {
         return op.performBooleanOperation();
