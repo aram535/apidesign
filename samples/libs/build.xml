@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Downloads necessary libraries" default="libraries" basedir=".">
-    <target name="clean">
-    </target>
-    <target name="real-clean">
-        <delete dir="dist"/>
-    </target>
-    
-    <target name="libraries">
+       <target name="libraries">
         <antcall target="-library">
             <param name="library" value="junit-4.4"/>
             <param name="url" value="http://switch.dl.sourceforge.net/sourceforge/junit/junit-4.4.jar"/>
