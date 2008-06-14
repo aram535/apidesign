@@ -12,7 +12,7 @@ import java.util.ServiceLoader;
  */
 public final class Digest {
     private final DigestImplementation impl;
-
+    
     /** Factory method is better than constructor */
     private Digest(DigestImplementation impl) {
         this.impl = impl;
