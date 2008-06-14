@@ -199,7 +199,8 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
         int index = wordIdx % words.length;
         
         original = words[index];
-        scrambled = getScrambler().scramble(original);
+        Scrambler scrambler = getScrambler();
+        scrambled = scrambler != null ? scrambler.scramble(original) : original;
         
         scrambledWord.setText(scrambled);
     }

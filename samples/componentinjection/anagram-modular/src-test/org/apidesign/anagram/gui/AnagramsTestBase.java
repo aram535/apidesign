@@ -2,6 +2,7 @@ package org.apidesign.anagram.gui;
 
 import org.apidesign.anagram.api.Scrambler;
 import org.apidesign.anagram.api.WordLibrary;
+import org.junit.Before;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.netbeans.junit.MockServices;
@@ -9,6 +10,11 @@ import org.netbeans.junit.MockServices;
 public abstract class AnagramsTestBase {
 
     protected abstract Anagrams create();
+    
+    @Before
+    public void cleanUpServices() {
+        MockServices.setServices();
+    }
     
     @Test public void testInjectionOfServices() throws Exception {
         Anagrams ui = create();
