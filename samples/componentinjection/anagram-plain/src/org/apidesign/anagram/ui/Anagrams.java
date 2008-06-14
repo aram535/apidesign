@@ -204,7 +204,7 @@ public class Anagrams extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        new Anagrams().show();
+        new Anagrams().setVisible(true);
     }
     
     
