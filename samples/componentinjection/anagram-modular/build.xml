@@ -50,7 +50,7 @@
         <echo level="info" message="Running spring version"/>
         <antcall target="-run-one">
             <param name="version" value="app-spring"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/spring-2.5.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/spring-2.5.jar:../../libs/dist/commons-logging-1.1.jar"/>
             <param name="main" value="org.apidesign.anagram.app.spring.Main"/>
         </antcall>
     </target>

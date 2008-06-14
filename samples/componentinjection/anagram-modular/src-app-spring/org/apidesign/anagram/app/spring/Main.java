@@ -8,11 +8,10 @@ public final class Main {
     private Main() { }
     
     public static void main(String[] args) throws Exception {
-        ApplicationContext context = new ClassPathXmlApplicationContext("org/apidesign/anagram/app/spring/conf.xml");
-        
+        ApplicationContext context = new ClassPathXmlApplicationContext(
+            "org/apidesign/anagram/app/spring/conf.xml"
+        );
         UI ui = (UI)context.getBean("ui", UI.class);
         ui.display();
     }
-    
-    
 }
