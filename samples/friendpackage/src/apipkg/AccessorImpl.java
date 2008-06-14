@@ -14,7 +14,6 @@
 package apipkg;
 
 import implpkg.Accessor;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /** The bridge between api and impl package.
