@@ -30,13 +30,29 @@ public abstract class AnagramsTestBase {
         assertEquals(
             "It is the mock one", SingleMockLibrary.class, l.getClass()
         );
-    }
-    
-    public static final class ReversingMockScrambler {
         
+        ui.display();
+        
+        assertEquals(
+            "The word from SingleMockLibrary is taken",
+            "Hello World!", ui.getOriginalWord()
+        );
+        assertEquals(
+            "The word is rotated using ReversingMockScrambler",
+            "!dlroW olleH", ui.getScrambledWord()
+        );
     }
     
-    public static final class SingleMockLibrary {
+    public static final class ReversingMockScrambler implements Scrambler {
+        public String scramble(String word) {
+            return new StringBuilder(word).reverse().toString();
+        }
+    }
+    
+    public static final class SingleMockLibrary implements WordLibrary {
+        public String[] getWords() {
+            return new String[] { "Hello World!" };
+        }
         
     }
 }
