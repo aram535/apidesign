@@ -19,15 +19,14 @@ public final class Item {
     }
     // END: design.less.friend.Item.static
     
-    /** Contructor for friends */
+    /** Only friends can create instances. */
     Item() {
     }
     
-    /** Anyone can value of the item. At least if it 
-     * can get a reference to it.
+    /** Anyone can change value of the item. 
      */
-    public void setValue(int x) {
-        value = x;
+    public void setValue(int newValue) {
+        value = newValue;
         ChangeListener l = listener;
         if (l != null) {
             l.stateChanged(new ChangeEvent(this));
@@ -40,7 +39,7 @@ public final class Item {
         return value;
     }
     
-    /** Only the impl package can listen.
+    /** Only friends can listen to changes.
      */
     void addChangeListener(ChangeListener l) {
         assert listener == null;
