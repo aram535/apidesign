@@ -8,7 +8,7 @@ public class Impl extends API {
           throw new IllegalStateException("Wrong API version error!");
         }
     }
-// FINISH: theory.binary.constants.impl
+// END: theory.binary.constants.impl
     
     public static void main(String[] args) {
         System.err.println("main expects version: " + API.VERSION);
