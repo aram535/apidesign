@@ -39,9 +39,6 @@
                 <action name="test">
                     <target>test</target>
                 </action>
-                <action name="run">
-                    <target>test</target>
-                </action>
                 <action name="rebuild">
                     <target>clean</target>
                     <target>build</target>
