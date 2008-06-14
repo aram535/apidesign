@@ -21,6 +21,7 @@ package org.netbeans.apifest.boolcircuit;
 
 /**
  */
+// BEGIN: apifest.day1.elementbasedsolution.Circuit
 public final class Circuit {
     private Circuit() {
     }
@@ -71,3 +72,4 @@ public final class Circuit {
         }
     }
 }
+// END: apifest.day1.elementbasedsolution.Circuit

@@ -20,6 +20,7 @@
 package org.netbeans.apifest.boolcircuit;
 
 
+// BEGIN: apifest.day1.subclassingsolution
 /** Usefull class for building your own circuits. 
  * 
  */
@@ -68,3 +69,6 @@ public abstract class Circuit extends Object {
     public abstract boolean evaluate(boolean... in);
                
 }
+// END: apifest.day1.subclassingsolution
+
+
