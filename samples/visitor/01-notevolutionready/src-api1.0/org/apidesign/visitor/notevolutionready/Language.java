@@ -5,6 +5,7 @@ public final class Language {
     
     // BEGIN: visitor.notevolutionready.v1
     public static abstract class Expression {
+        Expression() {}
         public abstract void visit(Visitor v);
     }
     public static final class Plus extends Expression {
