@@ -10,7 +10,6 @@ import org.junit.Test;
 
 public class PrintTest {
 
-    // BEGIN: visitor.notevolutionready.print
     public static class PrintVisitor implements Visitor1_0 {
         StringBuffer sb = new StringBuffer();
         
@@ -38,7 +37,6 @@ public class PrintTest {
         
         assertEquals("1 + 1", print.sb.toString());
     }
-    // END: visitor.notevolutionready.print
 
     @Test public void printOnePlusTwoPlusThree() {
         Number one = new Number(1);
