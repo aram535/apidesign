@@ -3,6 +3,7 @@ package org.apidesign.anagram.app.serviceloader;
 import org.apidesign.anagram.api.Scrambler;
 import org.apidesign.anagram.api.WordLibrary;
 import org.apidesign.anagram.gui.Anagrams;
+import java.util.ServiceLoader;
 
 // BEGIN: anagram.serviceloader.Anagrams
 class AnagramsWithServiceLoader extends Anagrams {
@@ -12,12 +13,12 @@ class AnagramsWithServiceLoader extends Anagrams {
 
     @Override
     protected WordLibrary getWordLibrary() {
-        return java.util.ServiceLoader.load(WordLibrary.class).iterator().next();
+        return ServiceLoader.load(WordLibrary.class).iterator().next();
     }
 
     @Override
     protected Scrambler getScrambler() {
-        return java.util.ServiceLoader.load(Scrambler.class).iterator().next();
+        return ServiceLoader.load(Scrambler.class).iterator().next();
     }
 
 }
