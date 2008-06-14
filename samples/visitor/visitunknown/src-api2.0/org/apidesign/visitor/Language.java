@@ -26,7 +26,6 @@ public final class Language {
         @Override
         public void visit(Visitor v) { v.visitNumber(this); }
     }
-    // BEGIN: visitor.abstractclass.v2
     /** @since 2.0 */
     public static final class Minus extends Expression {
         private final Expression first;
@@ -42,15 +41,17 @@ public final class Language {
             v.visitMinus(this);
         }
     }
-
-    public static abstract class Visitor {
+    // BEGIN: visitor.visitunknown.v2
+    public static abstract class Visitor/*2.0*/ {
+        public void visitUnknown(Expression exp) {
+            throw new IllegalStateException("Unknown element faced: " + exp);
+        }
         public abstract void visitPlus(Plus s);
         public abstract void visitNumber(Number n);
+        /** @since 2.0 */
         public void visitMinus(Minus s) {
-            throw new IllegalStateException(
-                "Old visitor used on new exceptions"
-            );
+            visitUnknown(s);
         }
     }
-    // END: visitor.abstractclass.v2
+    // END: visitor.visitunknown.v2
 }
