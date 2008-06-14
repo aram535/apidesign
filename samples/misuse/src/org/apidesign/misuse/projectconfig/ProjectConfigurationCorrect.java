@@ -4,9 +4,9 @@ public class ProjectConfigurationCorrect {
     // BEGIN: misuse.prjconfig.correct
     interface ProjectConfigurationProvider
         <Configuration extends ProjectConfiguration> {
-        Configuration[] getConfigurations();
-        Configuration getActive();
-        void setActive(Configuration c);
+        public Configuration[] getConfigurations();
+        public Configuration getActive();
+        public void setActive(Configuration c);
     }
     interface ProjectConfiguration {
         public String getDisplayName();
