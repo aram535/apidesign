@@ -6,7 +6,6 @@ import org.apidesign.visitor.Language.Expression;
 import org.apidesign.visitor.Language.Minus;
 import org.apidesign.visitor.Language.Number;
 import org.apidesign.visitor.Language.Plus;
-import org.apidesign.visitor.Language.Visitor;
 import org.apidesign.visitor.Language.Visitor2_0;
 import org.junit.Test;
 

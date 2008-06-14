@@ -23,6 +23,12 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-api3.0</label>
+                    <type>java</type>
+                    <location>src-api3.0</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>test</label>
                     <type>java</type>
                     <location>src-test</location>
@@ -64,11 +70,15 @@
                         <location>src-api2.0</location>
                     </source-folder>
                     <source-folder style="packages">
+                        <label>API Version 3.0</label>
+                        <location>src-api3.0</location>
+                    </source-folder>
+                    <source-folder style="packages">
                         <label>Usage of the API</label>
                         <location>src-test</location>
                     </source-folder>
                     <source-folder style="packages">
-                        <label>Usage of new structures with old visitor</label>
+                        <label>Usage of 2.0 elements with 1.0 visitor</label>
                         <location>src-test2.0</location>
                     </source-folder>
                     <source-file>
@@ -90,6 +100,10 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-api2.0</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-api3.0</package-root>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>

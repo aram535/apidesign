@@ -5,12 +5,13 @@ import org.apidesign.visitor.Language.Expression;
 import org.apidesign.visitor.Language.Number;
 import org.apidesign.visitor.Language.Plus;
 import org.apidesign.visitor.Language.Visitor;
+import org.apidesign.visitor.Language.Visitor1_0;
 import org.junit.Test;
 
 public class PrintTest {
 
     // BEGIN: visitor.notevolutionready.print
-    public static class PrintVisitor implements Visitor {
+    public static class PrintVisitor implements Visitor1_0 {
         StringBuffer sb = new StringBuffer();
         
         public void visitUnknown(Expression exp) {
