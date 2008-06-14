@@ -19,7 +19,9 @@ public class Arithmetica {
         return sum;
     }
     
+// BEGIN: design.composition.arith2.0
     public int sumRange(int from, int to) {
         return (from + to) * (to - from + 1) / 2;
     }
+// END: design.composition.arith2.0
 }
