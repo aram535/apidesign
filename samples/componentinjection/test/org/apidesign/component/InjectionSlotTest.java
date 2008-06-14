@@ -43,4 +43,4 @@ public class InjectionSlotTest {
     public static final class ImplTwo extends InjectionSlot {
     }
 }
-// BEGIN: lookup.mockservices
+// END: lookup.mockservices
