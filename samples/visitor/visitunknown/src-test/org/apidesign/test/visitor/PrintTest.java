@@ -10,6 +10,11 @@ import org.junit.Test;
 public class PrintTest {
     public static class PrintVisitor extends Visitor {
         StringBuffer sb = new StringBuffer();
+
+        @Override
+        public void visitUnknown(Expression exp) {
+            sb.append("unknown");
+        }
         
         public void visitPlus(Plus s) {
             s.getFirst().visit(this);

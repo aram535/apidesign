@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class CountNumbersTest {
 
-    // BEGIN: visitor.count.numbers.visitunknown
+    // BEGIN: visitor.count.numbers.traversal
     private static class CountNumbers extends Visitor/*version1.0*/ {
         int cnt;
 
@@ -31,7 +31,7 @@ public class CountNumbersTest {
         expression.visit(counter);
         return counter.cnt;
     }
-    // END: visitor.count.numbers.visitunknown
+    // END: visitor.count.numbers.traversal
     
     @Test public void printOnePlusOne() {
         Number one = new Number(1);
