@@ -28,6 +28,12 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-gui</label>
+                    <type>java</type>
+                    <location>src-gui</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>Anagram Modular</label>
                     <location>.</location>
                     <encoding>UTF-8</encoding>
@@ -78,6 +84,10 @@
                         <label>src-scrambler-simple</label>
                         <location>src-scrambler-simple</location>
                     </source-folder>
+                    <source-folder style="packages">
+                        <label>src-gui</label>
+                        <location>src-gui</location>
+                    </source-folder>
                     <source-file>
                         <location>build.xml</location>
                     </source-file>
@@ -108,6 +118,12 @@
                 <package-root>src-scrambler-simple</package-root>
                 <classpath mode="compile">src-api</classpath>
                 <built-to>build/scrambler-simple/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-gui</package-root>
+                <classpath mode="compile">src-api</classpath>
+                <built-to>build/gui/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
