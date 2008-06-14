@@ -36,9 +36,6 @@ public class Arithmetica {
     }
     
     public int sumAll(int... numbers) {
-        if (numbers.length == 0) {
-            return 0;
-        }
         int sum = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
             sum = sumTwo(sum, numbers[i]);

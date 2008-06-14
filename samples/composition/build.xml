@@ -95,7 +95,6 @@
             destdir="build/${version}/classes" 
             source="1.5" target="1.5"
             classpath="${cp}"
-            debug="true"
         />
     </target>
 </project>
