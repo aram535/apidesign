@@ -25,6 +25,10 @@ public abstract class Anagrams extends javax.swing.JFrame implements UI {
     protected abstract Scrambler getScrambler();
     
     
+    public void display() {
+        setVisible(true);
+    }
+    
     @Override
     public void addNotify() {
         super.addNotify();
