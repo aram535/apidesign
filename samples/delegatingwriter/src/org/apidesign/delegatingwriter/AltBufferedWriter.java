@@ -66,7 +66,12 @@ public class AltBufferedWriter extends BufferedWriter {
         // BEGIN: writer.delegateout
         // efficient, yet dangerous delegation skipping methods unknown to 
         // subclasses that used version 1.4
-        out.append(csq);
+        if (csq != null && csq.length() < 1024) {
+            write(csq.toString());
+        } else {
+            flush();
+            out.append(csq);
+        }
         return this;
         // END: writer.delegateout
     }
@@ -83,13 +88,10 @@ public class AltBufferedWriter extends BufferedWriter {
             throw new IOException(ex);
         }
         
-        if (isOverriden) {
-            if (csq == null) {
-                write("null");
-            } else {
-                write(csq.toString());
-            }
+        if (isOverriden || (csq != null && csq.length() < 1024)) {
+            write(csq.toString());
         } else {
+            flush();
             out.append(csq);
         }
         return this;

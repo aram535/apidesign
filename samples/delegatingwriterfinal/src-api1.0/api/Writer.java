@@ -1,6 +1,5 @@
 package api;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 /** Fixing the problem caused by mixing subclassing and delegation in 
@@ -63,24 +62,7 @@ public final class Writer {
     }
     
     public static Writer createBuffered(final Writer out) {
-        class Delegate extends java.io.Writer {
-            @Override
-            public void write(char[] cbuf, int off, int len) throws IOException {
-                out.write(cbuf, off, len);
-            }
-
-            @Override
-            public void flush() throws IOException {
-                out.flush();
-            }
-
-            @Override
-            public void close() throws IOException {
-                out.close();
-            }
-            
-        }
-        return create(new BufferedWriter(new Delegate()));
+        return create(new SimpleBuffer(out));
     }
 
     

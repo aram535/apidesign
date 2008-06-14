@@ -8,7 +8,7 @@ import java.io.IOException;
  *
  * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
-public final class Writer {
+public final class Writer implements Appendable {
     private final Impl impl;
     private final ImplSeq seq;
     
@@ -69,6 +69,27 @@ public final class Writer {
         }
     }
 
+    
+    
+    public final Writer append(CharSequence csq) throws IOException {
+        if (impl != null) {
+            String s = csq == null ? "null" : csq.toString();
+            impl.write(s, 0, s.length());
+        } else {
+            seq.write(csq);
+        }
+        return this;
+    }
+
+    public final Writer append(CharSequence csq, int start, int end) throws IOException {
+        return append(csq.subSequence(start, end));
+    }
+
+    public final Writer append(char c) throws IOException {
+        write(c);
+        return this;
+    }
+
     public static Writer create(Impl impl) {
         return new Writer(impl, null);
     }
@@ -78,13 +99,9 @@ public final class Writer {
     }
     
     public static Writer create(final java.io.Writer w) {
-        return new Writer(new Impl() {
-            public void write(String str, int off, int len) throws IOException {
-                w.write(str, off, len);
-            }
-
-            public void write(char[] arr, int off, int len) throws IOException {
-                w.write(arr, off, len);
+        return new Writer(null, new ImplSeq() {
+            public void write(CharSequence seq) throws IOException {
+                w.append(seq);
             }
 
             public void close() throws IOException {
@@ -94,28 +111,11 @@ public final class Writer {
             public void flush() throws IOException {
                 w.flush();
             }
-        }, null);
+        });
     }
     
     public static Writer createBuffered(final Writer out) {
-        class Delegate extends java.io.Writer {
-            @Override
-            public void write(char[] cbuf, int off, int len) throws IOException {
-                out.write(cbuf, off, len);
-            }
-
-            @Override
-            public void flush() throws IOException {
-                out.flush();
-            }
-
-            @Override
-            public void close() throws IOException {
-                out.close();
-            }
-            
-        }
-        return create(new BufferedWriter(new Delegate()));
+        return create(new SimpleBuffer(out));
     }
     
     

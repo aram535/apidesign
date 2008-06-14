@@ -14,7 +14,8 @@ import static org.junit.Assert.*;
  */
 public class BufferedWriterCryptoTest {
     private StringWriter writer;
-    
+    private String fromCode;
+    private String toCode;
     
     public BufferedWriterCryptoTest() {
     }
@@ -22,6 +23,14 @@ public class BufferedWriterCryptoTest {
     @Before
     public void setUp() {
         writer = new StringWriter();
+        StringBuffer f = new StringBuffer();
+        StringBuffer t = new StringBuffer();
+        for (int i = 0; i < 500; i++) {
+            f.append("VMS");
+            t.append("WNT");
+        }
+        fromCode = f.toString();
+        toCode = t.toString();
     }
 
     @Test
@@ -35,13 +44,21 @@ public class BufferedWriterCryptoTest {
     }
 
     @Test
+    public void testBehaviourOfRealBufferInJDKWorksFineOnLongSentences() throws IOException {
+        CryptoWriter bufferedWriter = new CryptoWriter(writer);
+        bufferedWriter.append(fromCode);
+        bufferedWriter.flush();
+        assertEquals("Converted", toCode, writer.toString());
+    }
+
+    @Test
     public void testBehaviourOfBufferThatDelegatesToAppendFails() throws IOException {
         CryptoWriter bufferedWriter = new CryptoWriter(writer, CryptoWriter.Behaviour.DELEGATE_TO_OUT);
-        bufferedWriter.append("VMS");
+        bufferedWriter.append(fromCode);
         bufferedWriter.flush();
         assertEquals("This will fail, as the direct delegation from append to " +
             "the underlaying writer will skip all the crypto methods", 
-            "WNT", writer.toString()
+            toCode, writer.toString()
         );
     }
 
