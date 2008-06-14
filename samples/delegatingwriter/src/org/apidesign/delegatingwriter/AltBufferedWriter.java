@@ -52,14 +52,14 @@ public class AltBufferedWriter extends BufferedWriter {
     public Writer appendDelegateToSuper(CharSequence csq) throws IOException {
         // non-efficient variant of delegating via converting to String first 
         // and using one of methods that existed in 1.4
-        // BEGIN: writer.throw.client
+        // BEGIN: writer.super
         if (csq == null) {
             write("null");
         } else {
             write(csq.toString());
         }
         return this;
-        // END: writer.throw.client
+        // END: writer.super
     }
     
     public Writer appendDelegateToUnderlaying(CharSequence csq) throws IOException {
