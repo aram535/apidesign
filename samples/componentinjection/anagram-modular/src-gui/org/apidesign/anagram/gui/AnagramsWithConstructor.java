@@ -3,7 +3,7 @@ package org.apidesign.anagram.gui;
 import org.apidesign.anagram.api.Scrambler;
 import org.apidesign.anagram.api.WordLibrary;
 
-public final class AnagramsWithConstructor extends Anagrams {
+public class AnagramsWithConstructor extends Anagrams {
     
     private final WordLibrary library;
     private final Scrambler scrambler;

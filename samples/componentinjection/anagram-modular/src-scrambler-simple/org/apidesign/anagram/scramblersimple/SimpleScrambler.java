@@ -3,7 +3,7 @@ package org.apidesign.anagram.scramblersimple;
 import java.util.Random;
 import org.apidesign.anagram.api.Scrambler;
 
-public final class SimpleScrambler implements Scrambler {
+public class SimpleScrambler implements Scrambler {
     private static final Random random = new Random();
 
     public String scramble(String word) {

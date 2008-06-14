@@ -4,7 +4,7 @@ package org.apidesign.anagram.wordstatic;
 import org.apidesign.anagram.api.WordLibrary;
 
 
-public final class StaticWordLibrary implements WordLibrary {
+public class StaticWordLibrary implements WordLibrary {
     private static String wordList[] = {
         "abstraction",
         "ambiguous",

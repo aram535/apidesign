@@ -58,6 +58,12 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-app-spring-scan</label>
+                    <type>java</type>
+                    <location>src-app-spring-scan</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>src-app-lookup</label>
                     <type>java</type>
                     <location>src-app-lookup</location>
@@ -135,6 +141,10 @@
                         <location>src-app-spring</location>
                     </source-folder>
                     <source-folder style="packages">
+                        <label>src-app-spring-scan</label>
+                        <location>src-app-spring-scan</location>
+                    </source-folder>
+                    <source-folder style="packages">
                         <label>src-app-lookup</label>
                         <location>src-app-lookup</location>
                     </source-folder>
@@ -198,6 +208,12 @@
                 <package-root>src-app-spring</package-root>
                 <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/spring-2.5.jar</classpath>
                 <built-to>build/app-spring/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-app-spring-scan</package-root>
+                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/spring-2.5.jar</classpath>
+                <built-to>build/app-spring-scan/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
