@@ -56,6 +56,7 @@ public class ArithmeticaCompatibilityTest extends TestCase {
         }
     } // end of CountingSubclass
     
+    // BEGIN: total.rewrite.tests
     public void testRandomCheck () throws Exception {
         long seed = System.currentTimeMillis();
         try {
@@ -99,8 +100,10 @@ public class ArithmeticaCompatibilityTest extends TestCase {
         assertEquals("Verify amount of sumAll is the same", now.countSumAll, old.countSumAll);
         assertEquals("Verify amount of sumTwo is the same", now.countSumTwo, old.countSumTwo);
     }
+    // END: total.rewrite.tests
     
-    private void compare (CountingSubclass now, CountingOldSubclass old, long seed) throws Exception {
+    // BEGIN: total.rewrite.compare
+    private void compare (Arithmetica now, OldArithmetica1 old, long seed) throws Exception {
         java.util.Random r = new java.util.Random (seed);
         
         for (int loop = 0; loop < r.nextInt(5); loop++) {
@@ -135,9 +138,10 @@ public class ArithmeticaCompatibilityTest extends TestCase {
             }
         }
     }
+    // END: total.rewrite.compare
 
     
-    
+    // BEGIN: total.rewrite.oldimpl
     /** This is a copy of the implementation of Arithmetica from version 1.0 */
     static class OldArithmetica1 {
         public int sumTwo(int one, int second) {
@@ -163,6 +167,7 @@ public class ArithmeticaCompatibilityTest extends TestCase {
             }
             return sumAll(array);
         }
-    } // end of OldArithmetica1
+    } 
+    // END: total.rewrite.oldimpl
     
 }
