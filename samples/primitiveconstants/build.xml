@@ -38,7 +38,7 @@
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
         <java classpath="build/${version}/classes:build/impl/classes" classname="impl.Impl"
-            resultproperty="result.real" failonerror="false"
+            resultproperty="result.real" failonerror="false" fork="true"
         />
         <fail message="Unexpected failure for ${version}: ${result.real}">
             <condition>
