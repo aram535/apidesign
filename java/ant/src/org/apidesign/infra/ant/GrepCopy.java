@@ -3,14 +3,11 @@ package org.apidesign.infra.ant;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Map.Entry;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.FilterSet;
-import org.apache.tools.ant.util.FileUtils;
-import org.openide.util.Exceptions;
 
 public class GrepCopy extends Task {
     private GrepFilter filter = new GrepFilter();
