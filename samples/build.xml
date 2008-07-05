@@ -50,4 +50,16 @@
             </not>
         </zip>
     </target>
+
+    <target name="snippets">
+        <property name="snippets.dir" location="build/snippets"/>
+        <ant dir="../java/ant"/>
+        <taskdef name="grepcopy" classname="org.apidesign.infra.ant.GrepCopy" classpath="../java/ant/dist/apidesign-ant-tasks.jar"/>
+        <grepcopy target="${snippets.dir}">
+            <fileset dir=".">
+                <include name="**/*"/>
+                <exclude name="**/build/**/*"/>
+            </fileset>
+        </grepcopy>
+    </target>
 </project>
