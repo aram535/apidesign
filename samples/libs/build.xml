@@ -8,32 +8,32 @@
         <antcall target="-library-from-zip">
             <param name="library" value="org-openide-util"/>
             <param name="library.include" value="**/org-openide-util.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/platform8/org-openide-util.nbm"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/platform9/org-openide-util.nbm"/>
         </antcall>
         <antcall target="-library-from-zip">
             <param name="library" value="org-openide-filesystems"/>
             <param name="library.include" value="**/org-openide-filesystems.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/platform8/org-openide-filesystems.nbm"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/platform9/org-openide-filesystems.nbm"/>
         </antcall>
         <antcall target="-library-from-zip">
             <param name="library" value="org-netbeans-modules-nbjunit"/>
             <param name="library.include" value="**/org-netbeans-modules-nbjunit.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/testtools/org-netbeans-modules-nbjunit.nbm"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/harness/org-netbeans-modules-nbjunit.nbm"/>
         </antcall>
         <antcall target="-library-from-zip">
             <param name="library" value="org-netbeans-insane"/>
             <param name="library.include" value="**/org-netbeans-insane.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/ide9/org-netbeans-insane.nbm"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/harness/org-netbeans-insane.nbm"/>
         </antcall>
         <antcall target="-library-from-zip">
             <param name="library" value="spring-2.5"/>
             <param name="library.include" value="**/*spring*.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/java2/org-netbeans-libs-springframework.nbm"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/java2/org-netbeans-libs-springframework.nbm"/>
         </antcall>
         <antcall target="-library-from-zip">
             <param name="library" value="commons-logging-1.1"/>
             <param name="library.include" value="**/*commons*logg*.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/javadoc-nbms/lastSuccessfulBuild/artifact/nbbuild/nbms/ide9/org-netbeans-libs-commons_logging.nbm"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/ide10/org-netbeans-libs-commons_logging.nbm"/>
         </antcall>
     </target>
     
@@ -72,5 +72,9 @@
                 <not><available file="${library.jar}"/></not>
             </condition>
         </fail>
+    </target>
+    
+    <target name="clean">
+        <delete dir="dist"/>
     </target>
 </project>
