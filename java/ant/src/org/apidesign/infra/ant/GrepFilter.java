@@ -114,7 +114,9 @@ public final class GrepFilter extends Task {
                         throw new BuildException("Not closed section " + entry.getKey() + " in " + file);
                     }
                     entry.setValue(v.toString());
-                    paths.put(entry.getKey(), path);
+                    if (!paths.containsKey(entry.getKey())) {
+                        paths.put(entry.getKey(), path);
+                    }
                 }
             }
             
