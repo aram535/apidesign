@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -26,6 +28,7 @@ public final class GrepFilter extends Task {
     private Pattern begin = Pattern.compile(".* BEGIN: *(\\p{Graph}+)[-\\> ]*");
     private Pattern end = Pattern.compile(".* (END|FINISH): *(\\p{Graph}+)[-\\> ]*");
     private boolean openoffice;
+    private Map<String,String> paths = new HashMap<String, String>();
     
     
     public FileSet createFileSet() {
@@ -111,6 +114,7 @@ public final class GrepFilter extends Task {
                         throw new BuildException("Not closed section " + entry.getKey() + " in " + file);
                     }
                     entry.setValue(v.toString());
+                    paths.put(entry.getKey(), path);
                 }
             }
             
@@ -135,6 +139,10 @@ public final class GrepFilter extends Task {
         }
         FilterSet filter = createFilterSet();
         getProject().addReference(id, filter);
+    }
+
+    final URL getPath(URL root, String key) throws MalformedURLException {
+        return new URL(root, paths.get(key));
     }
     
     private String linize(String input) {

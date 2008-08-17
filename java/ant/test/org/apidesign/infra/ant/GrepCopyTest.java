@@ -81,6 +81,31 @@ public class GrepCopyTest extends NbTestCase {
         assertEquals("public interface I {\n}\n", r);
     }
     
+    public void testURLGenerated() throws Exception {
+        String c1 =
+            "package ahoj;\n" +
+            "// BEGIN: xyz\n" +
+            "public interface I {\n" +
+            "// FINISH: xyz\n" +
+            "  public void get();\n" +
+            "}" +
+            "";
+        File src = createFile(1, "I.java", c1);
+        
+        
+        String c2 =
+            "@xyz@";
+        File txt = createFile(2, "in.txt", c2);
+        
+        execute(1, 2, "-Dfile1=" + txt, "-Dinclude1=*.java", "-Dout.url=http://xyz/", "url");
+        
+        String r = readFile("xyz");
+        assertEquals("public interface I {\n}\n", r);
+
+        String u = readFile("xyz.url");
+        assertEquals("http://xyz/I.java", u);
+    }
+    
     public void testSpacesAtBeginingAreStripped() throws Exception {
         String c1 =
             "package ahoj;\n" +
