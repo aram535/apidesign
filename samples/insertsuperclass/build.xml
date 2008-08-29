@@ -3,7 +3,7 @@
     <target name="clean">
         <delete dir="build"/>
     </target>
-    <target name="test"/>
+    <target name="test" depends="run"/>
     
     <target name="compile" depends="build"/>
     <target name="build">
@@ -37,8 +37,9 @@
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
         <java classpath="build/${version}/classes:build/impl/classes" classname="impl.Main"
-            failonerror="true"
-        />
+            failonerror="true">
+            <jvmarg value="-ea"/>
+        </java>
     </target>
     
     <target name="-build-one">
@@ -51,6 +52,7 @@
             destdir="build/${version}/classes" 
             source="1.5" target="1.5"
             classpath="${cp}"
+            debug="true"
         />
     </target>
 </project>
