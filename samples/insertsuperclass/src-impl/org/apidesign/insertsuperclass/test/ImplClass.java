@@ -1,6 +1,6 @@
-package impl;
+package org.apidesign.insertsuperclass.test;
 
-import api.HelloClass;
+import org.apidesign.insertsuperclass.api.HelloClass;
 
 public class ImplClass extends HelloClass {
     public String sayHello() {

@@ -1,4 +1,4 @@
-package api;
+package org.apidesign.insertsuperclass.api;
 
 public abstract class HelloClass {
 // BEGIN: design.insert.superclass

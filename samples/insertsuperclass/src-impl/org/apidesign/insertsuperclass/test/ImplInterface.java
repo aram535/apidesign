@@ -1,6 +1,7 @@
-package impl;
+package org.apidesign.insertsuperclass.test;
 
-import api.HelloInterface;
+import org.apidesign.insertsuperclass.api.HelloInterface;
+
 public class ImplInterface implements HelloInterface {
     public String sayHello() {
         return "Hello Unknown!";

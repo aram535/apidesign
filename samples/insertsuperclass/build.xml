@@ -36,7 +36,7 @@
     
     <target name="-run-one">
         <fail message="You need to specify API version number" unless="version"/>
-        <java classpath="build/${version}/classes:build/impl/classes" classname="impl.Main"
+        <java classpath="build/${version}/classes:build/impl/classes" classname="org.apidesign.insertsuperclass.test.Main"
             failonerror="true">
             <jvmarg value="-ea"/>
         </java>

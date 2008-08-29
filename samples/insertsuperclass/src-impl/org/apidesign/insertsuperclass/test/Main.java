@@ -1,9 +1,9 @@
 
-package impl;
+package org.apidesign.insertsuperclass.test;
 
-import api.HelloClass;
-import api.HelloFieldClass;
-import api.HelloInterface;
+import org.apidesign.insertsuperclass.api.HelloClass;
+import org.apidesign.insertsuperclass.api.HelloFieldClass;
+import org.apidesign.insertsuperclass.api.HelloInterface;
 
 /**
  *

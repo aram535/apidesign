@@ -1,4 +1,4 @@
-package api;
+package org.apidesign.insertsuperclass.api;
 
 // BEGIN: design.insert.superinterface
 public interface HelloInterface {

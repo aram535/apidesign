@@ -1,4 +1,4 @@
-package api;
+package org.apidesign.insertsuperclass.api;
 
 public class HelloFieldClass {
 // BEGIN: design.insert.field.superclass
