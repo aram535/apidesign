@@ -20,7 +20,8 @@ public class CompilerSurprisesTest {
     public void checkThatTheValueCanDisapper() {
         String retValue = factory();
         retValue = null;
-        assertGC("Nobody holds the string value anymore. It can be GCed.", cache);
+        assertGC("Nobody holds the string value anymore." +
+                "It can be GCed.", cache);
     }
 // FINISH: compiler.surprises.intro
 
@@ -29,7 +30,8 @@ public class CompilerSurprisesTest {
     public void obviouslyWithoutClearingTheReferenceItCannotBeGCed() {
         String retValue = factory();
 // commented out:        retValue = null;
-        assertNotGC("The reference is still on stack. It cannot be GCed.", cache);
+        assertNotGC("The reference is still on stack." +
+                "It cannot be GCed.", cache);
     }
 // END: compiler.surprises.error
 
