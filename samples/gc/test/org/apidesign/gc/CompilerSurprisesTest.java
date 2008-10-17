@@ -74,7 +74,7 @@ public class CompilerSurprisesTest {
 // END: compiler.surprises.fix.init
 
 // BEGIN: compiler.surprises.fix.final
-    @Test public void properUsingFinalFixesTheProblem() {
+    @Test public void properUseOfFinalFixesTheProblem() {
         final String retValue;
         if (yes) {
             retValue = factory();
