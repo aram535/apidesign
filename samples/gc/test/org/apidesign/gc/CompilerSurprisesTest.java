@@ -61,6 +61,31 @@ public class CompilerSurprisesTest {
     }
 // END: compiler.surprises.fix
 
+// BEGIN: compiler.surprises.fix.init
+    @Test public void properInitializationFixesTheProblem() {
+        String retValue;
+        if (yes) {
+            retValue = factory();
+        } else {
+            retValue = null;
+        }
+        assertNotGC("Cannot be GCed, now the retValue is on stack", cache);
+    }
+// END: compiler.surprises.fix.init
+
+// BEGIN: compiler.surprises.fix.final
+    @Test public void properUsingFinalFixesTheProblem() {
+        final String retValue;
+        if (yes) {
+            retValue = factory();
+        } else {
+            retValue = null;
+        }
+        assertNotGC("Cannot be GCed, now the retValue is on stack", cache);
+    }
+// END: compiler.surprises.fix.final
+
+
     private static void assertGC(String msg, Reference<?> ref) {
         NbTestCase.assertGC(msg, ref);
     }
