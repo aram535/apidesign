@@ -1,7 +1,7 @@
-package apipkg;
+package org.apidesign.friendpackage.api;
 
-import implpkg.Accessor;
 import javax.swing.event.ChangeListener;
+import org.apidesign.friendpackage.impl.Accessor;
 
 /** The bridge between api and impl package.
  *

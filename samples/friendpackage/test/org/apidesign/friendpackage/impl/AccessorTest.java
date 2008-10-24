@@ -11,13 +11,12 @@
  * All Rights Reserved.
  */
 
-package implpkg;
+package org.apidesign.friendpackage.impl;
 
 import javax.swing.event.ChangeEvent;
-import junit.framework.TestCase;
-import junit.framework.*;
-import apipkg.Item;
 import javax.swing.event.ChangeListener;
+import junit.framework.TestCase;
+import org.apidesign.friendpackage.api.Item;
 
 /**
  *
