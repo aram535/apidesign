@@ -13,12 +13,6 @@ public final class Item {
     private int value;
     private ChangeListener listener;
 
-    // BEGIN: design.less.friend.Item.static
-    static {
-        Accessor.setDefault(new AccessorImpl());
-    }
-    // END: design.less.friend.Item.static
-    
     /** Only friends can create instances. */
     Item() {
     }
@@ -45,6 +39,11 @@ public final class Item {
         assert listener == null;
         listener = l;
     }
-    
+// FINISH: design.less.friend.Item
+
+    // BEGIN: design.less.friend.Item.static
+    static {
+        Accessor.setDefault(new AccessorImpl());
+    }
+    // END: design.less.friend.Item.static
 }
-// END: design.less.friend.Item
