@@ -85,6 +85,14 @@ public class CompilerSurprisesTest {
     }
 // END: compiler.surprises.fix.final
 
+// BEGIN: compiler.surprises.scope
+    @Test public void canItBeHeldByNoLongerExistingScopeSurprisingly() {
+        {
+            Object val = factory();
+        }
+        assertNotGC("Surprisingly this variable cannot be GCed, even val is out of scope!!!!", cache);
+    }
+// END: compiler.surprises.scope
 
     private static void assertGC(String msg, Reference<?> ref) {
         NbTestCase.assertGC(msg, ref);
