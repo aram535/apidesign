@@ -90,7 +90,8 @@ public class CompilerSurprisesTest {
         {
             Object val = factory();
         }
-        assertNotGC("Surprisingly this variable cannot be GCed, even val is out of scope!!!!", cache);
+        assertNotGC("Surprisingly this variable cannot be GCed, " +
+                "even val is out of scope!!!!", cache);
     }
 // END: compiler.surprises.scope
 
