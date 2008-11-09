@@ -3,27 +3,8 @@ package org.apidesign.aserverinfo;
 import java.net.URL;
 import org.openide.util.Lookup;
 
+// BEGIN: aserverinfo.api
 public final class AServerInfo {
-    private final NameProvider name;
-    private final URLProvider url;
-    private final ResetHandler reset;
-    private final ShutdownHandler shutdown;
-
-    private AServerInfo(
-        NameProvider name, URLProvider url, 
-        ResetHandler reset, ShutdownHandler shutdown
-    ) {
-        this.name = name;
-        this.url = url;
-        this.reset = reset;
-        this.shutdown = shutdown;
-    }
-
-    
-    //
-    // API for clients
-    //
-    
     public String getName() {
         return name == null ? "noname" : name.getName();
     }
@@ -42,6 +23,26 @@ public final class AServerInfo {
         if (shutdown != null) {
             shutdown.shutdown();
         }
+    }
+// FINISH: aserverinfo.api
+
+    //
+    // private part
+    //
+    
+    private final NameProvider name;
+    private final URLProvider url;
+    private final ResetHandler reset;
+    private final ShutdownHandler shutdown;
+
+    private AServerInfo(
+        NameProvider name, URLProvider url,
+        ResetHandler reset, ShutdownHandler shutdown
+    ) {
+        this.name = name;
+        this.url = url;
+        this.reset = reset;
+        this.shutdown = shutdown;
     }
 
     //
