@@ -24,10 +24,13 @@ public class AServerInfoTest {
     @Test
     public void showUseOfCumulativeFactory() throws Exception {
         Prov p = new Prov();
+        AServerInfo.NameProvider np = p;
+        AServerInfo.URLProvider up = p;
+        AServerInfo.ResetHandler res = p;
         AServerInfo inf;
         
         // BEGIN: aserverinfo.cumulative.creation
-        inf = AServerInfo.empty().nameProvider(p).urlProvider(p).reset(p);
+        inf = AServerInfo.empty().nameProvider(np).urlProvider(up).reset(res);
         // END: aserverinfo.cumulative.creation
         
         assertEquals("API Design Server", inf.getName());
