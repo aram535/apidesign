@@ -50,6 +50,7 @@ public final class ServerConnector {
         return new ServerConnector(nameProvider, urlProvider, reset, null);
     }
     
+    // BEGIN: aserverinfo.regularcreate.withshutdown
     /** @since 2.0 */
     public static ServerConnector create(
         NameProvider nameProvider, 
