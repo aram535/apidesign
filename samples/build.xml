@@ -35,6 +35,11 @@
             <arg file="${samples.dir}/version.sh"/>
         </exec>
     </target>
+    <target name="-revision" unless="revision">
+        <exec dir="${samples.dir}" outputproperty="revision" executable="/bin/sh">
+            <arg file="${samples.dir}/tip.sh"/>
+        </exec>
+    </target>
 
     <target name="sources" depends="-version,clean">
         <fail unless="version"/>
@@ -51,11 +56,13 @@
         </zip>
     </target>
 
-    <target name="snippets">
+    <target name="snippets" depends="-revision">
+        <fail unless="revision"/>
+
         <property name="snippets.dir" location="build/snippets"/>
         <ant dir="../java/ant"/>
         <taskdef name="grepcopy" classname="org.apidesign.infra.ant.GrepCopy" classpath="../java/ant/dist/apidesign-ant-tasks.jar"/>
-        <grepcopy target="${snippets.dir}" baseurl="http://source.apidesign.org/hg/apidesign/file/tip/samples/">
+        <grepcopy target="${snippets.dir}" baseurl="http://source.apidesign.org/hg/apidesign/file/${revision}/samples/">
             <fileset dir=".">
                 <include name="**/*"/>
                 <exclude name="**/build/**/*"/>
