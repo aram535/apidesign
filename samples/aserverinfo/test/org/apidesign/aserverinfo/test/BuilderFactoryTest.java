@@ -27,7 +27,7 @@ public class BuilderFactoryTest {
     }
 
     @Test
-    public void showUseOfCumulativeFactory() throws Exception {
+    public void showUseOfBuilder() throws Exception {
         Prov p = new Prov();
         NameProvider np = p;
         URLProvider up = p;
@@ -47,7 +47,7 @@ public class BuilderFactoryTest {
     }
     
     @Test
-    public void showVerboseUseOfCumulativeFactory() throws Exception {
+    public void showVerboseUseOfBuilder() throws Exception {
         Prov prov = new Prov();
         ServerConnector info;
         
