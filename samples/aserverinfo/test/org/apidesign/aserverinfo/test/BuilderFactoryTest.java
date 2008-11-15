@@ -34,10 +34,10 @@ public class BuilderFactoryTest {
         ResetHandler res = p;
         ServerConnector inf;
         
-        // BEGIN: ServerConnector.cumulative.creation
+        // BEGIN: ServerConnector.builder.creation
         inf = ServerInfo.empty()
                 .nameProvider(np).urlProvider(up).reset(res).connect();
-        // END: ServerConnector.cumulative.creation
+        // END: ServerConnector.builder.creation
         
         assertEquals("API Design Server", inf.getName());
         assertEquals("http://www.apidesign.org", inf.getURL().toExternalForm());
