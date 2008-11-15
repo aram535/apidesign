@@ -12,9 +12,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openide.util.Exceptions;
 
-public class ServerConnectorTest {
+public class CummulativeFactoryTest {
 
-    public ServerConnectorTest() {
+    public CummulativeFactoryTest() {
     }
 
     @Before
