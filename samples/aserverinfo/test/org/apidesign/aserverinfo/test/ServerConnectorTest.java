@@ -1,16 +1,20 @@
-package org.apidesign.aserverinfo;
+package org.apidesign.aserverinfo.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.apidesign.aserverinfo.cummulativefactory.ServerConnector;
+import org.apidesign.aserverinfo.spi.NameProvider;
+import org.apidesign.aserverinfo.spi.ResetHandler;
+import org.apidesign.aserverinfo.spi.URLProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openide.util.Exceptions;
 
-public class AServerInfoTest {
+public class ServerConnectorTest {
 
-    public AServerInfoTest() {
+    public ServerConnectorTest() {
     }
 
     @Before
@@ -24,14 +28,14 @@ public class AServerInfoTest {
     @Test
     public void showUseOfCumulativeFactory() throws Exception {
         Prov p = new Prov();
-        AServerInfo.NameProvider np = p;
-        AServerInfo.URLProvider up = p;
-        AServerInfo.ResetHandler res = p;
-        AServerInfo inf;
+        NameProvider np = p;
+        URLProvider up = p;
+        ResetHandler res = p;
+        ServerConnector inf;
         
-        // BEGIN: aserverinfo.cumulative.creation
-        inf = AServerInfo.empty().nameProvider(np).urlProvider(up).reset(res);
-        // END: aserverinfo.cumulative.creation
+        // BEGIN: ServerConnector.cumulative.creation
+        inf = ServerConnector.empty().nameProvider(np).urlProvider(up).reset(res);
+        // END: ServerConnector.cumulative.creation
         
         assertEquals("API Design Server", inf.getName());
         assertEquals("http://www.apidesign.org", inf.getURL().toExternalForm());
@@ -43,14 +47,14 @@ public class AServerInfoTest {
     @Test
     public void showVerboseUseOfCumulativeFactory() throws Exception {
         Prov prov = new Prov();
-        AServerInfo info;
+        ServerConnector info;
         
-        // BEGIN: aserverinfo.cumulative.creation.verbose
-        AServerInfo empty = AServerInfo.empty();
-        AServerInfo name = empty.nameProvider(prov);
-        AServerInfo urlAndName = name.urlProvider(prov);
+        // BEGIN: ServerConnector.cumulative.creation.verbose
+        ServerConnector empty = ServerConnector.empty();
+        ServerConnector name = empty.nameProvider(prov);
+        ServerConnector urlAndName = name.urlProvider(prov);
         info = urlAndName.reset(prov);
-        // END: aserverinfo.cumulative.creation.verbose
+        // END: ServerConnector.cumulative.creation.verbose
         
         assertEquals("API Design Server", info.getName());
         assertEquals("http://www.apidesign.org", info.getURL().toExternalForm());
@@ -60,7 +64,7 @@ public class AServerInfoTest {
     }
     
     
-    private static class Prov implements AServerInfo.NameProvider, AServerInfo.URLProvider, AServerInfo.ResetHandler {
+    private static class Prov implements NameProvider, URLProvider, ResetHandler {
         int resets;
 
         public String getName() {
