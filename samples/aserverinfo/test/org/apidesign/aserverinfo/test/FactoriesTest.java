@@ -57,9 +57,9 @@ public class FactoriesTest {
         };
         ServerConnector inf;
 
-        // BEGIN: ServerConnector.factory.creation
+        // BEGIN: ServerConnector.factory.creation2
         inf = ServerConnector.create(np, up, res, shutdown);
-        // END: ServerConnector.factory.creation
+        // END: ServerConnector.factory.creation2
 
         assertEquals("API Design Server", inf.getName());
         assertEquals("http://www.apidesign.org", inf.getURL().toExternalForm());
