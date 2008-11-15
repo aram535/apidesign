@@ -8,7 +8,7 @@ import org.apidesign.aserverinfo.spi.ShutdownHandler;
 
 // BEGIN: aserverinfo.api
 /** A class to connect to server, identify it and manipulate with
- * it state. The <a href="http://apidesign.org">Practical API Design</a>
+ * its state. The <a href="http://apidesign.org">Practical API Design</a>
  * book used to call it AServerInfo.
  * <p>
  */

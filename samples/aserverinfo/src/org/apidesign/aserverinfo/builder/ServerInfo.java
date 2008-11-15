@@ -6,16 +6,13 @@ import org.apidesign.aserverinfo.spi.ShutdownHandler;
 import org.apidesign.aserverinfo.spi.URLProvider;
 
 /**
+ * Cumulative factory methods for the builder pattern
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
+// BEGIN: aserverinfo.builder.factory
 public class ServerInfo {
 
-    //
-    // cumulative factory methods for the builder pattern
-    //
-
-    // BEGIN: aserverinfo.builder.factory
     public static ServerInfo empty() {
         return new ServerInfo(null, null, null, null);
     }
@@ -47,7 +44,7 @@ public class ServerInfo {
     public final ServerConnector connect() {
         return new ServerConnector(name, url, reset, shutdown);
     }
-    // END: aserverinfo.builder.factory
+    // FINISH: aserverinfo.builder.factory
 
     private final NameProvider name;
     private final URLProvider url;
