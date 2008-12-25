@@ -12,30 +12,35 @@ import org.apidesign.spi.security.Digestor;
  *
  * @author Jaroslav Tulach <jaroslav.tulach@apidesign.org>
  */
-final class DigestImplementation<Data> {
+// BEGIN: day.end.bridges.DigestImpl
+final class DigestImpl<Data> {
     private static final DigestorAccessorImpl ACCESSOR = new DigestorAccessorImpl();
     
     private final Digestor<Data> digestor;
     private final String algorithm;
     private Data data;
     
-    private DigestImplementation(Digestor<Data> digestor, String algorithm, Data d) {
+    private DigestImpl(Digestor<Data> digestor, String algorithm, Data d) {
         this.digestor = digestor;
         this.algorithm = algorithm;
         this.data = d;
     }
     
-    static <Data> DigestImplementation create(Digestor<Data> digestor, String algorithm) {
+    static <Data> DigestImpl create(Digestor<Data> digestor, String algorithm) {
+        // indirectly calls digestor.create(algorithm)
         Data d = ACCESSOR.create(digestor, algorithm);
         if (d == null) {
             return null;
         } else {
-            return new DigestImplementation(digestor, algorithm, d);
+            return new DigestImpl(digestor, algorithm, d);
         }
     }
 
     byte[] digest(ByteBuffer bb) {
+        // indirectly calls digestor.update(data, bb)
         ACCESSOR.update(digestor, data, bb);
+        // indirectly calls digestor.digest(data)
         return ACCESSOR.digest(digestor, data);
     }
 }
+// END: day.end.bridges.DigestImpl

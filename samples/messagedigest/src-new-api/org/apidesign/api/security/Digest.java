@@ -12,10 +12,10 @@ import org.apidesign.spi.security.Digestor;
  */
 // BEGIN: day.end.bridges.Digest
 public final class Digest {
-    private final DigestImplementation<?> impl;
+    private final DigestImpl<?> impl;
     
     /** Factory method is better than constructor */
-    private Digest(DigestImplementation<?> impl) {
+    private Digest(DigestImpl<?> impl) {
         this.impl = impl;
     }
     
@@ -23,7 +23,7 @@ public final class Digest {
      */
     public static Digest getInstance(String algorithm) {
         for (Digestor<?> digestor : ServiceLoader.load(Digestor.class)) {
-            DigestImplementation<?> impl = DigestImplementation.create(
+            DigestImpl<?> impl = DigestImpl.create(
                 digestor, algorithm
             );
             if (impl != null) {
