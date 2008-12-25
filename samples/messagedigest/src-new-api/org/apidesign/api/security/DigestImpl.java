@@ -14,7 +14,7 @@ import org.apidesign.spi.security.Digestor;
  */
 // BEGIN: day.end.bridges.DigestImpl
 final class DigestImpl<Data> {
-    private static final DigestorAccessorImpl ACCESSOR = new DigestorAccessorImpl();
+    private static DigestorAccessorImpl ACCESSOR = new DigestorAccessorImpl();
     
     private final Digestor<Data> digestor;
     private final String algorithm;
@@ -26,7 +26,9 @@ final class DigestImpl<Data> {
         this.data = d;
     }
     
-    static <Data> DigestImpl create(Digestor<Data> digestor, String algorithm) {
+    static <Data> DigestImpl create(
+        Digestor<Data> digestor, String algorithm
+    ) {
         // indirectly calls digestor.create(algorithm)
         Data d = ACCESSOR.create(digestor, algorithm);
         if (d == null) {
