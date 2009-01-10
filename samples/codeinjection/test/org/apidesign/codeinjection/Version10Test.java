@@ -22,6 +22,7 @@ public class Version10Test {
         return new CountDownImplV1(value);
     }
 
+    // BEGIN: codeinjection.fourtimes
     @Test
     public void testDecrementFourTimes() {
         CountDown counter = create(4);
@@ -31,4 +32,5 @@ public class Version10Test {
         assertFalse("Not down yet", counter.isDown()); counter.down();
         assertTrue("Down now", counter.isDown());
     }
+    // END: codeinjection.fourtimes
 }

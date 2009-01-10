@@ -35,6 +35,7 @@ public class Version20Test {
         assertTrue("Down now", counter.isDown());
     }
 
+    // BEGIN: codeinjection.twice
     @Test
     public void testDecrementTwoTimesEnough() {
         MockServices.setServices(DecrementByTwo.class);
@@ -49,4 +50,5 @@ public class Version20Test {
             return value - 2;
         }
     }
+    // END: codeinjection.twice
 }
