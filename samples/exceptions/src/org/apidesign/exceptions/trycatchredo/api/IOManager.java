@@ -1,15 +1,15 @@
-package org.apidesign.exceptions.trycatchredo;
+package org.apidesign.exceptions.trycatchredo.api;
 
 import java.net.URL;
 import javax.swing.Action;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
 public final class IOManager {
-    static boolean old;
-
     IOManager() {
     }
 
@@ -24,6 +24,21 @@ public final class IOManager {
             return new SaveAction(where, what);
         } else {
             return new SaveActionWithQuery(where, what);
+        }
+    }
+
+    //
+    // Support for executing mock objects in tests
+    //
+
+    static boolean old;
+    static Object setVisibleOption;
+    static void setVisible(JDialog d, JOptionPane p) {
+        if (setVisibleOption == null) {
+            d.setVisible(true);
+        } else {
+            // only in test mode
+            p.setValue(setVisibleOption);
         }
     }
 }

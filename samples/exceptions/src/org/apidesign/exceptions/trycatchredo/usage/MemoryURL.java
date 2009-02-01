@@ -1,5 +1,5 @@
 
-package org.apidesign.exceptions.trycatchredo;
+package org.apidesign.exceptions.trycatchredo.usage;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,9 +13,8 @@ import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
 import java.util.HashMap;
 import java.util.Map;
-import junit.framework.Assert;
 
-/**
+/** Support for special "memory://" URLs. Useful when testing network communication.
  *
  * @author Jaroslav Tulach
  */
@@ -23,7 +22,7 @@ public final class MemoryURL extends URLStreamHandler {
     private MemoryURL() {
     }
 
-    static void initialize() {
+    public static void initialize() {
     }
     static {
         class F implements URLStreamHandlerFactory {
@@ -40,6 +39,7 @@ public final class MemoryURL extends URLStreamHandler {
     
     private static Map<String,InputStream> contents = new HashMap<String,InputStream>();
     private static Map<String,OutputStream> outputs = new HashMap<String,OutputStream>();
+
     public static void registerURL(String u, String content, OutputStream out) throws MalformedURLException {
         contents.put(u, new ByteArrayInputStream(content.getBytes()));
         outputs.put(u, out);
@@ -47,7 +47,6 @@ public final class MemoryURL extends URLStreamHandler {
     
     public static String getOutputForURL(String u) {
         OutputStream out = outputs.get(u);
-        Assert.assertNotNull("No output for " + u, out);
         return out.toString();
     }
     

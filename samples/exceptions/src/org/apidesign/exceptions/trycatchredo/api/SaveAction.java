@@ -1,4 +1,4 @@
-package org.apidesign.exceptions.trycatchredo;
+package org.apidesign.exceptions.trycatchredo.api;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;

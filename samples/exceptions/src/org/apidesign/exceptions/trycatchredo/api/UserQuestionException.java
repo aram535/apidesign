@@ -1,4 +1,4 @@
-package org.apidesign.exceptions.trycatchredo;
+package org.apidesign.exceptions.trycatchredo.api;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;

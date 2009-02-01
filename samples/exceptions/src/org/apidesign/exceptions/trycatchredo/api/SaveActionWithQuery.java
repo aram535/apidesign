@@ -1,4 +1,4 @@
-package org.apidesign.exceptions.trycatchredo;
+package org.apidesign.exceptions.trycatchredo.api;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -33,7 +33,7 @@ final class SaveActionWithQuery extends AbstractAction {
             } catch (UserQuestionException ex) {
                 JOptionPane p = ex.getQuestionPane();
                 JDialog d = p.createDialog(ex.getLocalizedMessage());
-                d.setVisible(true);
+                setVisible(d, p);
                 ex.confirm(p.getValue());
                 if (
                     !p.getValue().equals(JOptionPane.CANCEL_OPTION) &&
@@ -46,5 +46,9 @@ final class SaveActionWithQuery extends AbstractAction {
             }
             break;
         }
+    }
+
+    private static void setVisible(JDialog d, JOptionPane p) {
+        IOManager.setVisible(d, p);
     }
 }
