@@ -35,7 +35,12 @@ final class SaveActionWithQuery extends AbstractAction {
                 JDialog d = p.createDialog(ex.getLocalizedMessage());
                 d.setVisible(true);
                 ex.confirm(p.getValue());
-                continue;
+                if (
+                    !p.getValue().equals(JOptionPane.CANCEL_OPTION) &&
+                    !p.getValue().equals(JOptionPane.CLOSED_OPTION)
+                ) {
+                    continue;
+                }
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }

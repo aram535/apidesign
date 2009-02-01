@@ -39,18 +39,16 @@ public final class MemoryURL extends URLStreamHandler {
     }
     
     private static Map<String,InputStream> contents = new HashMap<String,InputStream>();
-    private static Map<String,MC> outputs = new HashMap<String,MC>();
-    public static void registerURL(String u, String content, ByteArrayOutputStream out) throws MalformedURLException {
+    private static Map<String,OutputStream> outputs = new HashMap<String,OutputStream>();
+    public static void registerURL(String u, String content, OutputStream out) throws MalformedURLException {
         contents.put(u, new ByteArrayInputStream(content.getBytes()));
-        if (out != null) {
-            new MC(new URL(u)).out = out;
-        }
+        outputs.put(u, out);
     }
     
-    public static byte[] getOutputForURL(String u) {
-        MC out = outputs.get(u);
+    public static String getOutputForURL(String u) {
+        OutputStream out = outputs.get(u);
         Assert.assertNotNull("No output for " + u, out);
-        return out.out.toByteArray();
+        return out.toString();
     }
     
     protected URLConnection openConnection(URL u) throws IOException {
@@ -59,11 +57,15 @@ public final class MemoryURL extends URLStreamHandler {
     
     private static final class MC extends URLConnection {
         private InputStream values;
-        private ByteArrayOutputStream out;
+        private OutputStream out;
         
         public MC(URL u) {
             super(u);
-            outputs.put(u.toExternalForm(), this);
+            out = outputs.get(u.toExternalForm());
+            if (out == null) {
+                out = new ByteArrayOutputStream();
+                outputs.put(u.toExternalForm(), out);
+            }
         }
 
         public void connect() throws IOException {
