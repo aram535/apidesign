@@ -12,6 +12,6 @@ public final class IOManager {
     }
 
     public static Action createSaveAction(URL where, CharSequence what) {
-        return new SaveAction(where, what);
+        return new SaveActionWithQuery(where, what);
     }
 }
