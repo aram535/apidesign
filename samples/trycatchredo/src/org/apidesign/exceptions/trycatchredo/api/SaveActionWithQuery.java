@@ -25,6 +25,7 @@ final class SaveActionWithQuery extends AbstractAction {
     
     public void actionPerformed(ActionEvent ev) {
         assert EventQueue.isDispatchThread();
+        // BEGIN: trycatchredo.SaveActionWithQuery
         for (;;) {
             try {
                 OutputStream os = where.openConnection().getOutputStream();
@@ -46,6 +47,7 @@ final class SaveActionWithQuery extends AbstractAction {
             }
             break;
         }
+        // END: trycatchredo.SaveActionWithQuery
     }
 
     private static void setVisible(JDialog d, JOptionPane p) {

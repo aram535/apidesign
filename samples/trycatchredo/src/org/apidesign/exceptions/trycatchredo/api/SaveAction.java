@@ -24,6 +24,7 @@ final class SaveAction extends AbstractAction {
     
     public void actionPerformed(ActionEvent ev) {
         assert EventQueue.isDispatchThread();
+        // BEGIN: trycatchredo.SaveAction
         try {
             OutputStream os = where.openConnection().getOutputStream();
             os.write(what.toString().getBytes());
@@ -31,5 +32,6 @@ final class SaveAction extends AbstractAction {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        // END: trycatchredo.SaveAction
     }
 }

@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import javax.swing.JOptionPane;
 
+// BEGIN: trycatchredo.stream
 public final class QueryStream extends OutputStream {
     private ByteArrayOutputStream arr = new ByteArrayOutputStream();
     /** this field can be manipulated by the QueryException */
     Boolean reverse;
 
     @Override
-    public synchronized void write(byte[] b, int off, int len) throws IOException {
+    public synchronized void write(byte[] b, int off, int len)
+    throws IOException {
         if (reverse == null) {
             throw new QueryException();
         }
@@ -63,3 +65,4 @@ public final class QueryStream extends OutputStream {
         }
     }
 }
+// END: trycatchredo.stream
