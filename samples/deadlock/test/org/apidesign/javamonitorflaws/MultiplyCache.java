@@ -23,13 +23,17 @@ public class MultiplyCache extends Cache<String,Integer> {
         pcs.firePropertyChange(PROP_MULTIPLY, oldMultiply, multiply);
     }
 
-    public synchronized void addPropertyChangeListener(PropertyChangeListener listener) {
+    public synchronized void addPropertyChangeListener(
+        PropertyChangeListener listener
+    ) {
         if (pcs == null) {
             pcs = new PropertyChangeSupport(this);
         }
         pcs.addPropertyChangeListener(listener);
     }
-    public synchronized void removePropertyChangeListener(PropertyChangeListener listener) {
+    public synchronized void removePropertyChangeListener(
+        PropertyChangeListener listener
+    ) {
         if (pcs != null) {
             pcs.removePropertyChangeListener(listener);
         }
