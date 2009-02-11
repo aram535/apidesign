@@ -28,7 +28,7 @@ public class MultiplyCache extends Cache<String,Integer> {
         }
         pcs.addPropertyChangeListener(listener);
     }
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
+    public synchronized void removePropertyChangeListener(PropertyChangeListener listener) {
         if (pcs != null) {
             pcs.removePropertyChangeListener(listener);
         }
