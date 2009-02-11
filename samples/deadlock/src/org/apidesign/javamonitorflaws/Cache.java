@@ -12,6 +12,7 @@ import java.util.Map;
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
+// BEGIN: monitor.pitfalls.Cache
 public abstract class Cache<From,To> {
     private Map<From,To> cache;
 
@@ -44,3 +45,4 @@ public abstract class Cache<From,To> {
         }
     }
 }
+// END: monitor.pitfalls.Cache

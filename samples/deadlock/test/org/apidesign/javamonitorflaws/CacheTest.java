@@ -98,25 +98,32 @@ Thread Deadlock using API
   org.apidesign.javamonitorflaws.CacheTest$2ToDeadlock.run:90
   java.lang.Thread.run:619
      */
+    // BEGIN: monitor.pitfalls.block.propertychange
     public void testDeadlockViaAPI() throws Exception {
         if (Boolean.getBoolean("no.failures")) return;
         
         class ToDeadlock implements Runnable, PropertyChangeListener {
+            int lastMultiply;
+
             public void run() {
                 cache.setMultiply(10);
             }
             public void propertyChange(PropertyChangeEvent evt) {
                 try {
-                    Thread.sleep(500);
+                    storeMultiply();
                 } catch (InterruptedException ex) {
                     // ok
                 }
-                assertMultiplyByTen();
             }
 
-            public synchronized void assertMultiplyByTen() {
-                int value =  cache.get("123");
-                assertEquals("3*10=30", 30, value);
+            private synchronized void storeMultiply()
+            throws InterruptedException {
+                lastMultiply = cache.getMultiply();
+                // simulates "starvation"
+                wait();
+            }
+
+            public void assertMultiplyByTen() {
             }
         }
         ToDeadlock toDeadlock = new ToDeadlock();
@@ -126,6 +133,10 @@ Thread Deadlock using API
 
         Thread.sleep(100);
 
-        toDeadlock.assertMultiplyByTen();
+        // BEGIN: monitor.pitfalls.brokencall
+        int value =  cache.get("123");
+        assertEquals("3*10=30", 30, value);
+        // END: monitor.pitfalls.brokencall
     }
+    // END: monitor.pitfalls.block.propertychange
 }

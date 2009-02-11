@@ -8,6 +8,7 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
+// BEGIN: monitor.pitfalls.subclass
 public class MultiplyCache extends Cache<String,Integer> {
     private PropertyChangeSupport pcs;
     private int multiply;
@@ -38,6 +39,7 @@ public class MultiplyCache extends Cache<String,Integer> {
     protected Integer createItem(String f) {
         return f.length() * getMultiply();
     }
-
-
 }
+// END: monitor.pitfalls.subclass
+
+
