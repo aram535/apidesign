@@ -14,7 +14,7 @@ import java.util.Map;
  */
 // BEGIN: monitor.pitfalls.CacheOK
 public abstract class CacheOK<From,To> {
-    private Object LOCK = new Object();
+    private final Object LOCK = new Object();
 
     private Map<From,To> cache;
 
