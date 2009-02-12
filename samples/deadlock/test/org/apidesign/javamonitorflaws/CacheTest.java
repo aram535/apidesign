@@ -5,8 +5,6 @@ import java.beans.PropertyChangeListener;
 import org.netbeans.junit.NbTestCase;
 
 public class CacheTest extends NbTestCase {
-    private MultiplyCache cache = new MultiplyCache();
-
     public CacheTest(String n) {
         super(n);
     }
@@ -48,6 +46,8 @@ Thread to deadlock
     public void testDeadlockWithSetter() throws Exception {
         if (Boolean.getBoolean("no.failures")) return;
         
+        final CacheToTest cache = new MultiplyCache();
+
         class ToDeadlock implements Runnable, PropertyChangeListener {
             int value;
 
@@ -98,10 +98,14 @@ Thread Deadlock using API
   org.apidesign.javamonitorflaws.CacheTest$2ToDeadlock.run:90
   java.lang.Thread.run:619
      */
-    // BEGIN: monitor.pitfalls.block.propertychange
     public void testDeadlockViaAPI() throws Exception {
         if (Boolean.getBoolean("no.failures")) return;
-        
+        testDeadlockViaAPI(new MultiplyCache());
+    }
+
+    // BEGIN: monitor.pitfalls.block.propertychange
+    private static void testDeadlockViaAPI(final CacheToTest cache)
+    throws Exception {
         class ToDeadlock implements Runnable, PropertyChangeListener {
             int lastMultiply;
 
@@ -139,4 +143,17 @@ Thread Deadlock using API
         // END: monitor.pitfalls.brokencall
     }
     // END: monitor.pitfalls.block.propertychange
+
+    public void testDeadlockViaAPIWithCacheOK() throws Exception {
+        testDeadlockViaAPI(new MultiplyCacheOK());
+    }
+
+    static interface CacheToTest {
+        public Integer get(String key);
+
+        public void setMultiply(int m);
+        public int getMultiply();
+        public void addPropertyChangeListener(PropertyChangeListener l);
+        public void removePropertyChangeListener(PropertyChangeListener l);
+    }
 }

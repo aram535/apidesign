@@ -7,8 +7,8 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
-// BEGIN: monitor.pitfalls.subclass
-public class MultiplyCache extends Cache<String,Integer>
+// BEGIN: monitor.pitfalls.subclassok
+public class MultiplyCacheOK extends CacheOK<String,Integer>
 implements CacheTest.CacheToTest {
     private PropertyChangeSupport pcs;
     private int multiply;
@@ -44,6 +44,6 @@ implements CacheTest.CacheToTest {
         return f.length() * multiply;
     }
 }
-// END: monitor.pitfalls.subclass
+// END: monitor.pitfalls.subclassok
 
 
