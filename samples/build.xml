@@ -9,21 +9,21 @@
     </dirset>
     
     
-    <target name="clean">
+    <target name="clean" description="Cleans all build products">
         <delete dir="${samples.dir}/build"/>
         <subant target="clean" antfile="../build.xml">
             <dirset refid="examples"/>
         </subant>
     </target>
 
-    <target name="build">
+    <target name="build" description="Compiles all samples" >
         <ant dir="${samples.dir}/libs"/>
         <subant target="compile" antfile="../build.xml">
             <dirset refid="examples"/>
         </subant>
     </target>
 
-    <target name="test" depends="build">
+    <target name="test" depends="build" description="Executes tests for all samples">
         <subant target="test" antfile="../build.xml" failonerror="true">
             <dirset refid="examples"/>
             <property name="test-sys-prop.no.failures" value="true"/>
@@ -41,7 +41,7 @@
         </exec>
     </target>
 
-    <target name="sources" depends="-version,clean">
+    <target name="sources" depends="-version,clean" description="Creates source distribution of the samples">
         <fail unless="version"/>
         
         <loadfile srcfile="${samples.dir}/../.hgignore" property="hgignore"/>
@@ -56,7 +56,7 @@
         </zip>
     </target>
 
-    <target name="snippets" depends="-revision">
+    <target name="snippets" depends="-revision" description="Extracts code snippets">
         <fail unless="revision"/>
 
         <property name="snippets.dir" location="build/snippets"/>
