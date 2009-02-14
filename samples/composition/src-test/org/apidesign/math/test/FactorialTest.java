@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package api;
+package org.apidesign.math.test;
 
 import junit.framework.TestCase;
 

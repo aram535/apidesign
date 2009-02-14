@@ -1,5 +1,6 @@
-package api;
+package org.apidesign.math.test;
 
+import org.apidesign.math.Arithmetica;
 import junit.framework.TestCase;
 
 /**

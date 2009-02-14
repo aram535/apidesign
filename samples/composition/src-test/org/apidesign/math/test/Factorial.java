@@ -1,4 +1,6 @@
-package api;
+package org.apidesign.math.test;
+
+import org.apidesign.math.Arithmetica;
 
 /** Class showing inventive, non-expected use of 
  * Arithmetica methods to do multiplication instead of

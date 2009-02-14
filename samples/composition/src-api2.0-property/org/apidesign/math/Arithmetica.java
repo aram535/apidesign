@@ -1,36 +1,14 @@
-package api;
+package org.apidesign.math;
 
 /** Class to simplify arithmetical operations, improved version to compute
- * the sum for ranges, but only if one uses the new constructor to indicate
- * need for new version.
+ * the sum for ranges, but only if the virtual machine is configured to
+ * run in incompatible mode.
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  * @version 2.0
  */
-// BEGIN: design.composition.arith2.0.enum
+// BEGIN: design.composition.arith2.0.property
 public class Arithmetica {
-    private final Version version;
-    public enum Version { VERSION_1_0, VERSION_2_0 }
-    
-    public Arithmetica() {
-        this(Version.VERSION_1_0);
-    }
-    public Arithmetica(Version version) {
-        this.version = version;
-    }
-
-    public int sumRange(int from, int to) {
-        switch (version) {
-            case VERSION_1_0:
-                return sumRange1(from, to);
-            case VERSION_2_0:
-                return sumRange2(from, to);
-            default:
-                throw new IllegalStateException();
-        }
-    }
-// FINISH: design.composition.arith2.0.enum
-    
     public int sumTwo(int one, int second) {
         return one + second;
     }
@@ -46,6 +24,15 @@ public class Arithmetica {
         return sum;
     }
     
+    public int sumRange(int from, int to) {
+        // BEGIN: design.composition.arith2.0.property.if
+        if (Boolean.getBoolean("arithmetica.v2")) {
+            return sumRange2(from, to);
+        } else {
+            return sumRange1(from, to);
+        }
+        // END: design.composition.arith2.0.property.if
+    }
 
     private int sumRange1(int from, int to) {
         int len = to - from;
@@ -64,3 +51,4 @@ public class Arithmetica {
         return (from + to) * (Math.abs(to - from) + 1) / 2;
     }
 }
+// END: design.composition.arith2.0.property

@@ -1,4 +1,4 @@
-package api;
+package org.apidesign.math;
 
 /** Class to simplify arithmetical operations.
  *

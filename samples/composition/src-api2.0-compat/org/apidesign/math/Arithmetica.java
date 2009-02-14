@@ -1,15 +1,23 @@
-package api;
-
-import org.apidesign.runtime.check.RuntimeCheck;
+package org.apidesign.math;
 
 /** Class to simplify arithmetical operations, improved version to compute
- * the sum for ranges, but only if the virtual machine is configured to
- * run in incompatible mode.
+ * the sum for ranges, but only if one uses the new constructor to indicate
+ * need for new version.
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  * @version 2.0
  */
+// BEGIN: design.composition.arith2.0.compat
 public class Arithmetica {
+    private final int version;
+    
+    public Arithmetica() {
+        this(1);
+    }
+    public Arithmetica(int version) {
+        this.version = version;
+    }
+    
     public int sumTwo(int one, int second) {
         return one + second;
     }
@@ -26,10 +34,10 @@ public class Arithmetica {
     }
     
     public int sumRange(int from, int to) {
-        if (calledByV2AwareLoader()) {
-            return sumRange2(from, to);
-        } else {
-            return sumRange1(from, to);
+        switch (version) {
+            case 1: return sumRange1(from, to);
+            case 2: return sumRange2(from, to);
+            default: throw new IllegalStateException();
         }
     }
 
@@ -49,23 +57,5 @@ public class Arithmetica {
     private int sumRange2(int from, int to) {
         return (from + to) * (Math.abs(to - from) + 1) / 2;
     }
-
-    private static boolean calledByV2AwareLoader() {
-        // BEGIN: design.composition.arith2.6.runtime
-        StackTraceElement[] arr = Thread.currentThread().getStackTrace();
-        ClassLoader myLoader = Arithmetica.class.getClassLoader();
-        for (int i = 0; i < arr.length; i++) {
-            ClassLoader caller = arr[i].getClass().getClassLoader();
-            if (myLoader == caller) {
-                continue;
-            }
-            if (RuntimeCheck.requiresAtLeast("2.6", "api.Arithmetica", caller)) {
-                return true;
-            }
-            return false;
-        }
-        return true;
-        // END: design.composition.arith2.6.runtime
-    }
-    
 }
+// END: design.composition.arith2.0.compat

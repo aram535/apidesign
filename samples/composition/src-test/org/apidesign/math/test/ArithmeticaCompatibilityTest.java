@@ -1,6 +1,8 @@
-package api;
+package org.apidesign.math.test;
 
-import junit.framework.*;
+import junit.framework.AssertionFailedError;
+import junit.framework.TestCase;
+import org.apidesign.math.Arithmetica;
 
 public class ArithmeticaCompatibilityTest extends TestCase {
     public ArithmeticaCompatibilityTest(String name) {

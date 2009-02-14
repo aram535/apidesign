@@ -1,4 +1,4 @@
-package api;
+package org.apidesign.math;
 
 /** Class to simplify arithmetical operations, improved version to compute
  * the sum for ranges.

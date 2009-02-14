@@ -3,9 +3,6 @@ package org.apidesign.runtime.check;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 final class VersionAwareClassLoader extends ClassLoader 
 implements RuntimeCheck.AwareLoader {
