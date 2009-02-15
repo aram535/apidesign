@@ -1,6 +1,5 @@
 package org.apidesign.math;
 
-import org.apidesign.math.Arithmetica;
 import org.apidesign.runtime.check.RuntimeCheck;
 
 /** Class to simplify arithmetical operations, improved version to compute
@@ -10,6 +9,7 @@ import org.apidesign.runtime.check.RuntimeCheck;
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  * @version 2.0
  */
+// BEGIN: design.composition.arith.runtime
 public class Arithmetica {
     public int sumTwo(int one, int second) {
         return one + second;
@@ -60,7 +60,9 @@ public class Arithmetica {
             if (myLoader == caller) {
                 continue;
             }
-            if (RuntimeCheck.requiresAtLeast("2.6", "api.Arithmetica", caller)) {
+            if (RuntimeCheck.requiresAtLeast(
+                "2.0", "org.apidesign.math", caller
+            )) {
                 return true;
             }
             return false;
@@ -70,3 +72,4 @@ public class Arithmetica {
     }
     
 }
+// END: design.composition.arith.runtime
