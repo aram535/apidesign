@@ -3,7 +3,8 @@ package org.apidesign.sidemeanings.test;
 
 import org.apidesign.sidemeanings.MixedClass;
 import org.apidesign.sidemeanings.NonMixed;
-import org.apidesign.sidemeanings.NonMixed.Callback;
+import org.apidesign.sidemeanings.NonMixedFactory;
+import org.apidesign.sidemeanings.NonMixedFactory.Callback;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +41,7 @@ public class MixedTest {
     
     // BEGIN: sidemeanings.Mixed.Clean.Use
     @Test public void useWithoutMixedMeanings() {
-        class AddFiveMixedCounter implements NonMixed.Provider {
+        class AddFiveMixedCounter implements NonMixedFactory.Provider {
             private Callback callback;
             
             public int toBeImplementedBySubclass() {
@@ -52,7 +53,7 @@ public class MixedTest {
                 callback = c;
             }
         }
-        NonMixed add5 = NonMixed.create(new AddFiveMixedCounter());
+        NonMixed add5 = NonMixedFactory.create(new AddFiveMixedCounter());
         assertEquals("5/1 = 5", 5, add5.apiForClients());
         assertEquals("10/2 = 5", 5, add5.apiForClients());
         assertEquals("15/3 = 5", 5, add5.apiForClients());
