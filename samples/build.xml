@@ -35,11 +35,6 @@
             <arg file="${samples.dir}/version.sh"/>
         </exec>
     </target>
-    <target name="-revision" unless="revision">
-        <exec dir="${samples.dir}" outputproperty="revision" executable="/bin/sh">
-            <arg file="${samples.dir}/tip.sh"/>
-        </exec>
-    </target>
 
     <target name="sources" depends="-version,clean" description="Creates source distribution of the samples">
         <fail unless="version"/>
@@ -56,17 +51,13 @@
         </zip>
     </target>
 
-    <target name="snippets" depends="-revision" description="Extracts code snippets">
-        <fail unless="revision"/>
-
+    <target name="snippets" description="Extracts code snippets">
         <property name="snippets.dir" location="build/snippets"/>
-        <ant dir="../java/ant"/>
-        <taskdef name="grepcopy" classname="org.apidesign.infra.ant.GrepCopy" classpath="../java/ant/dist/apidesign-ant-tasks.jar"/>
-        <grepcopy target="${snippets.dir}" baseurl="http://source.apidesign.org/hg/apidesign/file/${revision}/samples/">
-            <fileset dir=".">
-                <include name="**/*"/>
-                <exclude name="**/build/**/*"/>
-            </fileset>
-        </grepcopy>
+        <ant dir="../java/ant" target="snippets">
+            <property name="snippets.dir" value="${snippets.dir}"/>
+            <property name="snippets.repo" value="http://source.apidesign.org/hg/apidesign"/>
+            <property name="snippets.path" value="samples/"/>
+            <property name="snippets.code.dir" location="."/>
+        </ant>
     </target>
 </project>

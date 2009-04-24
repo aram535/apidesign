@@ -2,6 +2,11 @@
 <!-- You may freely edit this file. See commented blocks below for -->
 <!-- some examples of how to customize the build. -->
 <!-- (If you delete it and reopen the project it will be recreated.) -->
+<!-- By default, only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box.-->
 <project name="ant" default="default" basedir=".">
     <description>Builds, tests, and runs the project ant.</description>
     <import file="nbproject/build-impl.xml"/>
@@ -66,4 +71,27 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="-revision" unless="revision">
+        <fail unless="snippets.code.dir"/>
+        <exec dir="${snippets.code.dir}" outputproperty="revision" executable="/bin/sh">
+            <arg file="${ant.file}/../tip.sh"/>
+        </exec>
+    </target>
+
+    <target name="snippets" depends="jar,-revision" description="Extracts code snippets">
+        <fail unless="revision"/>
+        <fail unless="snippets.dir"/>
+        <fail unless="snippets.repo"/>
+        <fail unless="snippets.path"/>
+        <fail unless="snippets.code.dir"/>
+
+        <taskdef name="grepcopy" classname="org.apidesign.infra.ant.GrepCopy" classpath="dist/apidesign-ant-tasks.jar"/>
+        <grepcopy target="${snippets.dir}" baseurl="${snippets.repo}/file/${revision}/${snippets.path}">
+            <fileset dir="${snippets.code.dir}">
+                <include name="**/*"/>
+                <exclude name="**/build/**/*"/>
+            </fileset>
+        </grepcopy>
+    </target>
+
 </project>
