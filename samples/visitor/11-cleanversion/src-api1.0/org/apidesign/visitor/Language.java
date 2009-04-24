@@ -1,5 +1,7 @@
 package org.apidesign.visitor;
 
+
+// BEGIN: visitor.cleandefinitionofversion
 public final class Language {
     private Language() { }
     
@@ -49,3 +51,4 @@ public final class Language {
         public void visitNumber(Number n);
     }
 }
+// END: visitor.cleandefinitionofversion
