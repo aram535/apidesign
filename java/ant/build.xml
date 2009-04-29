@@ -90,6 +90,7 @@
             <fileset dir="${snippets.code.dir}">
                 <include name="**/*"/>
                 <exclude name="**/build/**/*"/>
+                <exclude name="**/target/**/*"/>
             </fileset>
         </grepcopy>
     </target>
