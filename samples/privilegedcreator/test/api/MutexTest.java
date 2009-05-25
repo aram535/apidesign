@@ -17,29 +17,11 @@ public class MutexTest {
     public MutexTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of readAccess method, of class Mutex.
      */
     @Test
     public void readAccess() {
-        Mutex lock = new Mutex();
-
         // BEGIN: mutex.use
         class R implements Runnable {
             int cnt;
@@ -49,7 +31,7 @@ public class MutexTest {
             }
         }
         R r = new R();
-        lock.readAccess(r);
+        MUTEX.readAccess(r);
         assertEquals("Counter increased", 1, r.cnt);
         // END: mutex.use
     }
