@@ -38,7 +38,7 @@ public class MutexTest {
      */
     @Test
     public void readAccess() {
-        Mutex instance = new Mutex();
+        Mutex lock = new Mutex();
 
         // BEGIN: mutex.use
         class R implements Runnable {
@@ -49,23 +49,23 @@ public class MutexTest {
             }
         }
         R r = new R();
-        instance.readAccess(r);
-        assertEquals("One call to runnable", 1, r.cnt);
+        lock.readAccess(r);
+        assertEquals("Counter increased", 1, r.cnt);
         // END: mutex.use
     }
     
     @Test
     public void usePrivileged() {
-        Mutex.Privileged lock = new Mutex.Privileged();
-        Mutex mutex = new Mutex(lock);
-
+        int cnt = 0;
         // BEGIN: mutex.privileged
-        lock.enterReadAccess();
+        PRIVILEGED.enterReadAccess();
         try {
           // do the operation
+            cnt++;
         } finally {
-           lock.exitReadAccess();
+           PRIVILEGED.exitReadAccess();
         }
+        assertEquals("Counter increased", 1, cnt);
         // END: mutex.privileged
         
     }
