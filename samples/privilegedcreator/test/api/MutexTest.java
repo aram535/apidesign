@@ -38,6 +38,9 @@ public class MutexTest {
      */
     @Test
     public void readAccess() {
+        Mutex instance = new Mutex();
+
+        // BEGIN: mutex.use
         class R implements Runnable {
             int cnt;
             
@@ -46,9 +49,9 @@ public class MutexTest {
             }
         }
         R r = new R();
-        Mutex instance = new Mutex();
         instance.readAccess(r);
         assertEquals("One call to runnable", 1, r.cnt);
+        // END: mutex.use
     }
     
     @Test
