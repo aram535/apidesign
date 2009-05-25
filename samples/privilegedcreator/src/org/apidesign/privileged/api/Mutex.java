@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Jaroslav Tulach <jaroslav.tulach@netbeans.org>
  */
 // BEGIN: mutex.api
-public class Mutex {
+public final class Mutex {
     Lock lock = new ReentrantLock();
     
     public Mutex() {
