@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package api;
+package org.apidesign.privileged.api;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -12,12 +12,12 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @author Jaroslav Tulach <jaroslav.tulach@netbeans.org>
  */
+// BEGIN: mutex.api
 public class Mutex {
     Lock lock = new ReentrantLock();
     
     public Mutex() {
     }
-
     
     public void readAccess(Runnable r) {
         try {
@@ -27,9 +27,9 @@ public class Mutex {
             lock.unlock();
         }
     }
-    
+// FINISH: mutex.api
 
-    
+// BEGIN: mutex.privileged.api
     public Mutex(Privileged privileged) {
         if (privileged.mutex != null) {
             throw new IllegalStateException();
@@ -48,4 +48,5 @@ public class Mutex {
             mutex.lock.unlock();
         }
     }
+// END: mutex.privileged.api
 }

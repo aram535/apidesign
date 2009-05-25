@@ -1,5 +1,5 @@
 
-package api;
+package org.apidesign.privileged.api;
 
 import java.util.concurrent.Executor;
 

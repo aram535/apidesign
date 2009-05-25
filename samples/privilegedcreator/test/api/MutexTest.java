@@ -1,5 +1,6 @@
 package api;
 
+import org.apidesign.privileged.api.Mutex;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
