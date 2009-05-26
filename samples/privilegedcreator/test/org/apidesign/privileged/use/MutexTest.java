@@ -1,10 +1,6 @@
-package api;
+package org.apidesign.privileged.use;
 
 import org.apidesign.privileged.api.Mutex;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,7 +14,7 @@ public class MutexTest {
     }
 
     /**
-     * Test of readAccess method, of class Mutex.
+     * Test of withLock method, of class Mutex.
      */
     @Test
     public void readAccess() {
@@ -31,7 +27,7 @@ public class MutexTest {
             }
         }
         R r = new R();
-        MUTEX.readAccess(r);
+        MUTEX.withLock(r);
         assertEquals("Counter increased", 1, r.cnt);
         // END: mutex.use
     }
@@ -40,12 +36,12 @@ public class MutexTest {
     public void usePrivileged() {
         int cnt = 0;
         // BEGIN: mutex.privileged
-        PRIVILEGED.enterReadAccess();
         try {
-          // do the operation
+            PRIVILEGED.lock();
+            // do the operation
             cnt++;
         } finally {
-           PRIVILEGED.exitReadAccess();
+           PRIVILEGED.unlock();
         }
         assertEquals("Counter increased", 1, cnt);
         // END: mutex.privileged

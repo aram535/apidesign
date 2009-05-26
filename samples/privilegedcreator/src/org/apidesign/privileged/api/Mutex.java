@@ -19,7 +19,7 @@ public final class Mutex {
     public Mutex() {
     }
     
-    public void readAccess(Runnable r) {
+    public void withLock(Runnable r) {
         try {
             lock.lock();
             r.run();
@@ -40,11 +40,11 @@ public final class Mutex {
     public static final class Privileged {
         private Mutex mutex;
         
-        public void enterReadAccess() {
+        public void lock() {
             mutex.lock.lock();
         }
         
-        public void exitReadAccess() {
+        public void unlock() {
             mutex.lock.unlock();
         }
     }
