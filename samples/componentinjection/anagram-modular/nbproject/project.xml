@@ -21,6 +21,18 @@
                     <encoding>UTF-8</encoding>
                 </source-folder>
                 <source-folder>
+                    <label>src-api-compiletimecaches</label>
+                    <type>java</type>
+                    <location>src-api-compiletimecaches</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src-word-annotated</label>
+                    <type>java</type>
+                    <location>src-word-annotated</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
                     <label>src-word-static</label>
                     <type>java</type>
                     <location>src-word-static</location>
@@ -123,6 +135,16 @@
             </export>
             <export>
                 <type>folder</type>
+                <location>build/api-compiletimecaches/classes</location>
+                <build-target>build</build-target>
+            </export>
+            <export>
+                <type>folder</type>
+                <location>build/word-annotated/classes</location>
+                <build-target>build</build-target>
+            </export>
+            <export>
+                <type>folder</type>
                 <location>build/word-static/classes</location>
                 <build-target>build</build-target>
             </export>
@@ -176,6 +198,14 @@
                     <source-folder style="packages">
                         <label>src-api</label>
                         <location>src-api</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>src-api-compiletimecaches</label>
+                        <location>src-api-compiletimecaches</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>src-word-annotated</label>
+                        <location>src-word-annotated</location>
                     </source-folder>
                     <source-folder style="packages">
                         <label>src-word-static</label>
@@ -240,6 +270,18 @@
             <compilation-unit>
                 <package-root>src-api</package-root>
                 <built-to>build/api/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-api-compiletimecaches</package-root>
+                <classpath mode="compile">src-api:../../libs/dist/org-openide-filesystems.jar:../../libs/dist/org-openide-util.jar</classpath>
+                <built-to>build/api-compiletimecaches/classes</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>src-word-annotated</package-root>
+                <classpath mode="compile">src-api:src-api-compiletimecaches:../../libs/dist/org-openide-filesystems.jar:../../libs/dist/org-openide-util.jar</classpath>
+                <built-to>build/word-annotated/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>

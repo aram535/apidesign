@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Build Script" default="test" basedir=".">
+<project name="Various Examples of Component Injection" default="test" basedir=".">
     <target name="clean">
         <delete dir="build"/>
     </target>
@@ -9,6 +9,14 @@
         <antcall target="-build-one">
             <param name="version" value="api"/>
             <param name="cp" value=""/>
+        </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="api-compiletimecaches"/>
+            <param name="cp" value="build/api/classes:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
+        </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="word-annotated"/>
+            <param name="cp" value="build/api/classes:build/api-compiletimecaches/classes:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="word-static"/>
@@ -95,6 +103,12 @@
             <param name="version" value="app-serviceloader"/>
             <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:${junit.jar}:${nbjunit.jar}:${insane.jar}"/>
             <param name="main" value="org.apidesign.anagram.app.serviceloader.Main"/>
+        </antcall>
+        <echo level="info" message="Running @Words annotation version"/>
+        <antcall target="-run-one">
+            <param name="version" value="app-lookup"/>
+            <param name="cp" value="build/api/classes:build/word-annotated/classes:build/api-compiletimecaches/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
+            <param name="main" value="org.apidesign.anagram.app.lookup.Main"/>
         </antcall>
     </target>
 
