@@ -32,16 +32,16 @@ public class BuilderFactoryTest {
         NameProvider np = p;
         URLProvider up = p;
         ResetHandler res = p;
-        ServerConnector inf;
+        ServerConnector connection;
         
         // BEGIN: ServerConnector.builder.creation
-        inf = ServerInfo.empty()
+        connection = ServerInfo.empty()
                 .nameProvider(np).urlProvider(up).reset(res).connect();
         // END: ServerConnector.builder.creation
         
-        assertEquals("API Design Server", inf.getName());
-        assertEquals("http://www.apidesign.org", inf.getURL().toExternalForm());
-        inf.reset();
+        assertEquals("API Design Server", connection.getName());
+        assertEquals("http://www.apidesign.org", connection.getURL().toExternalForm());
+        connection.reset();
         assertEquals("Once reset", 1, p.resets);
         
     }
@@ -49,19 +49,19 @@ public class BuilderFactoryTest {
     @Test
     public void showVerboseUseOfBuilder() throws Exception {
         Prov prov = new Prov();
-        ServerConnector info;
+        ServerConnector connection;
         
         // BEGIN: ServerConnector.builder.creation.verbose
         ServerInfo empty = ServerInfo.empty();
         ServerInfo name = empty.nameProvider(prov);
         ServerInfo urlAndName = name.urlProvider(prov);
         ServerInfo all = urlAndName.reset(prov);
-        info = all.connect();
+        connection = all.connect();
         // END: ServerConnector.builder.creation.verbose
         
-        assertEquals("API Design Server", info.getName());
-        assertEquals("http://www.apidesign.org", info.getURL().toExternalForm());
-        info.reset();
+        assertEquals("API Design Server", connection.getName());
+        assertEquals("http://www.apidesign.org", connection.getURL().toExternalForm());
+        connection.reset();
         assertEquals("Once reset", 1, prov.resets);
         
     }
