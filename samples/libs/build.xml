@@ -6,6 +6,11 @@
             <param name="url" value="http://switch.dl.sourceforge.net/sourceforge/junit/junit-4.4.jar"/>
         </antcall>
         <antcall target="-library-from-zip">
+            <param name="library" value="org-openide-util-lookup"/>
+            <param name="library.include" value="**/org-openide-util-lookup.jar"/>
+            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/platform11/org-openide-util-lookup.nbm"/>
+        </antcall>
+        <antcall target="-library-from-zip">
             <param name="library" value="org-openide-util"/>
             <param name="library.include" value="**/org-openide-util.jar"/>
             <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/platform11/org-openide-util.nbm"/>

@@ -44,7 +44,7 @@
     
     <target name="-run-one">
         <java 
-            classpath="build/${version1}/classes:build/${version2}/classes:build/api/classes:../libs/dist/org-openide-util.jar" 
+            classpath="build/${version1}/classes:build/${version2}/classes:build/api/classes:../libs/dist/org-openide-util-lookup.jar"
             classname="org.apidesign.extensionpoint.Main"
             failonerror="true" 
         >
@@ -61,7 +61,7 @@
             srcdir="src-${version}" 
             destdir="build/${version}/classes" 
             source="1.5" target="1.5"
-            classpath="${cp}:../libs/dist/org-openide-util.jar"
+            classpath="${cp}:../libs/dist/org-openide-util-lookup.jar"
         />
         <copy todir="build/${version}/classes">
             <fileset dir="src-${version}">

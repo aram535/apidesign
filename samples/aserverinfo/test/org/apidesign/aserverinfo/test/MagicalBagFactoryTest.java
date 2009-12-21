@@ -2,6 +2,8 @@ package org.apidesign.aserverinfo.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apidesign.aserverinfo.magicalbagfactory.ServerConnector;
 import org.apidesign.aserverinfo.spi.NameProvider;
 import org.apidesign.aserverinfo.spi.ResetHandler;
@@ -10,7 +12,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.openide.util.Exceptions;
 import org.openide.util.Lookup;
 import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
@@ -65,7 +66,7 @@ public class MagicalBagFactoryTest {
             try {
                 return new URL("http://www.apidesign.org");
             } catch (MalformedURLException ex) {
-                Exceptions.printStackTrace(ex);
+                Logger.getLogger(MagicalBagFactoryTest.class.getName()).log(Level.SEVERE, null, ex);
                 return null;
             }
         }

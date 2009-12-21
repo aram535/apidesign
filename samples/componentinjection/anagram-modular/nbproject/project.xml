@@ -274,13 +274,13 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-api-compiletimecaches</package-root>
-                <classpath mode="compile">src-api:../../libs/dist/org-openide-filesystems.jar:../../libs/dist/org-openide-util.jar</classpath>
+                <classpath mode="compile">src-api:../../libs/dist/org-openide-filesystems.jar:../../libs/dist/org-openide-util-lookup.jar</classpath>
                 <built-to>build/api-compiletimecaches/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-word-annotated</package-root>
-                <classpath mode="compile">src-api:src-api-compiletimecaches:../../libs/dist/org-openide-filesystems.jar:../../libs/dist/org-openide-util.jar</classpath>
+                <classpath mode="compile">src-api:src-api-compiletimecaches:../../libs/dist/org-openide-filesystems.jar:../../libs/dist/org-openide-util-lookup.jar</classpath>
                 <built-to>build/word-annotated/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
@@ -334,7 +334,7 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-app-lookup</package-root>
-                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/org-openide-util.jar</classpath>
+                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/org-openide-util-lookup.jar</classpath>
                 <built-to>build/app-lookup/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
@@ -346,7 +346,7 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-test</package-root>
-                <classpath mode="compile">src-api:../../libs/dist/junit-4.4.jar::../../libs/dist/org-netbeans-modules-nbjunit.jar:../../libs/dist/org-netbeans-insane.jar:src-gui:../../libs/dist/org-openide-util.jar:src-app-lookup:src-app-serviceloader</classpath>
+                <classpath mode="compile">src-api:../../libs/dist/junit-4.4.jar::../../libs/dist/org-netbeans-modules-nbjunit.jar:../../libs/dist/org-netbeans-insane.jar:src-gui:../../libs/dist/org-openide-util-lookup.jar:src-app-lookup:src-app-serviceloader</classpath>
                 <source-level>1.5</source-level>
             </compilation-unit>
         </java-data>

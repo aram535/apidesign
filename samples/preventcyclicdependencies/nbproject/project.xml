@@ -104,7 +104,7 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-acyclic1</package-root>
-                <classpath mode="compile">../libs/dist/org-openide-util.jar</classpath>
+                <classpath mode="compile">../libs/dist/org-openide-util-lookup.jar</classpath>
                 <built-to>build/acyclic1/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>

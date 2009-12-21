@@ -1,5 +1,7 @@
 package org.apidesign.aserverinfo.test;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.apidesign.aserverinfo.factories.ServerConnector;
@@ -11,7 +13,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.openide.util.Exceptions;
 
 public class FactoriesTest {
 
@@ -79,7 +80,7 @@ public class FactoriesTest {
             try {
                 return new URL("http://www.apidesign.org");
             } catch (MalformedURLException ex) {
-                Exceptions.printStackTrace(ex);
+                Logger.getLogger(FactoriesTest.class.getName()).log(Level.SEVERE, null, ex);
                 return null;
             }
         }

@@ -2,6 +2,8 @@ package org.apidesign.aserverinfo.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apidesign.aserverinfo.builder.ServerConnector;
 import org.apidesign.aserverinfo.builder.ServerInfo;
 import org.apidesign.aserverinfo.spi.NameProvider;
@@ -11,7 +13,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.openide.util.Exceptions;
 
 public class BuilderFactoryTest {
 
@@ -78,7 +79,7 @@ public class BuilderFactoryTest {
             try {
                 return new URL("http://www.apidesign.org");
             } catch (MalformedURLException ex) {
-                Exceptions.printStackTrace(ex);
+                Logger.getLogger(BuilderFactoryTest.class.getName()).log(Level.SEVERE, null, ex);
                 return null;
             }
         }

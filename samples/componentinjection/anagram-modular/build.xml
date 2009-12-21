@@ -12,11 +12,11 @@
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="api-compiletimecaches"/>
-            <param name="cp" value="build/api/classes:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
+            <param name="cp" value="build/api/classes:../../libs/dist/org-openide-util-lookup.jar:../../libs/dist/org-openide-filesystems.jar"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="word-annotated"/>
-            <param name="cp" value="build/api/classes:build/api-compiletimecaches/classes:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
+            <param name="cp" value="build/api/classes:build/api-compiletimecaches/classes:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-util-lookup.jar:../../libs/dist/org-openide-filesystems.jar"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="word-static"/>
@@ -49,7 +49,7 @@
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-lookup"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util-lookup.jar"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-serviceloader"/>
@@ -96,7 +96,7 @@
         <echo level="info" message="Running lookup version"/>
         <antcall target="-run-one">
             <param name="version" value="app-lookup"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util-lookup.jar"/>
             <param name="main" value="org.apidesign.anagram.app.lookup.Main"/>
         </antcall>
         <antcall target="-run-one">
@@ -107,7 +107,7 @@
         <echo level="info" message="Running @Words annotation version"/>
         <antcall target="-run-one">
             <param name="version" value="app-lookup"/>
-            <param name="cp" value="build/api/classes:build/word-annotated/classes:build/api-compiletimecaches/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
+            <param name="cp" value="build/api/classes:build/word-annotated/classes:build/api-compiletimecaches/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util-lookup.jar:../../libs/dist/org-openide-util:../../libs/dist/org-openide-filesystems.jar"/>
             <param name="main" value="org.apidesign.anagram.app.lookup.Main"/>
         </antcall>
     </target>
@@ -116,7 +116,7 @@
         <echo level="info" message="Testing using MockServices"/>
         <antcall target="-test-one">
             <param name="version" value="app-test"/>
-            <param name="cp" value="build/api/classes:build/gui/classes:build/app-serviceloader/classes:build/app-lookup/classes:${junit.jar}:${nbjunit.jar}:${insane.jar}:../../libs/dist/org-openide-util.jar"/>
+            <param name="cp" value="build/api/classes:build/gui/classes:build/app-serviceloader/classes:build/app-lookup/classes:${junit.jar}:${nbjunit.jar}:${insane.jar}:../../libs/dist/org-openide-util-lookup.jar"/>
         </antcall>
     </target>
         
