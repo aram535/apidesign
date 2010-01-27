@@ -1,7 +1,6 @@
 package org.apidesign.singletons.usage;
 
 import org.apidesign.singletons.api.DialogDisplayer;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.netbeans.junit.MockServices;
