@@ -1,5 +1,6 @@
 package org.apidesign.singletons.usage;
 
+// BEGIN: singletons.injectable.usage
 import org.apidesign.singletons.api.DialogDisplayer;
 
 public class Main {
@@ -13,3 +14,4 @@ public class Main {
         }
     }
 }
+// END: singletons.injectable.usage

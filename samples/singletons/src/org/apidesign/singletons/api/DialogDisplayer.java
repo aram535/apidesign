@@ -43,7 +43,6 @@ public abstract class DialogDisplayer {
         
         // BEGIN: singletons.injectable.serviceloader
         private static DialogDisplayer initializeServiceLoader() {
-            // see http://singletons.apidesign.org
             Iterator<DialogDisplayer> it = null;
             it = ServiceLoader.load(DialogDisplayer.class).iterator();
             return it != null && it.hasNext() ? it.next() : new Impl();

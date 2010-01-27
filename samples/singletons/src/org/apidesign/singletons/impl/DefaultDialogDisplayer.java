@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import org.apidesign.singletons.api.DialogDisplayer;
 import org.openide.util.lookup.ServiceProvider;
 
+// BEGIN: singletons.injectable.implement
 @ServiceProvider(service=DialogDisplayer.class)
 public final class DefaultDialogDisplayer extends DialogDisplayer {
     @Override
@@ -12,3 +13,4 @@ public final class DefaultDialogDisplayer extends DialogDisplayer {
         return res == JOptionPane.OK_OPTION;
     }
 }
+// END: singletons.injectable.implement

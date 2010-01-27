@@ -6,11 +6,8 @@ import org.junit.Test;
 import org.netbeans.junit.MockServices;
 import static org.junit.Assert.*;
 
+// BEGIN: singletons.injectable.test
 public class MainTest {
-
-    public MainTest() {
-    }
-
     @BeforeClass
     public static void setUpClass() throws Exception {
         MockServices.setServices(MockDialogDisplayer.class);
@@ -18,9 +15,14 @@ public class MainTest {
 
     @Test
     public void testMainAsksAQuestion() {
-        assertNull("No question asked yet", MockDialogDisplayer.askedQuery);
+        assertNull(
+            "No question asked yet", MockDialogDisplayer.askedQuery
+        );
         Main.main(new String[0]);
-        assertNotNull("main code asked our Mock displayer", MockDialogDisplayer.askedQuery);
+        assertNotNull(
+            "main code asked our Mock displayer",
+            MockDialogDisplayer.askedQuery
+        );
     }
 
     public static final class MockDialogDisplayer extends DialogDisplayer {
@@ -31,6 +33,6 @@ public class MainTest {
             askedQuery = query;
             return false;
         }
-
     }
 }
+// END: singletons.injectable.test
