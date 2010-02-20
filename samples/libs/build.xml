@@ -1,45 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Downloads necessary libraries" default="libraries" basedir=".">
-       <target name="libraries">
+       <target name="libraries" depends="autoupdate-task">
         <antcall target="-library">
             <param name="library" value="junit-4.4"/>
             <param name="url" value="http://switch.dl.sourceforge.net/sourceforge/junit/junit-4.4.jar"/>
         </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="org-openide-util-lookup"/>
+        <antcall target="-library-from-nbm">
+            <param name="library" value="org.openide.util.lookup"/>
             <param name="library.include" value="**/org-openide-util-lookup.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/platform/org-openide-util-lookup.nbm"/>
         </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="org-openide-util"/>
+        <antcall target="-library-from-nbm">
+            <param name="library" value="org.openide.util"/>
             <param name="library.include" value="**/org-openide-util.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/platform/org-openide-util.nbm"/>
         </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="org-openide-filesystems"/>
+        <antcall target="-library-from-nbm">
+            <param name="library" value="org.openide.filesystems"/>
             <param name="library.include" value="**/org-openide-filesystems.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/platform/org-openide-filesystems.nbm"/>
         </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="org-netbeans-modules-nbjunit"/>
+        <antcall target="-library-from-nbm">
+            <param name="library" value="org.netbeans.modules.nbjunit"/>
             <param name="library.include" value="**/org-netbeans-modules-nbjunit.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/harness/org-netbeans-modules-nbjunit.nbm"/>
         </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="org-netbeans-insane"/>
+        <antcall target="-library-from-nbm">
+            <param name="library" value="org.netbeans.insane"/>
             <param name="library.include" value="**/org-netbeans-insane.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/harness/org-netbeans-insane.nbm"/>
         </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="spring-2.5"/>
+        <antcall target="-library-from-nbm">
+            <param name="library" value="org.netbeans.libs.springframework"/>
             <param name="library.include" value="**/*spring*.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/java/org-netbeans-libs-springframework.nbm"/>
         </antcall>
-        <antcall target="-library-from-zip">
-            <param name="library" value="commons-logging-1.1"/>
+        <antcall target="-library-from-nbm">
+            <param name="library" value="org.netbeans.libs.commons_logging"/>
             <param name="library.include" value="**/*commons*logg*.jar"/>
-            <param name="url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/ide/org-netbeans-libs-commons_logging.nbm"/>
         </antcall>
+    </target>
+
+    <target name="autoupdate-task">
+        <mkdir dir="dist"/>
+        <property name="bootstrap.url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastStableBuild/artifact/nbbuild/netbeans/harness/tasks.jar"/>
+        <property name="netbeans.updatecenter.url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/updates.xml.gz"/>
+        
+        <get dest="dist/tasks.jar" src="${bootstrap.url}" usetimestamp="true"/>
+        <taskdef
+            name="autoupdate" classname="org.netbeans.nbbuild.AutoUpdate"
+            classpath="dist/tasks.jar"
+        />
     </target>
     
     <!-- support methods -->
@@ -64,19 +69,17 @@
             </condition>
         </fail>
     </target>
-    <target name="-library-from-zip" depends="-library-check" unless="library.available">
-        <mkdir dir="dist"/>
-        <get dest="${library.zip}" src="${url}"/>
-        <unzip dest="dist" src="${library.zip}">
-            <patternset includes="${library.include}"/>
-            <mapper type="flatten"/>
-        </unzip>
-        
-        <fail message="Now the library ${library} should be downloaded">
-            <condition>
-                <not><available file="${library.jar}"/></not>
-            </condition>
-        </fail>
+    <target name="-library-from-nbm">
+        <fail message="You need to specify library name" unless="library"/>
+        <autoupdate todir="dist" updatecenter="${netbeans.updatecenter.url}">
+            <modules includes="${library}"/>
+        </autoupdate>
+
+        <copy todir="dist" flatten="true">
+            <fileset dir="dist">
+                <include name="${library.include}"/>
+            </fileset>
+        </copy>
     </target>
     
     <target name="clean">
