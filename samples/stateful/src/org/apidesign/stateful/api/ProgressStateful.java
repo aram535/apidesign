@@ -5,8 +5,8 @@ package org.apidesign.stateful.api;
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
 // BEGIN: progress.api
-public abstract class Progress {
-    public static Progress create(String name) {
+public abstract class ProgressStateful {
+    public static ProgressStateful create(String name) {
         return createImpl(name);
     }
     public abstract void start(int totalAmount);
@@ -14,14 +14,14 @@ public abstract class Progress {
     public abstract void finish();
     // FINISH: progress.api
 
-    Progress() {
+    ProgressStateful() {
     }
     
-    private static Progress createImpl(String name) {
+    private static ProgressStateful createImpl(String name) {
         return new Impl(name);
     }
 
-    private static final class Impl extends Progress {
+    private static final class Impl extends ProgressStateful {
         private final String name;
         private int total = -1;
         private int current;
