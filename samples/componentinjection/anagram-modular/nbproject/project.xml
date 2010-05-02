@@ -322,13 +322,13 @@
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-app-spring</package-root>
-                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/spring-2.5.jar</classpath>
+                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/spring-2.5.6.SEC01.jar</classpath>
                 <built-to>build/app-spring/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>
             <compilation-unit>
                 <package-root>src-app-spring-scan</package-root>
-                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/spring-2.5.jar</classpath>
+                <classpath mode="compile">src-api:src-scrambler-simple:src-word-static:src-gui:../../libs/dist/spring-2.5.6.SEC01.jar</classpath>
                 <built-to>build/app-spring-scan/classes</built-to>
                 <source-level>1.5</source-level>
             </compilation-unit>

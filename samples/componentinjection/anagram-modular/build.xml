@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Various Examples of Component Injection" default="test" basedir=".">
+    <property name="spring.jar" value="spring-2.5.6.SEC01.jar"/>
     <target name="clean">
         <delete dir="build"/>
     </target>
@@ -41,11 +42,11 @@
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-spring"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/spring-2.5.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-spring-scan"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/spring-2.5.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-lookup"/>
