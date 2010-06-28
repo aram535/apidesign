@@ -5,15 +5,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import org.junit.Test;
-import org.netbeans.junit.Log;
 import org.netbeans.junit.NbTestCase;
 import static org.junit.Assert.*;
 
 public class DeadlockSyncOnTest extends NbTestCase {
     static final Logger LOG = Logger.getLogger(DeadlockSyncOnTest.class.getName());
+    private static final JLabel preLoadClasses = new JLabel();
     
     public DeadlockSyncOnTest(String n) {
         super(n);
@@ -21,7 +19,7 @@ public class DeadlockSyncOnTest extends NbTestCase {
 
     @Override
     protected int timeOut() {
-        return 10000;
+        return 30000;
     }
     
     
