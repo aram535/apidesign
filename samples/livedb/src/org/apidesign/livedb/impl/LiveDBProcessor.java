@@ -15,7 +15,11 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Enumeration;
+import java.util.Properties;
+import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
@@ -46,7 +50,7 @@ public class LiveDBProcessor extends AbstractProcessor {
             try {
                 JavaFileObject src = processingEnv.getFiler().createSourceFile(clsName, pe);
                 Writer w = src.openWriter();
-                Connection c = DriverManager.getConnection(db.url(), db.user(), db.password());
+                Connection c = getConnection(db.url(), db.user(), db.password());
                 CallableStatement s = c.prepareCall(db.query());
                 ResultSet rs = s.executeQuery();
                 ResultSetMetaData md = rs.getMetaData();
@@ -103,12 +107,19 @@ public class LiveDBProcessor extends AbstractProcessor {
         return true;
     }
 
-    static {
-        // init drivers
-        Enumeration<Driver> en;
-        en = DriverManager.getDrivers();
-        while (en.hasMoreElements()) {
-            Driver driver = en.nextElement();
+    private static Connection getConnection(String url, String user, String password) 
+    throws SQLException {
+        final ClassLoader cl = LiveDBProcessor.class.getClassLoader();
+        for (Driver d : ServiceLoader.load(Driver.class, cl)) {
+//            System.out.println("looked up: " + d);
+            if (d.acceptsURL(url)) {
+                //System.out.println("accepts: " + d);
+                Properties p = new Properties();
+                p.put("user", user);
+                p.put("password", password);
+                return d.connect(url, p);
+            }
         }
+        throw new SQLException("No driver found for " + url);
     }
 }
