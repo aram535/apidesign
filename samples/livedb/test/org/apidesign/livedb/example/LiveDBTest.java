@@ -5,6 +5,8 @@
 
 package org.apidesign.livedb.example;
 
+import java.sql.SQLException;
+import java.util.List;
 import junit.framework.TestCase;
 
 /**
@@ -17,10 +19,11 @@ public class LiveDBTest extends TestCase {
         super(testName);
     }
 
-    public void testSomeMethod() {
-        DBAccess db = new DBAccess();
-        db.jarda = "Ahoj";
-        assertEquals("Ahoj", db.jarda);
+    public void testSomeMethod() throws SQLException {
+        List<Age> ages = Age.query();
+        for (Age age : ages) {
+            System.out.printf("%s is %s years old\n", age.NAME, age.AGE);
+        }
     }
 
 }

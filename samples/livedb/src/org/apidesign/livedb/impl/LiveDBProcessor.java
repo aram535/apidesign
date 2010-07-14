@@ -7,6 +7,14 @@ package org.apidesign.livedb.impl;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Enumeration;
 import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Processor;
@@ -38,16 +46,69 @@ public class LiveDBProcessor extends AbstractProcessor {
             try {
                 JavaFileObject src = processingEnv.getFiler().createSourceFile(clsName, pe);
                 Writer w = src.openWriter();
+                Connection c = DriverManager.getConnection(db.url(), db.user(), db.password());
+                CallableStatement s = c.prepareCall(db.query());
+                ResultSet rs = s.executeQuery();
+                ResultSetMetaData md = rs.getMetaData();
                 w.append("package " + pe.getQualifiedName() + ";\n");
+                w.append("import java.util.List;\n");
+                w.append("import java.util.ArrayList;\n");
+                w.append("import java.sql.*;\n");
                 w.append("class " + db.classname() + " {\n");
-                w.append("  public String " + db.field() + ";\n");
+                for (int i = 1; i <= md.getColumnCount(); i++) {
+                    w.append("  public final " + md.getColumnClassName(i) + " " + md.getColumnName(i) + ";\n");
+                }
+                w.append("  private " + db.classname() + "(\n");
+                for (int i = 1; i <= md.getColumnCount(); i++) {
+                    w.append("    " + md.getColumnClassName(i) + " " + md.getColumnName(i));
+                    if (i < md.getColumnCount()) {
+                        w.append(",\n");
+                    } else {
+                        w.append("\n");
+                    }
+                }
+                w.append("  ) {\n");
+                for (int i = 1; i <= md.getColumnCount(); i++) {
+                    w.append("    this." + md.getColumnName(i) + " = " + md.getColumnName(i) + ";\n");
+                }
+                w.append("  }\n");
+                w.append("  public static List<" + db.classname() + "> query() throws SQLException {\n");
+                w.append("    Connection c = DriverManager.getConnection(\"" + db.url() + "\", \"" + db.user() + "\", \"" + db.password() +"\");\n");
+                w.append("    List<" + db.classname() + "> res = new ArrayList<" + db.classname() + ">();\n");
+                w.append("    CallableStatement s = c.prepareCall(\"" + db.query() + "\");\n");
+                w.append("    ResultSet rs = s.executeQuery();\n");
+                w.append("    ResultSetMetaData md = rs.getMetaData();\n");
+                w.append("    while (rs.next()) {\n");
+                w.append("      res.add(new " + db.classname() + "(\n");
+                for (int i = 1; i <= md.getColumnCount(); i++) {
+                    w.append("        (" + md.getColumnClassName(i) + ")rs.getObject(" + i + ")");
+                    if (i < md.getColumnCount()) {
+                        w.append(",\n");
+                    } else {
+                        w.append("\n");
+                    }
+                }
+                w.append("      ));\n");
+                w.append("    };\n");
+                w.append("    return res;\n");
+                w.append("  }");
                 w.append("}");
                 w.close();
             } catch (IOException ex) {
+                throw new IllegalStateException(ex);
+            } catch (SQLException ex) {
                 throw new IllegalStateException(ex);
             }
         }
         return true;
     }
 
+    static {
+        // init drivers
+        Enumeration<Driver> en;
+        en = DriverManager.getDrivers();
+        while (en.hasMoreElements()) {
+            Driver driver = en.nextElement();
+        }
+    }
 }

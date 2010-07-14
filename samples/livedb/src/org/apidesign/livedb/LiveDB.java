@@ -12,6 +12,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.PACKAGE)
 @Retention(RetentionPolicy.SOURCE)
 public @interface LiveDB {
+    String url();
+    String user();
+    String password();
+    String query();
     String classname();
-    String field();
 }
