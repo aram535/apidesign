@@ -71,4 +71,39 @@
     nbproject/build-impl.xml file. 
 
     -->
+    
+    <target name="-pre-compile-test">
+        <antcall target="create-db"/>
+    </target>
+    
+    <!-- BEGIN: livedb.derby.create -->
+    <target name="-check-db">
+        <property name="db" location="build/classes/db"/>
+        <available property="db.exists" file="${db}"/>
+    </target>
+    <target name="create-db" unless="db.exists" depends="init,-check-db">
+        <mkdir dir="${db}"/>
+        <delete dir="${db}"/>
+        <echo message="Creating DB in ${db}"/>
+        <sql classpath="${file.reference.derby.jar}" userid="j1" password="j1" 
+            url="jdbc:derby:${db};create=true" 
+            driver="org.apache.derby.jdbc.EmbeddedDriver"
+        >
+        create table APP.AGE (
+            NAME VARCHAR(30),
+            AGE NUMERIC(3)
+        );
+        insert into APP.AGE values ('apidesign', 3);
+        </sql>
+        <!-- don't forget to shutdown the DB -->
+        <sql classpath="${file.reference.derby.jar}" userid="j1" password="j1" 
+            url="jdbc:derby:${db};shutdown=true" 
+            driver="org.apache.derby.jdbc.EmbeddedDriver" 
+            onerror="continue"
+            errorproperty="ignore.error" 
+            failonconnectionerror="false"
+        >none</sql>
+        <echo message="DB created OK."/>
+    </target>
+    <!-- END: livedb.derby.create -->
 </project>

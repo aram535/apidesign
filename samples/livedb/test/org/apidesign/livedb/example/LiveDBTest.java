@@ -21,9 +21,10 @@ public class LiveDBTest extends TestCase {
 
     public void testSomeMethod() throws SQLException {
         List<Age> ages = Age.query();
-        for (Age age : ages) {
-            System.out.printf("%s is %s years old\n", age.NAME, age.AGE);
-        }
+        assertEquals("One record", 1, ages.size());
+        Age age = ages.get(0);
+        assertEquals("name is apidesign", "apidesign", age.NAME);
+        assertEquals("it is three years old", 3, age.AGE.intValue());
     }
 
 }

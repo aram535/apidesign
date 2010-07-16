@@ -3,7 +3,7 @@
 @LiveDB(
     classname="Age", password="j1", user="j1",
     query="select * from APP.AGE", 
-    url="jdbc:derby://localhost:1527/livedb"
+    url="jdbc:derby:classpath:db"
 )
 package org.apidesign.livedb.example;
 
