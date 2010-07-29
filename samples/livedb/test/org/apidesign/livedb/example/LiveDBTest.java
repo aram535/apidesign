@@ -14,14 +14,14 @@ public class LiveDBTest extends TestCase {
         super(testName);
     }
 
-    // BEGIN: livedb.test
     public void testSomeMethod() throws SQLException {
+    // BEGIN: livedb.test
         List<Age> ages = Age.query();
         assertEquals("One record", 1, ages.size());
         Age age = ages.get(0);
         assertEquals("name is apidesign", "apidesign", age.NAME);
         assertEquals("it is three years old", 3, age.AGE.intValue());
-    }
     // END: livedb.test
+    }
 
 }
