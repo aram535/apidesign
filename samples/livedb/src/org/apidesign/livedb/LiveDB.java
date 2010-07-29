@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
+// BEGIN: livedb.connection.annotation
 @Target(ElementType.PACKAGE)
 @Retention(RetentionPolicy.SOURCE)
 public @interface LiveDB {
@@ -18,3 +19,4 @@ public @interface LiveDB {
     String query();
     String classname();
 }
+// END: livedb.connection.annotation

@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.apidesign.livedb.impl;
 
 import java.io.IOException;
@@ -10,16 +5,12 @@ import java.io.Writer;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Driver;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.Enumeration;
 import java.util.Properties;
 import java.util.ServiceLoader;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
@@ -37,10 +28,11 @@ import org.openide.util.lookup.ServiceProvider;
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
+// BEGIN: livedb.processor
 @SupportedAnnotationTypes("org.apidesign.livedb.LiveDB")
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 @ServiceProvider(service=Processor.class)
-public class LiveDBProcessor extends AbstractProcessor {
+public final class LiveDBProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (Element e : roundEnv.getElementsAnnotatedWith(LiveDB.class)) {
@@ -106,7 +98,7 @@ public class LiveDBProcessor extends AbstractProcessor {
         }
         return true;
     }
-
+// FINISH: livedb.processor
     private static Connection getConnection(String url, String user, String password) 
     throws SQLException {
         final ClassLoader cl = LiveDBProcessor.class.getClassLoader();

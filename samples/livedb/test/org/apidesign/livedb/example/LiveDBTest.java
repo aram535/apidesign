@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.apidesign.livedb.example;
 
 import java.sql.SQLException;
@@ -19,6 +14,7 @@ public class LiveDBTest extends TestCase {
         super(testName);
     }
 
+    // BEGIN: livedb.test
     public void testSomeMethod() throws SQLException {
         List<Age> ages = Age.query();
         assertEquals("One record", 1, ages.size());
@@ -26,5 +22,6 @@ public class LiveDBTest extends TestCase {
         assertEquals("name is apidesign", "apidesign", age.NAME);
         assertEquals("it is three years old", 3, age.AGE.intValue());
     }
+    // END: livedb.test
 
 }
