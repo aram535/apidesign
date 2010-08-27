@@ -4,21 +4,31 @@ import java.io.IOException;
 import java.io.Writer;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.Driver;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.ServiceLoader;
 import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Completion;
+import javax.annotation.processing.Completions;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
+import javax.lang.model.element.AnnotationMirror;
+import javax.lang.model.element.AnnotationValue;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
@@ -153,5 +163,67 @@ public final class LiveDBProcessor extends AbstractProcessor {
             }
         }
         throw new SQLException("No driver found for " + url);
+    }
+
+    
+    
+    // BEGIN: livedb.completions
+    @Override
+    public Iterable<? extends Completion> getCompletions(
+        Element element, AnnotationMirror annotation, 
+        ExecutableElement member, String userText
+    ) {
+        if (!"query".equals(member.getSimpleName().toString())) {
+            return Collections.emptyList();
+        }
+        if (userText == null || userText.length() <= 1) {
+            return Collections.singleton(Completions.of("\"SELECT "));
+        }
+        if (userText.toUpperCase().matches(".*FROM *")) {
+            String user = extractValue(annotation, "user");
+            String password = extractValue(annotation, "password");
+            String url = extractValue(annotation, "url");
+            if (user == null || password == null || url == null) {
+                return Collections.emptyList();
+            }
+            try {
+                List<Completion> arr = new ArrayList<Completion>();
+                Connection c = getConnection(url, user, password);
+                DatabaseMetaData meta = c.getMetaData();
+                ResultSet res = meta.getTables(null, null, "%", null);
+                boolean ok = res.first();
+                while (ok) {
+                    String txt = userText + res.getString("TABLE_NAME");
+                    arr.add(Completions.of(txt));
+                    ok = res.next();
+                }
+                return arr;
+            } catch (SQLException ex) {
+                throw new IllegalStateException(ex);
+            }
+        }
+        return Collections.emptyList();
+    }
+    // END: livedb.completions
+    
+    private static String extractValue(AnnotationMirror am, String param) {
+        AnnotationValue av = null;
+        for (Entry<? extends ExecutableElement, ? extends AnnotationValue> entry : am.getElementValues().entrySet()) {
+            if (entry.getKey().toString().equals(param + "()")) {
+                av = entry.getValue();
+                break;
+            }
+        }
+        if (av == null) {
+            return null;
+        }
+        String s = av.toString();
+        if (s.startsWith("\"")) {
+            s = s.substring(1);
+        }
+        if (s.endsWith("\"")) {
+            s = s.substring(0, s.length() - 1);
+        }
+        return s;
     }
 }
