@@ -13,7 +13,7 @@
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="api-compiletimecaches"/>
-            <param name="cp" value="build/api/classes:../../libs/dist/org-openide-util-lookup.jar:../../libs/dist/org-openide-filesystems.jar"/>
+            <param name="cp" value="build/api/classes:../../libs/dist/org-openide-util-lookup.jar:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="word-annotated"/>
@@ -79,13 +79,13 @@
         <echo level="info" message="Running spring version"/>
         <antcall target="-run-one">
             <param name="version" value="app-spring"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/spring-2.5.jar:../../libs/dist/commons-logging-1.1.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}:../../libs/dist/commons-logging-1.1.jar"/>
             <param name="main" value="org.apidesign.anagram.app.spring.Main"/>
         </antcall>
         <echo level="info" message="Running spring autoscan version"/>
         <antcall target="-run-one">
             <param name="version" value="app-spring-scan"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/spring-2.5.jar:../../libs/dist/commons-logging-1.1.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}:../../libs/dist/commons-logging-1.1.jar"/>
             <param name="main" value="org.apidesign.anagram.app.springscan.Main"/>
         </antcall>
         <echo level="info" message="Running registerGeneral version"/>
@@ -108,7 +108,7 @@
         <echo level="info" message="Running @Words annotation version"/>
         <antcall target="-run-one">
             <param name="version" value="app-lookup"/>
-            <param name="cp" value="build/api/classes:build/word-annotated/classes:build/api-compiletimecaches/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util-lookup.jar:../../libs/dist/org-openide-util:../../libs/dist/org-openide-filesystems.jar"/>
+            <param name="cp" value="build/api/classes:build/word-annotated/classes:build/api-compiletimecaches/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/org-openide-util-lookup.jar:../../libs/dist/org-openide-util.jar:../../libs/dist/org-openide-filesystems.jar"/>
             <param name="main" value="org.apidesign.anagram.app.lookup.Main"/>
         </antcall>
     </target>
@@ -132,7 +132,7 @@
     </target>
 
     <target name="-run-one">
-        <java classpath="${cp}:build/${version}/classes" classname="${main}">
+        <java classpath="${cp}:build/${version}/classes" classname="${main}" fork="true">
             <jvmarg value="-Danagram.version=${version}"/>
         </java>
     </target>
