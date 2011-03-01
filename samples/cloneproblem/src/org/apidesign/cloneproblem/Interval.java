@@ -16,7 +16,8 @@ public final class Interval {
      * 
      * @param from the 'sooner' date
      * @param to the 'later' date
-     * @throws IllegalArgumentException if <code>from</code> is not less then <code>to</code>
+     * @throws IllegalArgumentException 
+     *      if <code>from</code> is not less then <code>to</code>
      */
     public Interval(Date from, Date to) {
         if (from == null) {
@@ -29,7 +30,9 @@ public final class Interval {
         this.from = (Date) from.clone();
         this.to = (Date)to.clone();
         if (from.compareTo(to) >= 0) {
-            throw new IllegalArgumentException("'from' must be lower than 'to'!");
+            throw new IllegalArgumentException(
+                "'from' must be lower than 'to'!"
+            );
         }
     }
     
