@@ -43,12 +43,14 @@
         </antcall>
     </target>
 
-    <target name="autoupdate-task">
+    <available property="autoupdate.tasks.jar" file="dist/tasks.jar"/>
+    <property name="bootstrap.url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastStableBuild/artifact/nbbuild/netbeans/harness/tasks.jar"/>
+    <property name="netbeans.updatecenter.url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/updates.xml.gz"/>
+    <target name="-download-autoupdate-task" unless="autoupdate.tasks.jar">
         <mkdir dir="dist"/>
-        <property name="bootstrap.url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastStableBuild/artifact/nbbuild/netbeans/harness/tasks.jar"/>
-        <property name="netbeans.updatecenter.url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastSuccessfulBuild/artifact/nbbuild/nbms/updates.xml.gz"/>
-        
         <get dest="dist/tasks.jar" src="${bootstrap.url}" usetimestamp="true"/>
+    </target>
+    <target name="autoupdate-task" depends="-download-autoupdate-task">
         <taskdef
             name="autoupdate" classname="org.netbeans.nbbuild.AutoUpdate"
             classpath="dist/tasks.jar"
@@ -65,7 +67,7 @@
         <property name="library.zip" location="dist/${library}.zip"/>
         
         <echo message="Checking for ${library.jar}"/>
-        <available file="${library.jar}" property="library.available"/>
+        <available file="${library.jar}"     property="library.available"/>
     </target>
     <target name="-library" depends="-library-check" unless="library.available">
         <mkdir dir="dist"/>
@@ -77,7 +79,14 @@
             </condition>
         </fail>
     </target>
-    <target name="-library-from-nbm">
+    <target name="-library-from-nbm-check">
+        <resourcecount property="library.from.nbm.available" when="greater" count="0">
+            <fileset dir="dist">
+                <include name="${library.include}"/>
+            </fileset>
+        </resourcecount>
+    </target>
+    <target name="-library-from-nbm" depends="-library-from-nbm-check" unless="library.from.nbm.available">
         <fail message="You need to specify library name" unless="library"/>
         <autoupdate todir="dist" updatecenter="${netbeans.updatecenter.url}">
             <modules includes="${library}"/>
