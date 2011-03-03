@@ -80,11 +80,14 @@
         </fail>
     </target>
     <target name="-library-from-nbm-check">
-        <resourcecount property="library.from.nbm.available" when="greater" count="0">
-            <fileset dir="dist">
-                <include name="${library.include}"/>
-            </fileset>
-        </resourcecount>
+        <echo message="Checking for ${library} and its includes ${library.include}"/>
+        <condition property="library.from.nbm.available">
+            <resourcecount when="greater" count="0">
+                <fileset dir="dist">
+                    <include name="${library.include}"/>
+                </fileset>
+            </resourcecount>
+        </condition>
     </target>
     <target name="-library-from-nbm" depends="-library-from-nbm-check" unless="library.from.nbm.available">
         <fail message="You need to specify library name" unless="library"/>
