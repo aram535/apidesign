@@ -48,8 +48,10 @@ final class PostEventSupport implements EventSupport, Runnable {
             pending = deliverables.toArray(new Deliverable[0]);
             deliverables.clear();
         }
+        // BEGIN: openfixed.postimpl
         Calculator calc = null;
-        Set<PostModificationListener> notify = new HashSet<PostModificationListener>();
+        Set<PostModificationListener> notify;
+        notify = new HashSet<PostModificationListener>();
         int pendingCount = pending.length;
         for (Deliverable d : pending) {
             calc = (Calculator)d.ev.getSource();
@@ -60,10 +62,10 @@ final class PostEventSupport implements EventSupport, Runnable {
             }
             d.ev.posts = null;
         }
-        
         for (PostModificationListener pml : notify) {
             pml.postProcess(new PostModificationEvent(calc));
         }
+        // END: openfixed.postimpl
     }
     
     private static class Deliverable {

@@ -12,6 +12,7 @@ public abstract class CalculatorBase extends TestCase {
     
     protected abstract Calculator create();
 
+    // BEGIN: openfixed.commontest
     public void testSumAndListeners() throws Exception {
         Calculator a = create();
         MockListener l = new MockListener();
@@ -47,8 +48,9 @@ public abstract class CalculatorBase extends TestCase {
             events.add(ev);
         }
         
-        public synchronized List<ModificationEvent> assertEvents(String msg, int cnt) 
-        throws InterruptedException {
+        public synchronized List<ModificationEvent> assertEvents(
+            String msg, int cnt
+        ) throws InterruptedException {
             for (int i = 0; i < 10; i++) {
                 if (events != null && events.size() >= cnt) {
                     break;
@@ -61,4 +63,5 @@ public abstract class CalculatorBase extends TestCase {
             return res;
         }
     } // end of ModificationListener
+    // END: openfixed.commontest
 }

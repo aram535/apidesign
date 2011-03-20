@@ -11,16 +11,9 @@ import java.util.concurrent.Executors;
  */
 final class AsyncEventSupport implements EventSupport {
     private final List<ModificationListener> listeners = new CopyOnWriteArrayList<ModificationListener>();
-    private static final Executor EXEC = Executors.newSingleThreadExecutor();
     
     AsyncEventSupport() {
     }
-
-    @Override
-    public void fireModificationEvent(ModificationEvent ev) {
-        EXEC.execute(new Deliverable(ev, listeners.toArray(new ModificationListener[0])));
-    }
-
     @Override
     public void add(ModificationListener l) {
         listeners.add(l);
@@ -30,12 +23,23 @@ final class AsyncEventSupport implements EventSupport {
     public void remove(ModificationListener l) {
         listeners.remove(l);
     }
+
+    // BEGIN: openfixed.asynch
+    private static final Executor EXEC = Executors.newSingleThreadExecutor();
+    @Override
+    public void fireModificationEvent(ModificationEvent ev) {
+        EXEC.execute(new Deliverable(
+            ev, listeners.toArray(new ModificationListener[0])
+        ));
+    }
     
     private static class Deliverable implements Runnable {
         final ModificationEvent ev;
         final ModificationListener[] listeners;
 
-        public Deliverable(ModificationEvent ev, ModificationListener[] listeners) {
+        public Deliverable(
+            ModificationEvent ev, ModificationListener[] listeners
+        ) {
             this.ev = ev;
             this.listeners = listeners;
         }
@@ -47,4 +51,5 @@ final class AsyncEventSupport implements EventSupport {
             }
         }
     }
+    // END: openfixed.asynch
 }

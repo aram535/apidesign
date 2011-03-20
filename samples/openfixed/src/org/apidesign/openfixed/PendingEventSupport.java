@@ -46,6 +46,7 @@ final class PendingEventSupport implements EventSupport, Runnable {
             pending = deliverables.toArray(new Deliverable[0]);
             deliverables.clear();
         }
+        // BEGIN: openfixed.pendingCount
         int pendingCount = pending.length;
         for (Deliverable d : pending) {
             d.ev.pending = --pendingCount;
@@ -53,6 +54,7 @@ final class PendingEventSupport implements EventSupport, Runnable {
                 l.modification(d.ev);
             }
         }
+        // END: openfixed.pendingCount
     }
     
     private static class Deliverable {

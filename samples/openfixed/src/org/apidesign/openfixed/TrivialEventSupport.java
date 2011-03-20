@@ -17,12 +17,14 @@ final class TrivialEventSupport implements EventSupport {
     TrivialEventSupport() {
     }
 
+    // BEGIN: openfixed.trivial
     @Override
     public void fireModificationEvent(ModificationEvent ev) {
         for (ModificationListener l : listener) {
             l.modification(ev);
         }
     }
+    // END: openfixed.trivial
 
     @Override
     public void add(ModificationListener l) {

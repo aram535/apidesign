@@ -5,6 +5,7 @@ package org.apidesign.openfixed;
  *
  * @author Jaroslav Tulach <jtulach@netbeans.org>
  */
+// BEGIN: openfixed.bean
 public final class Calculator {
     private final EventSupport listeners;
     private int sum;
@@ -47,3 +48,4 @@ public final class Calculator {
         listeners.remove(l);
     }
 }
+// END: openfixed.bean

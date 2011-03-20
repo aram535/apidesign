@@ -18,7 +18,9 @@ public final class PostTest extends PendingTest {
     }
 
     public void testPostModificationEvents() throws Exception {
-        class PostListener extends BlockingListener implements PostModificationListener {
+        // BEGIN: openfixed.usemount
+        class PostListener extends BlockingListener 
+        implements PostModificationListener {
             int cnt;
 
             @Override
@@ -30,8 +32,10 @@ public final class PostTest extends PendingTest {
 
             @Override
             public synchronized void postProcess(PostModificationEvent ev) {
+                // called when batch processing is over
                 cnt++;
             }
+        // FINISH: openfixed.usemount
             
             public synchronized void assertPostProcess(String msg, int expected) throws InterruptedException {
                 for (int i = 0; i < 10; i++) {
