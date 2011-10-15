@@ -31,7 +31,8 @@ public abstract class Arithmetica {
         }
         int sum = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
-            // do I want to call sumTwo or defaultSumTwo? That is a question!
+            // do I want to call sumTwo or defaultSumTwo? 
+            // That is a question!
             sum = openUpToSubclasses() ?
                 sumTwo(sum, numbers[i]) :
                 defaultSumTwo(sum, numbers[i]);

@@ -51,7 +51,8 @@ public abstract class DialogDisplayer {
 
         // BEGIN: singletons.injectable.lookup
         private static DialogDisplayer initializeLookup() {
-            DialogDisplayer def = Lookup.getDefault().lookup(DialogDisplayer.class);
+            final Lookup lkp = Lookup.getDefault();
+            DialogDisplayer def = lkp.lookup(DialogDisplayer.class);
             return def != null ? def : new Impl();
         }
         // END: singletons.injectable.lookup

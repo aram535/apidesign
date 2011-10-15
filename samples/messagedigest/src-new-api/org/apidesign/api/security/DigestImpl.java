@@ -14,7 +14,10 @@ import org.apidesign.spi.security.Digestor;
  */
 // BEGIN: day.end.bridges.DigestImpl
 final class DigestImpl<Data> {
-    private static DigestorAccessorImpl ACCESSOR = new DigestorAccessorImpl();
+    private static final DigestorAccessorImpl ACCESSOR;
+    static {
+        ACCESSOR = new DigestorAccessorImpl();
+    }
     
     private final Digestor<Data> digestor;
     private final String algorithm;

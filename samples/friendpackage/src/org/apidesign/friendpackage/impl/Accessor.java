@@ -33,7 +33,9 @@ public abstract class Accessor {
 // FINISH: design.less.friend.Accessor
 
     // BEGIN: design.less.friend.InitAPI
-    private static final Class<?> INIT_API_CLASS = loadClass(Item.class.getName());
+    private static final Class<?> INIT_API_CLASS = loadClass(
+        Item.class.getName()
+    );
     private static Class<?> loadClass(String name) {
         try {
             return Class.forName(
