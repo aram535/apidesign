@@ -14,7 +14,7 @@ public class ErasureTest {
         
         boolean positive = Erasure.arePositive(oneToTen);
         System.err.println("positive = " + positive);
-        assert positive : "The nubmers are positive: " + oneToTen;
+        assert positive : "All the numbers are positive: " + oneToTen;
     }
     // END: variance.erasure.test
 }
