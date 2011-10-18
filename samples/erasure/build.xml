@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="erasure" default="run" basedir=".">
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+    <target name="test" depends="run"/>
+    
+    <target name="compile" depends="build"/>
+    <target name="build">
+        <antcall target="-build-one">
+            <param name="version" value="api1.0"/>
+        </antcall>
+        <antcall target="-build-one">
+            <param name="version" value="api2.0"/>
+        </antcall>
+        <echo level="info" message="Compiling the test against Version 1.0 of the API. This should succeeds."/>
+        <antcall target="-build-one">
+            <param name="version" value="impl"/>
+            <param name="output" value="impl-with-1.0"/>
+            <param name="cp" location="build/api1.0/classes"/>
+        </antcall>
+        <echo level="info" message="Compiling the test against Version 2.0 of the API. This should succeeds."/>
+        <antcall target="-build-one">
+            <param name="version" value="impl"/>
+            <param name="output" value="impl-with-2.0"/>
+            <param name="cp" location="build/api2.0/classes"/>
+        </antcall>
+    </target>
+    
+    <target name="run" depends="build">
+        <echo level="info" message="Running the test compiled with version 1.0 of the API against version 1.0 of the API. This should succeed."/>
+        <antcall target="-run-one">
+            <param name="version" value="api1.0"/>
+            <param name="testversion" value="impl-with-1.0"/>
+            <param name="result" value="0"/>
+        </antcall>
+        <echo level="info" message="Running the test compiled with version 2.0 of the API against version 2.0 of the API. This should succeed."/>
+        <antcall target="-run-one">
+            <param name="version" value="api2.0"/>
+            <param name="testversion" value="impl-with-2.0"/>
+            <param name="result" value="0"/>
+        </antcall>
+        <echo level="info" message="Erasure works well: Running the test compiled with version 1.0 of the API against version 2.0 of the API. This should succeed."/>
+        <antcall target="-run-one">
+            <param name="version" value="api2.0"/>
+            <param name="testversion" value="impl-with-1.0"/>
+            <param name="result" value="0"/>
+        </antcall>
+        <echo level="info" message="Erasure works: Running the test compiled with version 2.0 of the API against version 1.0 of the API. This succeeds too!"/>
+        <antcall target="-run-one">
+            <param name="version" value="api1.0"/>
+            <param name="testversion" value="impl-with-2.0"/>
+            <param name="result" value="0"/>
+        </antcall>
+    </target>
+
+    
+    <!-- support methods -->
+    
+    <target name="-run-one">
+        <fail message="You need to specify API version number" unless="version"/>
+        <java classpath="build/${version}/classes:build/${testversion}/classes" classname="test.ErasureTest"
+            resultproperty="result.real" failonerror="false" fork="true"
+        />
+        <fail message="Unexpected failure for ${version}: ${result.real}">
+            <condition>
+                <not>
+                    <equals arg1="${result}" arg2="${result.real}"/>
+                </not>
+            </condition>
+        </fail>
+    </target>
+    
+    <target name="-build-one">
+        <fail message="You need to specify version number" unless="version"/>
+        
+        <property name="output" value="${version}"/>
+        <mkdir dir="build/${output}/classes"/>
+        <property name="cp" value=""/>
+        <javac 
+            srcdir="src-${version}" 
+            destdir="build/${output}/classes" 
+            source="1.6" target="1.6"
+            classpath="${cp}"
+            includeantruntime="false"
+        />
+    </target>
+</project>
