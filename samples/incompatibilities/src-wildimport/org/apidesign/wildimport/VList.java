@@ -1,4 +1,4 @@
-package org.apidesign.wrapio;
+package org.apidesign.wildimport;
 
 // BEGIN: theory.wildimport
 import java.awt.*;
