@@ -46,6 +46,7 @@ public abstract class CalculatorBase extends TestCase {
                 events = new ArrayList<ModificationEvent>();
             }
             events.add(ev);
+            notifyAll();
         }
         
         public synchronized List<ModificationEvent> assertEvents(
