@@ -6,6 +6,7 @@ package org.apidesign.openfixed;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.apidesign.openfixed.Calculator.EventSupport;
 
 /**
  *

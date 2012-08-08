@@ -13,6 +13,17 @@ public final class Calculator {
     private Calculator(EventSupport listeners) {
         this.listeners = listeners;
     }
+
+    /** An abstraction over various types of event delivery
+     * to listeners. Comes with four different implementations.
+     * A trivial one, asynchronous one, one with support for
+     * pending events and one for a batch events delivery.
+     */
+    interface EventSupport {
+        public void fireModificationEvent(ModificationEvent ev);
+        public void add(ModificationListener l);
+        public void remove(ModificationListener l);
+    }
     
     public static Calculator create() {
         return new Calculator(new TrivialEventSupport());
