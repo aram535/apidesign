@@ -5,7 +5,8 @@ import java.awt.*;
 import java.util.*;
 
 /** Could be compiled on JDK 1.2, before java.util.List was created */
-public class VList extends List {
-    Vector v;
+public class MyPanel extends Panel {
+    List visualComponent = new List();
+    Vector items = new Vector();
 }        
 // END: theory.wildimport
