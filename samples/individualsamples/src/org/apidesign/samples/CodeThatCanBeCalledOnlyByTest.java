@@ -11,7 +11,7 @@ public class CodeThatCanBeCalledOnlyByTest {
         // BEGIN: call.only.by.test
         boolean assertionsOn = false;
         assert assertionsOn = true;
-        if (assertionsOn) {
+        if (!assertionsOn) {
             throw new IllegalStateException("This is a testing method only!");
         }
         // END: call.only.by.test
