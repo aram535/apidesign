@@ -3,12 +3,20 @@ package org.apidesign.samples;
 // BEGIN: xmms.java.api.ext
 // BEGIN: xmms.java.api
 public final class XMMS {
-    public void play() { doPlay(); }
-    public void pause() { doPause(); }
-    public void addToPlaylist(String file) { doAddToPlaylist(file); }
+    public void play() { 
+        doPlay();
+    }
+    public void pause() { 
+        doPause();
+    }
+    public void addToPlaylist(String file) { 
+        doAddToPlaylist(file);
+    }
 // FINISH: xmms.java.api
     /** @since 2.0 we can also control volume */
-    public void setVolume(int volume) { doTuneVolume(volume); }
+    public void setVolume(int volume) { 
+        doTuneVolume(volume);
+    }
 // FINISH: xmms.java.api.ext
     
     // BEGIN: xmms.java.spi.ext
