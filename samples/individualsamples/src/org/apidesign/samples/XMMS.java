@@ -1,6 +1,9 @@
 package org.apidesign.samples;
 
 // BEGIN: xmms.java.api.ext
+
+import org.apidesign.samples.XMMS.Playback.Volume;
+
 // BEGIN: xmms.java.api
 public final class XMMS {
     public void play() { 
@@ -47,8 +50,8 @@ public final class XMMS {
     }
     // BEGIN: xmms.java.spi.instanceof
     private void doSetVolume(int volume) {
-        if (callback instanceof Playback.Volume) {
-            Playback.Volume pv = (Playback.Volume) callback;
+        if (callback instanceof Volume) {
+            Volume pv = (Volume) callback;
             pv.setVolume(volume);
         }
     }
