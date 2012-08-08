@@ -5,8 +5,8 @@ public class Contravariance {
     }
 
     // BEGIN: variance.contravariance.v2
-    public static boolean isPositive(Number n1) {
-        return n1.doubleValue() > 0.0d;
+    public static boolean isPositive(Number aNumber) {
+        return aNumber.doubleValue() > 0.0d;
     }
     // END: variance.contravariance.v2
 }
