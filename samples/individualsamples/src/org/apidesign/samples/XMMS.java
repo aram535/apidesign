@@ -15,7 +15,7 @@ public final class XMMS {
 // FINISH: xmms.java.api
     /** @since 2.0 we can also control volume */
     public void setVolume(int volume) { 
-        doTuneVolume(volume);
+        doSetVolume(volume);
     }
 // FINISH: xmms.java.api.ext
     
@@ -46,7 +46,7 @@ public final class XMMS {
         callback.playback("Play!".getBytes());
     }
     // BEGIN: xmms.java.spi.instanceof
-    private void doTuneVolume(int volume) {
+    private void doSetVolume(int volume) {
         if (callback instanceof Playback.Volume) {
             Playback.Volume pv = (Playback.Volume) callback;
             pv.setVolume(volume);
