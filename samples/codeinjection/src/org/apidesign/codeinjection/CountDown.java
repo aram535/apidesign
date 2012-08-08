@@ -16,12 +16,16 @@ public abstract class CountDown {
     }
 
     public static CountDown create(int initial) {
-        return new CountDownImplV1(initial);
+        return createSimpleImplementation(initial);
     }
 
     /** Decrements the counter */
     public abstract void down();
     /** @return true if the counter is 0 or less */
     public abstract boolean isDown();
+// FINISH: codeinjection.CountDown
+    
+    private static CountDown createSimpleImplementation(int initial) {
+        return new CountDownImplV1(initial);
+    }
 }
-// END: codeinjection.CountDown
