@@ -27,8 +27,8 @@ final class CountDownImplV2 extends CountDown {
 
 // BEGIN: codeinjection.v2
     public void down() {
-        Iterator<CountDownExtender> it;
-        it = ServiceLoader.load(CountDownExtender.class).iterator();
+        Iterator<CountDownExtender> it =
+            ServiceLoader.load(CountDownExtender.class).iterator();
         if (it.hasNext()) {
             // injected behaviour
             cnt = it.next().decrement(cnt);
