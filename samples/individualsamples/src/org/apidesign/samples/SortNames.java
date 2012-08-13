@@ -7,12 +7,12 @@ import java.util.List;
 public class SortNames {
     public static void main(String... args) {
         // BEGIN: petr.tom.sort
-        List<String> arr = new ArrayList<String>();
-        arr.add("Tom");
-        arr.add("Petr");
-        Collections.sort(arr);
+        List<String> names = new ArrayList<String>();
+        names.add("Tom");
+        names.add("Petr");
+        Collections.sort(names);
         // END: petr.tom.sort
         
-        System.err.println("Names: " + arr);
+        System.err.println("Names: " + names);
     }
 }
