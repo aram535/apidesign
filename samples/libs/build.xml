@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Downloads necessary libraries" default="libraries" basedir=".">
-       <target name="libraries" depends="autoupdate-task">
+<project name="libraries" default="libraries" basedir=".">
+       <target name="libraries" depends="scala,autoupdate-task">
         <antcall target="-library">
             <param name="library" value="junit-4.4"/>
             <param name="url" value="http://switch.dl.sourceforge.net/sourceforge/junit/junit-4.4.jar"/>
@@ -41,6 +41,23 @@
             <param name="library" value="org.netbeans.libs.commons_logging"/>
             <param name="library.include" value="**/*commons*logg*.jar"/>
         </antcall>
+    </target>
+    
+    <property name="scala.url" value="http://www.scala-lang.org/downloads/distrib/files/scala-2.9.2.tgz"/>
+    <property name="scala.home" location="${ant.libraries.file}/../dist/scala-2.9.2"/>
+    <available file="${scala.home}/bin/scalac" property="scala.available"/>
+    <target name="scala" unless="scala.available">
+        <mkdir dir="dist"/>
+        <get dest="dist/scala.tgz" src="${scala.url}" skipexisting="true"/>
+        <mkdir dir="${scala.home}"/>
+        <untar compression="gzip" src="dist/scala.tgz" dest="${scala.home}/.."/>
+        <fail message="Can't find ${scala.home}/bin/scalac">
+            <condition>
+                <not>
+                    <available file="${scala.home}/bin/scalac"/>
+                </not>
+            </condition>
+        </fail>
     </target>
 
     <available property="autoupdate.tasks.jar" file="dist/tasks.jar"/>
