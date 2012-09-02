@@ -9,7 +9,8 @@ class Point(val x: Int, val y : Int);
 
 class ListMixinTest {
   // BEGIN: effectivelist.convert
-  class ListablePoint(x: Int, y: Int) extends Point(x,y) with Listable[ListablePoint] {
+  class ListablePoint(x: Int, y: Int)
+  extends Point(x,y) with Listable[ListablePoint] {
     def this(r : Point) = this(r.x, r.y)
   }
   implicit def toList(p : Point) : ListablePoint = new ListablePoint(p)
