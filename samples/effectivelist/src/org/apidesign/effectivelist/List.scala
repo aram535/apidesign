@@ -8,6 +8,7 @@ package org.apidesign.effectivelist
  * <b>case class</b> Person(name : String) <b>extends</b> Listable[Person]
  * </pre>
  */
+// BEGIN: effectivelist.list
 final class List[T <: Listable[T]] {
   private var item : T = _
   private final var EMPTY : T = _
@@ -72,3 +73,4 @@ final class List[T <: Listable[T]] {
     }
   }
 }
+// END: effectivelist.list

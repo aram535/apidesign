@@ -4,6 +4,7 @@ import org.junit._
 import Assert._
 
 class ListTest {
+  // BEGIN: effectivelist.person
   case class Person(name : String, age : Int) extends Listable[Person]
   
   var list : List[Person] = _
@@ -28,6 +29,7 @@ class ListTest {
     assertEquals("Anna was inserted 3rd", "Anna", list.get(2).name)
     assertEquals("Anna was inserted 4th", 6, list.get(3).age)
   }
+  // END: effectivelist.person
 
   @Test def addFewAndThenTryToRemoveHead() = {
     assertTrue(list.add(p1))
