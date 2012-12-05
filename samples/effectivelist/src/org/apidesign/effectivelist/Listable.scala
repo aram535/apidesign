@@ -4,7 +4,7 @@ package org.apidesign.effectivelist
  * to previous and next items in the list effective.
  */
 // BEGIN: effectivelist.item
-trait Listable[T <: Listable[T]] {
+trait Listable[T] {
   private[effectivelist] var prev : T = _
   private[effectivelist] var next : T = _
 }
