@@ -43,7 +43,7 @@
         </antcall>
     </target>
     
-    <property name="scala.url" value="http://www.scala-lang.org/downloads/distrib/files/scala-2.9.2.tgz"/>
+    <property name="scala.url" value="http://www.scala-lang.org/files/archive/scala-2.9.2.tgz"/>
     <property name="scala.home" location="${ant.libraries.file}/../dist/scala-2.9.2"/>
     <available file="${scala.home}/bin/scalac" property="scala.available"/>
     <target name="scala" unless="scala.available">
