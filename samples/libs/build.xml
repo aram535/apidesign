@@ -61,8 +61,8 @@
     </target>
 
     <available property="autoupdate.tasks.jar" file="dist/tasks.jar"/>
-    <property name="bootstrap.url" value="http://deadlock.netbeans.org/hudson/job/nbms-and-javadoc/lastStableBuild/artifact/nbbuild/netbeans/harness/tasks.jar"/>
-    <property name="netbeans.updatecenter.url" value="http://dlc.sun.com.edgesuite.net/netbeans/7.1.1/final/uc/catalog.xml.gz"/>
+    <property name="bootstrap.url" value="http://updates.netbeans.org/netbeans/updates/8.0.1/uc/final/distribution/tasks.jar"/>
+    <property name="netbeans.updatecenter.url" value="http://updates.netbeans.org/netbeans/updates/8.0.1/uc/final/distribution/catalog.xml.gz"/>
     <target name="-download-autoupdate-task" unless="autoupdate.tasks.jar">
         <mkdir dir="dist"/>
         <get dest="dist/tasks.jar" src="${bootstrap.url}" usetimestamp="true"/>

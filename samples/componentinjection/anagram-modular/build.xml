@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Various Examples of Component Injection" default="test" basedir=".">
-    <property name="spring.jar" value="spring-2.5.6.SEC01.jar"/>
+    <property name="spring-core.jar" value="spring-core-4.0.1.RELEASE.jar"/>
+    <property name="spring-beans.jar" value="spring-beans-4.0.1.RELEASE.jar"/>
+    <property name="spring-context.jar" value="spring-context-4.0.1.RELEASE.jar"/>
     <target name="clean">
         <delete dir="build"/>
     </target>
@@ -42,11 +44,11 @@
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-spring"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring-core.jar}:../../libs/dist/${spring-context.jar}:../../libs/dist/${spring-beans.jar}"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-spring-scan"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring-core.jar}:../../libs/dist/${spring-context.jar}:../../libs/dist/${spring-beans.jar}"/>
         </antcall>
         <antcall target="-build-one">
             <param name="version" value="app-lookup"/>
@@ -79,13 +81,13 @@
         <echo level="info" message="Running spring version"/>
         <antcall target="-run-one">
             <param name="version" value="app-spring"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}:../../libs/dist/commons-logging-1.1.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring-core.jar}:../../libs/dist/${spring-beans.jar}:../../libs/dist/${spring-context.jar}:../../libs/dist/commons-logging-1.1.jar"/>
             <param name="main" value="org.apidesign.anagram.app.spring.Main"/>
         </antcall>
         <echo level="info" message="Running spring autoscan version"/>
         <antcall target="-run-one">
             <param name="version" value="app-spring-scan"/>
-            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring.jar}:../../libs/dist/commons-logging-1.1.jar"/>
+            <param name="cp" value="build/api/classes:build/word-static/classes:build/scrambler-simple/classes:build/gui/classes:../../libs/dist/${spring-core.jar}:../../libs/dist/${spring-context.jar}:../../libs/dist/${spring-beans.jar}:../../libs/dist/commons-logging-1.1.jar"/>
             <param name="main" value="org.apidesign.anagram.app.springscan.Main"/>
         </antcall>
         <echo level="info" message="Running registerGeneral version"/>
