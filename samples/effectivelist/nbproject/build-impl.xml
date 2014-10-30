@@ -50,6 +50,7 @@ is divided into following sections:
         <taskdef resource="scala/tools/ant/antlib.xml">
             <classpath>
                 <pathelement location="${scala.compiler}"/>
+                <pathelement location="${scala.compiler}/../scala-reflect.jar"/>
                 <pathelement location="${scala.library}"/>
             </classpath>
         </taskdef>

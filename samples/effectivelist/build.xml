@@ -6,7 +6,7 @@
     <description>Builds, tests, and runs the project Effective List.</description>
     
     <ant dir="../libs" target="scala"/>
-    <property name="scala.home" location="../libs/dist/scala-2.9.2"/>
+    <property name="scala.home" location="../libs/dist/scala-2.10.4"/>
     
     <import file="nbproject/build-impl.xml"/>
 
