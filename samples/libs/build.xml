@@ -3,15 +3,15 @@
        <target name="libraries" depends="scala,autoupdate-task">
         <antcall target="-library">
             <param name="library" value="junit-4.4"/>
-            <param name="url" value="http://switch.dl.sourceforge.net/sourceforge/junit/junit-4.4.jar"/>
+            <param name="url" value="http://repo1.maven.org/maven2/junit/junit/4.4/junit-4.4.jar"/>
         </antcall>
         <antcall target="-library">
             <param name="library" value="derby"/>
-            <param name="url" value="http://mirrors.ibiblio.org/pub/mirrors/maven2/org/apache/derby/derby/10.6.1.0/derby-10.6.1.0.jar"/>
+            <param name="url" value="http://repo1.maven.org/maven2/org/apache/derby/derby/10.6.1.0/derby-10.6.1.0.jar"/>
         </antcall>
         <antcall target="-library">
             <param name="library" value="derbyclient"/>
-            <param name="url" value="http://mirrors.ibiblio.org/pub/mirrors/maven2/org/apache/derby/derbyclient/10.6.1.0/derbyclient-10.6.1.0.jar"/>
+            <param name="url" value="http://repo1.maven.org/maven2/org/apache/derby/derbyclient/10.6.1.0/derbyclient-10.6.1.0.jar"/>
         </antcall>
         <antcall target="-library-from-nbm">
             <param name="library" value="org.openide.util.lookup"/>
