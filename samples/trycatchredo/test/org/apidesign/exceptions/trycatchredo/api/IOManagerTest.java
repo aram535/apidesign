@@ -7,11 +7,15 @@ import java.awt.event.ActionEvent;
 import java.net.URL;
 import javax.swing.Action;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 import org.apidesign.exceptions.trycatchredo.usage.QueryStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -20,6 +24,11 @@ import static org.junit.Assert.*;
 public class IOManagerTest {
 
     public IOManagerTest() {
+    }
+
+    @BeforeClass
+    public static void useMetalLaF() throws UnsupportedLookAndFeelException {
+        UIManager.setLookAndFeel(new MetalLookAndFeel());
     }
 
     @Before
